@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MangoX — 帳號刪除請求</title>
+<meta name="description" content="請求刪除您的 MangoX 帳號及相關個人資料。" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mangox-dev.github.io/account-deletion/zh-hant" />
+<style>
+  :root {
+    --bg: #fffdf7;
+    --ink: #1c1a17;
+    --ink-soft: #4a4640;
+    --rule: #e8e2d4;
+    --accent: #d97706;
+    --accent-soft: #fef3c7;
+    --max-width: 720px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", "Noto Serif KR", "Noto Serif Thai", "Noto Serif SC", "Noto Serif TC", serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-break: keep-all;
+  }
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  .lang-switcher {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    padding: 14px 16px;
+    margin: 0 0 36px;
+    background: #faf6ec;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+  .lang-switcher .lang-label {
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .lang-switcher a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  .lang-switcher a:hover { color: var(--ink); border-bottom-style: solid; }
+  .lang-switcher .lang-active {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+  }
+  header.doc {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  h1 {
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .effective {
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .governing {
+    margin: 18px 0 0;
+    padding: 12px 16px;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 10px;
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 22px 0 8px;
+  }
+  p { margin: 0 0 14px; }
+  ul { padding-left: 22px; margin: 0 0 14px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.95em; }
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 18px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 15px;
+  }
+  .email-template {
+    background: #faf6ec;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 14px 0 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .mailto-button {
+    display: inline-block;
+    background: var(--accent);
+    color: #fffdf7;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    margin: 6px 0 18px;
+    border: 1px solid var(--accent);
+  }
+  .mailto-button:hover {
+    background: #b45309;
+    border-color: #b45309;
+    color: #fffdf7;
+  }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a { color: var(--ink-soft); }
+  @media (max-width: 540px) {
+    body { font-size: 16px; }
+    main { padding: 32px 18px 64px; }
+    h1 { font-size: 26px; line-height: 1.25; }
+    h2 { font-size: 18px; }
+    .lang-switcher { font-size: 12px; gap: 8px 12px; padding: 12px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <nav class="lang-switcher" aria-label="語言"><span class="lang-label">語言:</span><a href="/account-deletion" hreflang="en">English</a><a href="/account-deletion/ko" hreflang="ko">한국어</a><a href="/account-deletion/th" hreflang="th">ไทย</a><a href="/account-deletion/zh" hreflang="zh-Hans">简体中文</a><span class="lang-active" aria-current="page">繁體中文</span></nav>
+  <header class="doc">
+    <p class="eyebrow">MangoX · 法律文件</p>
+    <h1>帳號刪除請求</h1>
+    <p class="effective">生效日期：2026年5月19日</p>
+    <p class="governing">本繁體中文版本為協助使用者理解而提供之譯文。如解釋存在差異，應以英文版本為準。</p>
+  </header>
+<p>本頁面說明如何請求刪除您的 <strong>MangoX</strong> 帳號及相關個人資料。即使您不再安裝 MangoX 應用程式，亦可使用本頁面。</p>
+<h2>1. 關於 MangoX</h2>
+<p>MangoX 為一項面向成年人之以場所為基礎之社交服務。使用者可於參與之場所簽到、檢視同一場次內之其他參與者、傳送愛心、檢視排名互動，並於雙方相互感興趣時進入 Reveal 步驟，以揭露參與者之間之聯絡資訊。</p>
+<h2>2. 如何請求刪除</h2>
+<p>如欲請求刪除您的 MangoX 帳號及相關個人資料，請寄電子郵件至 <a href="mailto:support@mangox.app">support@mangox.app</a>，並提供足以識別您帳號之資訊。</p>
+<p>建議包含之資訊：</p>
+<ul>
+  <li>您的 LINE 使用者識別碼（LINE user ID），如知悉。</li>
+  <li>您的 MangoX 暱稱，如知悉。</li>
+  <li>最近一次簽到之大致場所、場次或日期，如有助益。</li>
+  <li>用於後續聯絡之電子郵件地址或聯絡方式。</li>
+</ul>
+<p>請<strong>勿</strong>寄送密碼、存取權杖或任何敏感之身分驗證機密。</p>
+<h2>3. 建議之郵件主旨</h2>
+<p><code>MangoX Account Deletion Request</code></p>
+<h2>4. 建議之郵件內容</h2>
+<p>您可將下方範本複製至郵件中。為便於我們之支援團隊一致處理，內容採英文。</p>
+<div class="email-template">I request deletion of my MangoX account and related personal data.
+LINE user ID:
+MangoX nickname:
+Approximate last venue/session/date:
+Contact email:
+Additional notes:
+Please contact me if you need additional verification.</div>
+<p><a class="mailto-button" href="mailto:support@mangox.app?subject=MangoX%20Account%20Deletion%20Request&body=I%20request%20deletion%20of%20my%20MangoX%20account%20and%20related%20personal%20data.%0D%0ALINE%20user%20ID%3A%0D%0AMangoX%20nickname%3A%0D%0AApproximate%20last%20venue%2Fsession%2Fdate%3A%0D%0AContact%20email%3A%0D%0AAdditional%20notes%3A%0D%0APlease%20contact%20me%20if%20you%20need%20additional%20verification.">開啟郵件寄送至 support@mangox.app</a></p>
+<h2>5. 後續步驟</h2>
+<ul>
+  <li>MangoX 支援團隊可能審查您的請求並核對帳號。</li>
+  <li>MangoX 將於合理期間內處理請求。</li>
+  <li>若需進一步身分或帳號核對，支援團隊可能依您所提供之聯絡資訊與您聯繫。</li>
+</ul>
+<h2>6. 資料刪除範圍</h2>
+<p>當我們處理刪除請求時：</p>
+<ul>
+  <li>帳號及個人資料可能被刪除或匿名化處理。</li>
+  <li>您的大頭貼可能被刪除。</li>
+  <li>場次、互動及排名資料中之個人識別碼可能於可行範圍內被刪除或匿名化。</li>
+  <li>為安全、防範詐欺、濫用處理、紛爭處理、法定義務或服務完整性所必要之部分紀錄，可能予以保存。</li>
+</ul>
+<h2>7. 重要限制</h2>
+<p>本頁面為請求管道，並非自動刪除系統。我們<strong>不</strong>聲明：</p>
+<ul>
+  <li>提出請求後即時或自動完成刪除。</li>
+  <li>於所有情形下始終刪除每一筆日誌或紀錄。</li>
+  <li>本頁面執行法律意義上之身分驗證。</li>
+  <li>目前提供完整之應用程式內自助刪除功能。</li>
+  <li>後端刪除已自動化。</li>
+</ul>
+<h2>8. 應用程式內路徑（若您仍安裝該應用程式）</h2>
+<p>若您仍安裝 MangoX，亦可由應用程式內發起請求：</p>
+<p><strong>My 分頁 → Account → 請求刪除帳戶</strong></p>
+<p>使用應用程式內路徑將於您的裝置上開啟預先填寫好之郵件，寄送至 support@mangox.app。</p>
+<h2>9. 相關政策</h2>
+<p>有關我們所收集之資料及其使用方式之詳情，請參閱 <a href="/legal/privacy/zh-hant">隱私權政策</a> 及 <a href="/legal/terms/zh-hant">使用條款</a>。</p>
+<h2>10. 聯絡方式</h2>
+<p>如對帳號或資料刪除有任何疑問，請透過 <a href="mailto:support@mangox.app">support@mangox.app</a> 與我們聯絡。</p>
+  <footer><span>MangoX · 帳號刪除請求 · Effective 2026-05-19</span><span><a href="/legal/privacy/zh-hant">隱私權政策</a> · <a href="/legal/terms/zh-hant">使用條款</a></span></footer>
+</main>
+</body>
+</html>

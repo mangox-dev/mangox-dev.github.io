@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MangoX — 계정 삭제 요청</title>
+<meta name="description" content="MangoX 계정 및 관련 개인정보의 삭제를 요청하는 방법." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mangox-dev.github.io/account-deletion/ko" />
+<style>
+  :root {
+    --bg: #fffdf7;
+    --ink: #1c1a17;
+    --ink-soft: #4a4640;
+    --rule: #e8e2d4;
+    --accent: #d97706;
+    --accent-soft: #fef3c7;
+    --max-width: 720px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", "Noto Serif KR", "Noto Serif Thai", "Noto Serif SC", "Noto Serif TC", serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-break: keep-all;
+  }
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  .lang-switcher {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    padding: 14px 16px;
+    margin: 0 0 36px;
+    background: #faf6ec;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+  .lang-switcher .lang-label {
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .lang-switcher a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  .lang-switcher a:hover { color: var(--ink); border-bottom-style: solid; }
+  .lang-switcher .lang-active {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+  }
+  header.doc {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  h1 {
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .effective {
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .governing {
+    margin: 18px 0 0;
+    padding: 12px 16px;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 10px;
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 22px 0 8px;
+  }
+  p { margin: 0 0 14px; }
+  ul { padding-left: 22px; margin: 0 0 14px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.95em; }
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 18px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 15px;
+  }
+  .email-template {
+    background: #faf6ec;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 14px 0 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .mailto-button {
+    display: inline-block;
+    background: var(--accent);
+    color: #fffdf7;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    margin: 6px 0 18px;
+    border: 1px solid var(--accent);
+  }
+  .mailto-button:hover {
+    background: #b45309;
+    border-color: #b45309;
+    color: #fffdf7;
+  }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a { color: var(--ink-soft); }
+  @media (max-width: 540px) {
+    body { font-size: 16px; }
+    main { padding: 32px 18px 64px; }
+    h1 { font-size: 26px; line-height: 1.25; }
+    h2 { font-size: 18px; }
+    .lang-switcher { font-size: 12px; gap: 8px 12px; padding: 12px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <nav class="lang-switcher" aria-label="언어"><span class="lang-label">언어:</span><a href="/account-deletion" hreflang="en">English</a><span class="lang-active" aria-current="page">한국어</span><a href="/account-deletion/th" hreflang="th">ไทย</a><a href="/account-deletion/zh" hreflang="zh-Hans">简体中文</a><a href="/account-deletion/zh-hant" hreflang="zh-Hant">繁體中文</a></nav>
+  <header class="doc">
+    <p class="eyebrow">MangoX · 법적 문서</p>
+    <h1>계정 삭제 요청</h1>
+    <p class="effective">시행일: 2026년 5월 19일</p>
+    <p class="governing">본 한국어 문서는 사용자의 이해를 돕기 위한 번역본입니다. 해석상 차이가 있는 경우 영어 원문이 우선합니다.</p>
+  </header>
+<p>본 페이지는 <strong>MangoX</strong> 계정 및 관련 개인정보의 삭제를 요청하는 방법을 안내합니다. MangoX 앱이 더 이상 설치되어 있지 않은 경우에도 본 페이지를 이용하실 수 있습니다.</p>
+<h2>1. MangoX 소개</h2>
+<p>MangoX는 성인을 위한 매장 기반 소셜 서비스입니다. 이용자는 참여 매장에 체크인하고, 동일 세션 내 다른 참여자를 확인하며, 하트를 보내고, 랭킹 상호작용을 보고, 상호 호감이 있는 경우 참여자 간 연락 정보가 공개(Reveal)되는 단계로 진행할 수 있습니다.</p>
+<h2>2. 삭제 요청 방법</h2>
+<p>MangoX 계정 및 관련 개인정보의 삭제를 요청하시려면, 계정 확인에 충분한 정보를 포함하여 <a href="mailto:support@mangox.app">support@mangox.app</a> 으로 이메일을 보내주십시오.</p>
+<p>요청 시 도움이 되는 정보:</p>
+<ul>
+  <li>LINE 사용자 식별자(LINE user ID), 알고 있는 경우</li>
+  <li>MangoX 닉네임, 알고 있는 경우</li>
+  <li>최근 매장, 세션 또는 체크인 일자(대략), 도움이 되는 경우</li>
+  <li>후속 연락에 사용할 이메일 주소 또는 연락 수단</li>
+</ul>
+<p>비밀번호, 액세스 토큰 또는 기타 인증용 비밀 정보는 <strong>포함하지 마십시오</strong>.</p>
+<h2>3. 권장 이메일 제목</h2>
+<p><code>MangoX Account Deletion Request</code></p>
+<h2>4. 권장 이메일 본문</h2>
+<p>아래 템플릿을 복사하여 이메일에 붙여 넣으실 수 있습니다. 운영팀의 일관된 처리를 위해 본문은 영어로 작성되어 있습니다.</p>
+<div class="email-template">I request deletion of my MangoX account and related personal data.
+LINE user ID:
+MangoX nickname:
+Approximate last venue/session/date:
+Contact email:
+Additional notes:
+Please contact me if you need additional verification.</div>
+<p><a class="mailto-button" href="mailto:support@mangox.app?subject=MangoX%20Account%20Deletion%20Request&body=I%20request%20deletion%20of%20my%20MangoX%20account%20and%20related%20personal%20data.%0D%0ALINE%20user%20ID%3A%0D%0AMangoX%20nickname%3A%0D%0AApproximate%20last%20venue%2Fsession%2Fdate%3A%0D%0AContact%20email%3A%0D%0AAdditional%20notes%3A%0D%0APlease%20contact%20me%20if%20you%20need%20additional%20verification.">support@mangox.app 으로 이메일 열기</a></p>
+<h2>5. 이후 절차</h2>
+<ul>
+  <li>MangoX 지원팀이 요청 내용을 검토하고 계정을 확인할 수 있습니다.</li>
+  <li>MangoX는 합리적인 기간 내에 요청을 처리합니다.</li>
+  <li>추가적인 신원 또는 계정 확인이 필요한 경우, 지원팀이 귀하가 제공한 연락처로 연락드릴 수 있습니다.</li>
+</ul>
+<h2>6. 데이터 삭제 범위</h2>
+<p>삭제 요청을 처리할 때:</p>
+<ul>
+  <li>계정 및 프로필 데이터는 삭제되거나 익명화될 수 있습니다.</li>
+  <li>프로필 사진은 삭제될 수 있습니다.</li>
+  <li>세션·상호작용·랭킹 데이터 내의 개인 식별자는 가능한 범위에서 삭제되거나 익명화될 수 있습니다.</li>
+  <li>일부 기록은 안전, 부정 방지, 악용 대응, 분쟁 처리, 법령상 의무 또는 서비스 무결성 유지를 위해 보존될 수 있습니다.</li>
+</ul>
+<h2>7. 중요한 제한 사항</h2>
+<p>본 페이지는 요청 채널이며, 자동 삭제 시스템이 아닙니다. 다음 사항은 보장되지 <strong>않습니다</strong>:</p>
+<ul>
+  <li>요청 제출과 동시에 즉시 또는 자동으로 삭제됨</li>
+  <li>모든 로그·기록이 모든 경우에 항상 삭제됨</li>
+  <li>본 페이지에서 법적 신원 확인이 수행됨</li>
+  <li>현재 앱 내 완전 셀프 서비스 삭제가 제공됨</li>
+  <li>백엔드 삭제가 이미 자동화되어 있음</li>
+</ul>
+<h2>8. 앱 내 경로 (앱이 설치되어 있는 경우)</h2>
+<p>MangoX 앱이 설치되어 있는 경우, 앱 내에서도 요청을 시작할 수 있습니다:</p>
+<p><strong>My 탭 → ACCOUNT → 계정 삭제 요청</strong></p>
+<p>앱 내 경로를 이용하면 기기에서 support@mangox.app 으로의 이메일이 미리 채워진 상태로 열립니다.</p>
+<h2>9. 관련 정책</h2>
+<p>수집 데이터와 이용 방식에 대한 상세 내용은 <a href="/legal/privacy/ko">개인정보처리방침</a> 및 <a href="/legal/terms/ko">이용약관</a>을 참조하십시오.</p>
+<h2>10. 문의처</h2>
+<p>계정 또는 데이터 삭제에 관한 문의는 <a href="mailto:support@mangox.app">support@mangox.app</a> 으로 연락주십시오.</p>
+  <footer><span>MangoX · 계정 삭제 요청 · Effective 2026-05-19</span><span><a href="/legal/privacy/ko">개인정보처리방침</a> · <a href="/legal/terms/ko">이용약관</a></span></footer>
+</main>
+</body>
+</html>

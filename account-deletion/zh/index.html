@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MangoX — 账户删除请求</title>
+<meta name="description" content="请求删除您的 MangoX 账户及相关个人数据。" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mangox-dev.github.io/account-deletion/zh" />
+<style>
+  :root {
+    --bg: #fffdf7;
+    --ink: #1c1a17;
+    --ink-soft: #4a4640;
+    --rule: #e8e2d4;
+    --accent: #d97706;
+    --accent-soft: #fef3c7;
+    --max-width: 720px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", "Noto Serif KR", "Noto Serif Thai", "Noto Serif SC", "Noto Serif TC", serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-break: keep-all;
+  }
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  .lang-switcher {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    padding: 14px 16px;
+    margin: 0 0 36px;
+    background: #faf6ec;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+  .lang-switcher .lang-label {
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .lang-switcher a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  .lang-switcher a:hover { color: var(--ink); border-bottom-style: solid; }
+  .lang-switcher .lang-active {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+  }
+  header.doc {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  h1 {
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .effective {
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .governing {
+    margin: 18px 0 0;
+    padding: 12px 16px;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 10px;
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 22px 0 8px;
+  }
+  p { margin: 0 0 14px; }
+  ul { padding-left: 22px; margin: 0 0 14px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.95em; }
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 18px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 15px;
+  }
+  .email-template {
+    background: #faf6ec;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 14px 0 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .mailto-button {
+    display: inline-block;
+    background: var(--accent);
+    color: #fffdf7;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    margin: 6px 0 18px;
+    border: 1px solid var(--accent);
+  }
+  .mailto-button:hover {
+    background: #b45309;
+    border-color: #b45309;
+    color: #fffdf7;
+  }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a { color: var(--ink-soft); }
+  @media (max-width: 540px) {
+    body { font-size: 16px; }
+    main { padding: 32px 18px 64px; }
+    h1 { font-size: 26px; line-height: 1.25; }
+    h2 { font-size: 18px; }
+    .lang-switcher { font-size: 12px; gap: 8px 12px; padding: 12px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <nav class="lang-switcher" aria-label="语言"><span class="lang-label">语言:</span><a href="/account-deletion" hreflang="en">English</a><a href="/account-deletion/ko" hreflang="ko">한국어</a><a href="/account-deletion/th" hreflang="th">ไทย</a><span class="lang-active" aria-current="page">简体中文</span><a href="/account-deletion/zh-hant" hreflang="zh-Hant">繁體中文</a></nav>
+  <header class="doc">
+    <p class="eyebrow">MangoX · 法律文档</p>
+    <h1>账户删除请求</h1>
+    <p class="effective">生效日期：2026年5月19日</p>
+    <p class="governing">本简体中文版本为帮助用户理解而提供的译文。如解释存在差异，以英文版本为准。</p>
+  </header>
+<p>本页面说明如何请求删除您的 <strong>MangoX</strong> 账户及相关个人数据。即使您不再安装 MangoX 应用程序，也可以使用本页面。</p>
+<h2>1. 关于 MangoX</h2>
+<p>MangoX 是面向成年人的基于场所的社交服务。用户可以在参与的场所签到、查看同一会话中的其他参与者、发送爱心、查看排名互动，并在双方互有意向时进入 Reveal 步骤，公开参与者之间的联系方式。</p>
+<h2>2. 如何请求删除</h2>
+<p>如需请求删除您的 MangoX 账户及相关个人数据，请向 <a href="mailto:support@mangox.app">support@mangox.app</a> 发送邮件，并提供足以识别您账户的信息。</p>
+<p>建议包含的信息：</p>
+<ul>
+  <li>您的 LINE 用户标识（LINE user ID），如知晓。</li>
+  <li>您的 MangoX 昵称，如知晓。</li>
+  <li>最近一次签到的大致场所、会话或日期，如有帮助。</li>
+  <li>用于后续联系的电子邮件地址或联系方式。</li>
+</ul>
+<p>请<strong>勿</strong>发送密码、访问令牌或任何敏感的身份验证机密信息。</p>
+<h2>3. 建议的邮件主题</h2>
+<p><code>MangoX Account Deletion Request</code></p>
+<h2>4. 建议的邮件正文</h2>
+<p>您可将下方模板复制到邮件中。为便于我们的支持团队一致处理，正文使用英文。</p>
+<div class="email-template">I request deletion of my MangoX account and related personal data.
+LINE user ID:
+MangoX nickname:
+Approximate last venue/session/date:
+Contact email:
+Additional notes:
+Please contact me if you need additional verification.</div>
+<p><a class="mailto-button" href="mailto:support@mangox.app?subject=MangoX%20Account%20Deletion%20Request&body=I%20request%20deletion%20of%20my%20MangoX%20account%20and%20related%20personal%20data.%0D%0ALINE%20user%20ID%3A%0D%0AMangoX%20nickname%3A%0D%0AApproximate%20last%20venue%2Fsession%2Fdate%3A%0D%0AContact%20email%3A%0D%0AAdditional%20notes%3A%0D%0APlease%20contact%20me%20if%20you%20need%20additional%20verification.">打开邮件发送至 support@mangox.app</a></p>
+<h2>5. 后续步骤</h2>
+<ul>
+  <li>MangoX 支持团队可能审核您的请求并核实账户。</li>
+  <li>MangoX 将在合理期间内处理请求。</li>
+  <li>如需进行进一步的身份或账户核实，支持团队可能通过您提供的联系方式与您联系。</li>
+</ul>
+<h2>6. 数据删除范围</h2>
+<p>当我们处理删除请求时：</p>
+<ul>
+  <li>账户及个人资料数据可能被删除或匿名化处理。</li>
+  <li>您的头像可能被删除。</li>
+  <li>会话、互动及排名数据中的个人标识可能在可行范围内被删除或匿名化。</li>
+  <li>为了安全、反欺诈、滥用处理、争议处理、法定义务或服务完整性所需的部分记录可能保留。</li>
+</ul>
+<h2>7. 重要限制</h2>
+<p>本页面为请求渠道，并非自动删除系统。我们<strong>不</strong>声明：</p>
+<ul>
+  <li>提交请求后立即或自动完成删除。</li>
+  <li>在所有情形下始终删除每一条日志或记录。</li>
+  <li>本页面执行法律意义上的身份验证。</li>
+  <li>当前提供完整的应用内自助删除功能。</li>
+  <li>后端删除已自动化。</li>
+</ul>
+<h2>8. 应用内路径（如您仍安装有该应用）</h2>
+<p>如您仍然安装着 MangoX，也可从应用内发起请求：</p>
+<p><strong>My 标签 → Account → 请求删除账户</strong></p>
+<p>使用应用内路径将在您的设备上打开预先填写好的邮件，发送至 support@mangox.app。</p>
+<h2>9. 相关政策</h2>
+<p>有关我们收集的数据及其使用方式的详情，请参见 <a href="/legal/privacy/zh">隐私政策</a> 和 <a href="/legal/terms/zh">使用条款</a>。</p>
+<h2>10. 联系方式</h2>
+<p>如对账户或数据删除有任何疑问，请通过 <a href="mailto:support@mangox.app">support@mangox.app</a> 与我们联系。</p>
+  <footer><span>MangoX · 账户删除请求 · Effective 2026-05-19</span><span><a href="/legal/privacy/zh">隐私政策</a> · <a href="/legal/terms/zh">使用条款</a></span></footer>
+</main>
+</body>
+</html>
