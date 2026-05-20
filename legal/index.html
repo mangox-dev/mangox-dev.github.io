@@ -3,42 +3,199 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MangoX — Legal</title>
+<title>MangoX — Terms of Use</title>
+<meta name="description" content="MangoX Terms of Use. Rules for using the MangoX service." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mangox-dev.github.io/legal/terms" />
 <style>
-  body{margin:0;background:#fffdf7;color:#1c1a17;font-family:ui-serif,Georgia,serif;padding:48px 24px;}
-  main{max-width:640px;margin:0 auto;}
-  h1{font-size:30px;margin:0 0 8px;letter-spacing:-0.01em;}
-  h2{font-size:14px;margin:32px 0 12px;letter-spacing:0.08em;text-transform:uppercase;color:#4a4640;font-weight:600;}
-  .eyebrow{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#d97706;margin:0 0 12px;}
-  ul{list-style:none;padding:0;margin:0;border-top:1px solid #e8e2d4;}
-  li{border-bottom:1px solid #e8e2d4;}
-  a{display:flex;justify-content:space-between;align-items:center;padding:14px 4px;color:#1c1a17;text-decoration:none;font-size:16px;}
-  a:hover{color:#d97706;}
-  .arrow{font-family:ui-monospace,Menlo,Consolas,monospace;color:#4a4640;font-size:13px;}
+  :root {
+    --bg: #fffdf7;
+    --ink: #1c1a17;
+    --ink-soft: #4a4640;
+    --rule: #e8e2d4;
+    --accent: #d97706;
+    --accent-soft: #fef3c7;
+    --max-width: 720px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", "Noto Serif KR", "Noto Serif Thai", "Noto Serif SC", "Noto Serif TC", serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-break: keep-all;
+  }
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  .lang-switcher {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    padding: 14px 16px;
+    margin: 0 0 36px;
+    background: #faf6ec;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+  .lang-switcher .lang-label {
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .lang-switcher a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  .lang-switcher a:hover { color: var(--ink); border-bottom-style: solid; }
+  .lang-switcher .lang-active {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+  }
+  header.doc {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  h1 {
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .effective {
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .governing {
+    margin: 18px 0 0;
+    padding: 12px 16px;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 10px;
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 22px 0 8px;
+  }
+  p { margin: 0 0 14px; }
+  ul { padding-left: 22px; margin: 0 0 14px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.95em; }
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 18px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 15px;
+  }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a { color: var(--ink-soft); }
+  @media (max-width: 540px) {
+    body { font-size: 16px; }
+    main { padding: 32px 18px 64px; }
+    h1 { font-size: 26px; line-height: 1.25; }
+    h2 { font-size: 18px; }
+    .lang-switcher { font-size: 12px; gap: 8px 12px; padding: 12px; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <p class="eyebrow">MangoX · Legal</p>
-  <h1>Legal documents</h1>
-
-  <h2>Privacy Policy</h2>
-  <ul>
-    <li><a href="/legal/privacy">English <span class="arrow">→</span></a></li>
-    <li><a href="/legal/privacy/ko">한국어 <span class="arrow">→</span></a></li>
-    <li><a href="/legal/privacy/th">ไทย <span class="arrow">→</span></a></li>
-    <li><a href="/legal/privacy/zh">简体中文 <span class="arrow">→</span></a></li>
-    <li><a href="/legal/privacy/zh-hant">繁體中文 <span class="arrow">→</span></a></li>
-  </ul>
-
-  <h2>Terms of Use</h2>
-  <ul>
-    <li><a href="/legal/terms">English <span class="arrow">→</span></a></li>
-    <li><a href="/legal/terms/ko">한국어 <span class="arrow">→</span></a></li>
-    <li><a href="/legal/terms/th">ไทย <span class="arrow">→</span></a></li>
-    <li><a href="/legal/terms/zh">简体中文 <span class="arrow">→</span></a></li>
-    <li><a href="/legal/terms/zh-hant">繁體中文 <span class="arrow">→</span></a></li>
-  </ul>
+  <nav class="lang-switcher" aria-label="Language"><span class="lang-label">Language:</span><span class="lang-active" aria-current="page">English</span><a href="/legal/terms/ko" hreflang="ko">한국어</a><a href="/legal/terms/th" hreflang="th">ไทย</a><a href="/legal/terms/zh" hreflang="zh-Hans">简体中文</a><a href="/legal/terms/zh-hant" hreflang="zh-Hant">繁體中文</a></nav>
+  <header class="doc">
+    <p class="eyebrow">MangoX · Legal</p>
+    <h1>Terms of Use</h1>
+    <p class="effective">Effective date: 19 May 2026</p>
+    <p class="governing">This English version is the primary version. Translations are provided for user convenience.</p>
+  </header>
+<p>These Terms of Use (“Terms”) govern your access to and use of the <strong>MangoX</strong> mobile application and related services (collectively, the “Service”). By creating an account, signing in, or otherwise using the Service, you agree to these Terms. If you do not agree, do not use the Service.</p>
+<div class="callout"><strong>Adults only.</strong> MangoX is intended exclusively for users who are 18 years of age or older (or the age of majority in your jurisdiction, whichever is higher). By using the Service, you confirm that you meet this age requirement.</div>
+<h2>1. Acceptance of these Terms</h2>
+<p>By creating an account, signing in with LINE Login, or otherwise using any part of MangoX, you confirm that you have read, understood, and agree to be bound by these Terms and our Privacy Policy. If you do not agree, you must not use the Service.</p>
+<h2>2. Adults-only eligibility</h2>
+<ul><li>You must be at least 18 years old to use MangoX.</li><li>If the age of majority in your jurisdiction is higher than 18, you must meet that higher age requirement.</li><li>You confirm that the information you provide about your age is true.</li></ul>
+<h2>3. Description of MangoX</h2>
+<p>MangoX is a location-based online service. When you are physically present at a participating venue, you may check in, view other participants in the same session, use Pick3 and ranking participation features, and use in-app interaction features that allow participants in the same session to connect with each other within the app. Specific feature behavior, venue lists, session windows, and reward mechanics are part of the Service and may change from time to time.</p>
+<h2>4. Account and login</h2>
+<ul><li>MangoX uses LINE Login. You are responsible for the LINE account you use to sign in.</li><li>You are responsible for activity that occurs under your MangoX account.</li><li>You may have only one MangoX account at a time, unless we expressly permit otherwise.</li><li>You must not share your account with anyone or allow another person to use it on your behalf.</li></ul>
+<h2>5. User profile and truthful information</h2>
+<ul><li>You agree to provide truthful, accurate, and current profile information.</li><li>Your profile photo must reflect your real likeness. You must not upload another person’s photo, an AI-generated face, a stock image, or any image you are not authorized to use.</li><li>You must not upload images that are nudity, sexually explicit, hateful, violent, unlawful, or otherwise inappropriate.</li><li>Photos are subject to automated image analysis for quality and safety, as described in our Privacy Policy. Photos that do not meet quality and safety standards may be rejected.</li></ul>
+<h2>6. Venue and session check-in rules</h2>
+<ul><li>Check-in requires location data and must reflect your actual physical presence at a participating venue.</li><li>Check-in availability may depend on venue, time, session, GPS/location quality, network conditions, and other operational factors.</li><li>Attempting to spoof your location, use mock-location software, or check in remotely is strictly prohibited.</li><li>We may invalidate check-ins, hearts, ranking entries, or rewards that we reasonably believe to be fraudulent, automated, or otherwise abusive.</li></ul>
+<h2>7. Interaction, Pick3, ranking, and game-like features</h2>
+<ul><li>Hearts, Pick3, in-app connection, and ranking are part of the venue-based participation experience and are not competitive prizes by themselves.</li><li>Outcomes such as in-app interactions, connections, or ranking positions are not guaranteed.</li><li>We may adjust feature behavior, scoring, ranking windows, and interaction logic over time for operational, legal, or safety reasons.</li></ul>
+<h2>8. Rewards, benefits, and promotions</h2>
+<p>Any rewards, perks, discounts, or other benefits offered through MangoX are promotional service benefits provided at our discretion or at the discretion of the participating venue. They:</p><ul><li>May depend on the rules of the specific venue, session, or campaign.</li><li>May change, expire, or be withdrawn at any time without prior notice, where permitted by law.</li><li>Are non-transferable and have no cash value unless expressly stated.</li><li>Are not guaranteed, and may be denied for violations of these Terms.</li></ul>
+<h2>9. Prohibited behavior</h2>
+<p>When using MangoX, you agree <strong>not</strong> to:</p><ul><li>Impersonate any person, misrepresent your age, gender, or identity, or use another person’s photo as your own.</li><li>Upload nudity, sexually explicit content, or unlawful, hateful, violent, or otherwise inappropriate images.</li><li>Harass, stalk, threaten, intimidate, discriminate against, or otherwise harm any other user, whether inside the app, at the venue, or afterwards.</li><li>Use the Service to solicit prostitution, illegal services, fraudulent commercial activity, or anything that violates local law.</li><li>Spam, send unsolicited commercial messages, or engage in deceptive promotion.</li><li>Spoof location, automate interactions, manipulate rankings, or bypass session and check-in rules.</li><li>Scrape data, reverse engineer the Service, or interfere with its operation or security.</li><li>Attempt to recover, store, or redistribute other users’ personal data, photos, or contact details outside the Service.</li></ul>
+<h2>10. Safety, reports, and support</h2>
+<p>If you encounter abusive behavior, impersonation, inappropriate content, or any safety issue, please contact us at <a href="mailto:support@mangox.app">support@mangox.app</a>. We review reports and may take action including warnings, content removal, account restriction, or termination. If you believe you are in immediate physical danger, contact local emergency services first.</p>
+<h2>11. Account restriction or termination</h2>
+<p>We may, in our reasonable discretion, suspend, restrict, or terminate your access to MangoX (in whole or in part), with or without prior notice, if:</p><ul><li>You violate these Terms or applicable law.</li><li>Your profile, photo, or behavior poses a risk to other users, venues, or the Service.</li><li>We reasonably suspect fraudulent, automated, or abusive activity on your account.</li><li>It is necessary for legal, safety, security, or operational reasons.</li></ul><p>You may stop using the Service at any time and may request account deletion as described in our Privacy Policy.</p>
+<h2>12. External services and third-party providers</h2>
+<p>MangoX integrates with third-party services such as LINE for authentication, AWS (including AWS Rekognition) for image storage and image analysis, Supabase for backend infrastructure, and other hosting and analytics providers. Your use of those services through MangoX may also be subject to their own terms.</p>
+<h2>13. Service availability and changes</h2>
+<p>We do not guarantee that the Service will be uninterrupted, error-free, available in every location, or available for every venue, session, or session window. We may modify, suspend, or discontinue any part of the Service, including features, venues, sessions, or rewards, at any time.</p>
+<h2>14. Disclaimers</h2>
+<p>MangoX is provided <strong>“as is”</strong> and <strong>“as available”</strong>. To the maximum extent permitted by law, we disclaim all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, accuracy, and non-infringement. We do not warrant that any specific interaction, connection, or reward will occur, that any particular venue will be available, that user behavior at venues will meet your expectations, or that the Service will be free of errors, defects, or interruptions.</p>
+<h2>15. Limitation of liability</h2>
+<p>To the maximum extent permitted by law, MangoX, its affiliates, officers, employees, and agents will not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any loss of profits, data, goodwill, or other intangible losses, arising out of or relating to your use of (or inability to use) the Service, the conduct of other users, your interactions at venues, or any rewards or benefits. Our total aggregate liability for any claim arising out of or relating to the Service will not exceed the greater of (a) the amount you paid to us for the Service in the twelve (12) months before the event giving rise to the liability, or (b) USD 50.</p><p>Nothing in these Terms limits any liability that cannot be limited under applicable law.</p>
+<h2>16. Changes to these Terms</h2>
+<p>We may modify these Terms from time to time. When we make material changes, we will update the effective date above and, where appropriate, notify users through the app or by other reasonable means. Your continued use of the Service after changes take effect constitutes acceptance of the updated Terms.</p>
+<h2>17. Governing language</h2>
+<p>The English version of these Terms is the primary and governing version. Korean, Thai, Simplified Chinese, and Traditional Chinese translations are provided for user convenience. In case of any inconsistency between language versions, the English version prevails.</p>
+<h2>18. Contact</h2>
+<p>Questions about these Terms can be sent to <a href="mailto:support@mangox.app">support@mangox.app</a>.</p>
+<h2>19. Effective date and acknowledgment</h2>
+<p>These Terms are effective as of <strong>19 May 2026</strong>. By continuing to use MangoX on or after this date, you acknowledge that you have read and agree to these Terms.</p>
+  <footer><span>MangoX · Terms of Use · Effective 2026-05-19</span><span><a href="/legal/privacy">← Privacy Policy</a></span></footer>
 </main>
 </body>
 </html>
