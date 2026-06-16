@@ -5,256 +5,418 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MangoX — Venue-Based Nightlife Platform</title>
 <meta name="description" content="MangoX is a nightlife ranking and venue participation platform for adults, owned and operated by NetAI." />
+<meta property="og:title" content="MangoX — Venue-Based Nightlife Platform" />
+<meta property="og:description" content="Nightlife ranking experiences designed for real venues. Operated by NetAI." />
+<meta property="og:type" content="website" />
 <style>
   :root{
-    --bg:#08080a; --panel:rgba(255,255,255,.045); --line:rgba(255,255,255,.09);
-    --txt:#f5f3ef; --muted:#9a958c; --gold:#f5a623; --gold2:#ffc46b; --neon:#7c3aed;
-    /* Optional photo slots — drop files into /assets and they auto-appear, else gradient shows */
-    --hero-img:url('/assets/hero.jpg');
-    --connect-img:url('/assets/connect.jpg');
+    --ink:#07060b; --ink2:#0d0b14;
+    --panel:rgba(255,255,255,.045); --panel2:rgba(255,255,255,.07);
+    --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.16);
+    --txt:#f6f2ea; --muted:#928f9b; --faint:#5f5c69;
+    --gold:#f5a623; --gold2:#ffc46b; --magenta:#ff3d8b; --violet:#7c3aed;
+    --r:20px;
+    /* optional photo slot — auto-shows if file added, else gradient */
+    --hero-photo:url('/assets/hero.jpg');
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--bg);color:var(--txt);
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;
-    line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background:var(--ink); color:var(--txt);
+    font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
-  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
-  section{padding:96px 0;position:relative;}
-  .eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;}
-  h2{font-size:clamp(26px,5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:16px;}
-  .lead{color:var(--muted);font-size:clamp(15px,2.4vw,18px);max-width:560px;}
+  ::selection{background:rgba(245,166,35,.32);}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
+
+  /* ambient club glow background */
+  .glowbg{position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(720px 480px at 78% -8%, rgba(124,58,237,.20), transparent 62%),
+      radial-gradient(680px 520px at 6% 18%, rgba(255,61,139,.14), transparent 60%),
+      radial-gradient(820px 620px at 90% 88%, rgba(245,166,35,.13), transparent 62%),
+      var(--ink);}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+    background:rgba(7,6,11,.62);border-bottom:1px solid var(--line);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brand{display:flex;align-items:baseline;gap:9px;font-weight:800;letter-spacing:-.02em;font-size:19px;}
+  .brand .by{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;}
+  .nav-links{display:flex;gap:26px;font-size:14px;color:var(--muted);}
+  .nav-links a:hover{color:var(--txt);}
+  .nav-cta{font-size:13px;font-weight:700;background:var(--txt);color:var(--ink);padding:8px 15px;border-radius:11px;}
+  @media(max-width:760px){.nav-links{display:none;}}
+
+  /* shared section */
+  section{padding:108px 0;position:relative;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);}
+  h2{font-size:clamp(28px,5.4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.04;margin-bottom:16px;}
+  .lead{color:var(--muted);font-size:clamp(15px,2.3vw,18px);max-width:580px;}
 
   /* HERO */
-  .hero{min-height:92vh;display:flex;align-items:center;text-align:center;
-    background:
-      radial-gradient(900px 500px at 70% 10%,rgba(124,58,237,.22),transparent 60%),
-      radial-gradient(800px 500px at 20% 90%,rgba(245,166,35,.18),transparent 60%),
-      var(--hero-img,linear-gradient(180deg,#0b0b10,#08080a));
-    background-size:cover;background-position:center;}
-  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.55),rgba(8,8,10,.92));z-index:0;}
-  .hero .wrap{position:relative;z-index:1;}
-  .hero h1{font-size:clamp(48px,11vw,92px);font-weight:800;letter-spacing:-.04em;
-    background:linear-gradient(180deg,#fff,#ffd9a0);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .hero .sub{font-size:clamp(16px,3vw,22px);color:var(--gold2);font-weight:600;margin-top:8px;letter-spacing:.01em;}
-  .hero .triad{font-size:clamp(22px,4.5vw,34px);font-weight:700;margin:28px 0 10px;letter-spacing:-.01em;}
-  .hero .tag{color:var(--muted);font-size:clamp(15px,2.4vw,18px);}
-  .stores{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
-  .store{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:14px;
-    font-size:15px;font-weight:600;text-decoration:none;border:1px solid var(--line);}
-  .store.primary{background:#fff;color:#08080a;border-color:#fff;}
-  .store.soon{background:transparent;color:var(--muted);}
-  .badge-only{display:inline-block;margin-top:20px;font-size:13px;letter-spacing:.12em;color:var(--gold);
-    border:1px solid var(--line);border-radius:999px;padding:5px 14px;}
+  .hero{padding:118px 0 96px;min-height:92vh;display:flex;align-items:center;
+    background-image:var(--hero-photo,none);background-size:cover;background-position:center;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;width:100%;}
+  .hero h1{font-size:clamp(64px,13vw,128px);font-weight:900;letter-spacing:-.05em;line-height:.9;
+    background:linear-gradient(168deg,#fff 18%,var(--gold2) 92%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .triad{display:flex;gap:18px;flex-wrap:wrap;margin:22px 0 14px;font-size:clamp(20px,3.4vw,30px);font-weight:800;letter-spacing:-.01em;}
+  .hero .triad span{position:relative;}
+  .hero .triad span::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--gold),var(--magenta));border-radius:2px;opacity:.85;}
+  .hero .tag{color:var(--muted);font-size:clamp(15px,2.3vw,18px);max-width:440px;}
+  .hero .sub{font-size:clamp(14px,2.2vw,17px);font-weight:600;color:var(--gold2);letter-spacing:.02em;margin-bottom:8px;text-transform:uppercase;}
+  .stores{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px;}
+  .store{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:13px;font-size:14.5px;font-weight:700;border:1px solid var(--line2);}
+  .store.primary{background:#fff;color:var(--ink);border-color:#fff;}
+  .store.soon{color:var(--muted);}
+  .chip{display:inline-block;margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.14em;
+    color:var(--gold);border:1px solid var(--line2);border-radius:999px;padding:5px 14px;}
 
-  /* STEP CARDS */
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;backdrop-filter:blur(8px);}
-  .step .num{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.1em;}
-  .step h3{font-size:20px;margin:10px 0 6px;font-weight:700;}
+  /* phone mockup */
+  .phone-stage{display:flex;justify-content:center;position:relative;}
+  .phone-stage::before{content:"";position:absolute;width:78%;height:78%;top:11%;
+    background:radial-gradient(circle,rgba(245,166,35,.45),rgba(124,58,237,.25) 55%,transparent 72%);filter:blur(38px);z-index:0;}
+  .phone{position:relative;z-index:1;width:268px;border-radius:40px;padding:11px;
+    background:linear-gradient(180deg,#1a1822,#0c0b12);border:1px solid var(--line2);
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.04);}
+  .screen{border-radius:30px;background:linear-gradient(180deg,#100e18,#0a0910);overflow:hidden;border:1px solid rgba(255,255,255,.06);}
+  .notch{height:22px;display:flex;justify-content:center;}
+  .notch::after{content:"";width:96px;height:18px;background:#05040a;border-radius:0 0 13px 13px;}
+  .scr-pad{padding:14px 14px 18px;}
+  .scr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+  .scr-top .v{font-size:12px;font-weight:700;color:var(--gold2);}
+  .scr-top .live{font-size:10px;font-weight:800;letter-spacing:.08em;color:#fff;background:var(--magenta);padding:3px 8px;border-radius:999px;}
+  .scr-h{font-size:13px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;}
+  .rrow{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+  .rrow .rk{width:15px;font-size:11px;font-weight:800;color:var(--gold);}
+  .av{width:26px;height:26px;border-radius:50%;flex:none;
+    background:linear-gradient(135deg,var(--violet),var(--magenta));}
+  .av.b{background:linear-gradient(135deg,var(--gold),var(--magenta));}
+  .av.c{background:linear-gradient(135deg,var(--violet),var(--gold));}
+  .bar{flex:1;height:8px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));}
+  .sc{font-size:11px;font-weight:700;color:var(--muted);width:30px;text-align:right;}
+  .spot{margin-top:13px;padding:11px;border-radius:14px;border:1px solid var(--line);
+    background:linear-gradient(135deg,rgba(245,166,35,.16),rgba(124,58,237,.16));}
+  .spot .l{font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--gold2);}
+  .spot .d{display:flex;align-items:center;gap:8px;margin-top:7px;}
+
+  /* HOW IT WORKS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px;}
+  .step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px;}
+  .step .k{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--gold);}
+  .step .ic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:23px;margin:8px 0 14px;
+    background:linear-gradient(135deg,rgba(245,166,35,.22),rgba(124,58,237,.22));border:1px solid var(--line);}
+  .step h3{font-size:19px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em;}
   .step p{color:var(--muted);font-size:14px;}
-  .glyph{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(135deg,rgba(245,166,35,.25),rgba(124,58,237,.25));margin-bottom:14px;font-size:22px;}
-  .note{margin-top:26px;text-align:center;color:var(--muted);font-size:15px;}
+  .note{margin-top:30px;text-align:center;color:var(--muted);font-size:15px;}
   .note strong{color:var(--txt);}
 
-  /* EXPERIENCE CARDS (CSS app mockups) */
-  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;}
-  .xp{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-    border:1px solid var(--line);border-radius:18px;padding:18px;min-height:230px;display:flex;flex-direction:column;}
-  .xp .label{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--gold2);margin-bottom:14px;}
-  .rankrow{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
-  .rankrow .r{font-size:12px;font-weight:700;color:var(--gold);width:16px;}
-  .dot{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#f5a623);flex:none;}
-  .bar{flex:1;height:7px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden;}
-  .bar i{display:block;height:100%;background:linear-gradient(90deg,#f5a623,#ffc46b);}
-  .pill{align-self:flex-start;font-size:11px;font-weight:700;color:#08080a;background:var(--gold);border-radius:999px;padding:3px 10px;margin-top:auto;}
-  .pill.hot{background:#ff5a5f;color:#fff;}
-  .pill.rise{background:#34d399;color:#062e22;}
+  /* NIGHT TIMELINE — signature */
+  .tl{position:relative;margin-top:46px;padding-left:34px;}
+  .tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;
+    background:linear-gradient(180deg,var(--magenta),var(--gold) 55%,var(--violet));opacity:.7;box-shadow:0 0 18px rgba(245,166,35,.4);}
+  .tl-row{position:relative;padding:0 0 30px;}
+  .tl-row:last-child{padding-bottom:0;}
+  .tl-row::before{content:"";position:absolute;left:-30px;top:5px;width:14px;height:14px;border-radius:50%;
+    background:var(--ink);border:2px solid var(--gold);box-shadow:0 0 0 4px rgba(245,166,35,.14),0 0 16px rgba(245,166,35,.5);}
+  .tl-row .t{font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--gold2);font-variant-numeric:tabular-nums;}
+  .tl-row .e{font-size:clamp(18px,3vw,24px);font-weight:800;letter-spacing:-.01em;margin-top:2px;}
+  .tl-row .d{color:var(--muted);font-size:14px;margin-top:3px;max-width:480px;}
 
-  /* VIEWER MODE */
-  .viewer{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
-  .viewer .visual{aspect-ratio:4/3;border-radius:22px;border:1px solid var(--line);
+  /* FEATURES */
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px;}
+  .fc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:border-color .2s,transform .2s;}
+  .fc:hover{border-color:var(--line2);transform:translateY(-3px);}
+  .fc .e{font-size:26px;}
+  .fc h4{font-size:17px;font-weight:800;margin:12px 0 5px;letter-spacing:-.01em;}
+  .fc p{color:var(--muted);font-size:13.5px;}
+
+  /* VIEWER MODE compare */
+  .cmp{margin-top:42px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel);}
+  .cmp-head{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;background:var(--panel2);border-bottom:1px solid var(--line);}
+  .cmp-head div{padding:16px 14px;font-size:13px;font-weight:800;letter-spacing:.02em;}
+  .cmp-head div.col{text-align:center;color:var(--gold2);}
+  .cmp-row{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;border-bottom:1px solid var(--line);}
+  .cmp-row:last-child{border-bottom:0;}
+  .cmp-row .cap{padding:15px 14px;font-size:14px;color:var(--txt);}
+  .cmp-row .cell{padding:15px 14px;text-align:center;font-size:15px;font-weight:700;}
+  .yes{color:var(--gold2);}
+  .no{color:var(--faint);}
+  .cmp-note{margin-top:16px;color:var(--muted);font-size:14px;font-style:italic;}
+
+  /* MULTI VENUE */
+  .map{margin-top:42px;border:1px solid var(--line);border-radius:24px;overflow:hidden;
     background:
-      radial-gradient(400px 240px at 30% 30%,rgba(124,58,237,.3),transparent 60%),
-      radial-gradient(360px 240px at 80% 80%,rgba(245,166,35,.22),transparent 60%),
-      linear-gradient(180deg,#0d0d14,#0a0a0e);
-    display:flex;align-items:center;justify-content:center;font-size:54px;}
-  .viewer ul{list-style:none;margin:18px 0 0;color:var(--txt);}
-  .viewer li{padding:8px 0;border-bottom:1px solid var(--line);font-size:16px;}
-  .anon{margin-top:18px;font-size:13px;color:var(--muted);font-style:italic;}
+      radial-gradient(380px 240px at 22% 30%, rgba(124,58,237,.22), transparent 60%),
+      radial-gradient(420px 260px at 80% 72%, rgba(245,166,35,.18), transparent 60%),
+      linear-gradient(180deg,#0c0b13,#08070d);}
+  .map-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .vcard{padding:30px 26px;border-right:1px solid var(--line);position:relative;}
+  .vcard:last-child{border-right:0;}
+  .vcard .pin{font-size:20px;}
+  .vcard h4{font-size:21px;font-weight:800;margin:12px 0 4px;letter-spacing:-.01em;}
+  .vcard .s{font-size:13px;color:var(--muted);}
+  .vcard .badge{display:inline-block;margin-top:14px;font-size:11px;font-weight:800;letter-spacing:.08em;padding:4px 11px;border-radius:999px;}
+  .badge.live{color:#0a2e22;background:#34d399;}
+  .badge.soon{color:var(--muted);border:1px solid var(--line2);}
+  .map-tag{text-align:center;padding:20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;}
 
-  /* VENUES */
-  .venues{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
-  .venue{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel);}
-  .venue .ph{height:140px;background:linear-gradient(135deg,rgba(124,58,237,.4),rgba(245,166,35,.35));
-    display:flex;align-items:flex-end;padding:16px;font-weight:700;font-size:17px;}
-  .venue .meta{padding:14px 16px;color:var(--muted);font-size:13px;}
-  .venue.coming .ph{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));color:var(--muted);}
+  /* SAFETY */
+  .safe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px;}
+  .sf{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;}
+  .sf .ic{font-size:20px;margin-bottom:12px;}
+  .sf h4{font-size:15.5px;font-weight:800;letter-spacing:-.01em;}
+  .safe-foot{margin-top:24px;text-align:center;color:var(--faint);font-size:13px;letter-spacing:.04em;}
 
-  /* ABOUT */
-  .about{text-align:center;}
-  .about p{font-size:clamp(17px,2.6vw,20px);max-width:640px;margin:0 auto 12px;color:var(--txt);}
-  .about .own{color:var(--gold2);font-weight:600;}
-  .about .loc{color:var(--muted);font-size:15px;}
+  /* ABOUT NETAI */
+  .about{background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);}
+  .about-card{border:1px solid var(--line);border-radius:24px;padding:clamp(30px,6vw,56px);text-align:center;
+    background:radial-gradient(600px 300px at 50% -20%, rgba(245,166,35,.12), transparent 65%);}
+  .about-card .net{font-size:clamp(34px,7vw,58px);font-weight:900;letter-spacing:-.03em;
+    background:linear-gradient(168deg,#fff,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .about-card .meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0 26px;}
+  .about-card .meta span{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--muted);
+    border:1px solid var(--line2);border-radius:999px;padding:6px 14px;}
+  .about-card p{font-size:clamp(15px,2.5vw,18px);max-width:600px;margin:0 auto 10px;color:var(--txt);}
+  .about-card .own{color:var(--gold2);font-weight:700;}
 
-  /* FOOTER */
-  footer{border-top:1px solid var(--line);padding:48px 0 64px;text-align:center;}
-  footer .name{font-size:22px;font-weight:800;letter-spacing:-.02em;}
-  footer .op{color:var(--muted);font-size:14px;margin:8px 0 4px;}
-  footer a{color:var(--gold);text-decoration:none;}
-  footer .links{display:flex;gap:20px;justify-content:center;margin-top:18px;font-size:14px;}
+  /* FOOTER / CONTACT */
+  footer{border-top:1px solid var(--line);padding:72px 0 56px;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;}
+  .foot-grid .name{font-size:26px;font-weight:900;letter-spacing:-.02em;}
+  .foot-grid .op{color:var(--muted);font-size:14px;margin-top:8px;}
+  .foot-right{text-align:right;}
+  .foot-right a.mail{font-size:18px;font-weight:700;color:var(--gold2);}
+  .foot-links{display:flex;gap:20px;justify-content:flex-end;margin-top:14px;font-size:14px;color:var(--muted);}
+  .foot-links a:hover{color:var(--txt);}
+  .copy{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;}
 
-  @media(max-width:860px){
-    .grid3,.grid4,.venues{grid-template-columns:1fr;}
-    .grid4{grid-template-columns:repeat(2,1fr);}
-    .viewer{grid-template-columns:1fr;}
-    section{padding:72px 0;}
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
+
+  /* responsive */
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+    .phone-stage{order:-1;}
+    .steps,.feat,.safe-grid,.map-grid{grid-template-columns:1fr;}
+    .feat{grid-template-columns:repeat(2,1fr);}
+    .safe-grid{grid-template-columns:repeat(2,1fr);}
+    .vcard{border-right:0;border-bottom:1px solid var(--line);}
+    .vcard:last-child{border-bottom:0;}
+    section{padding:84px 0;}
+    .cmp-head,.cmp-row{grid-template-columns:1.4fr .9fr .9fr .9fr;}
+    .cmp-head div,.cmp-row .cap,.cmp-row .cell{padding:12px 8px;font-size:12.5px;}
+    .foot-grid{flex-direction:column;}.foot-right{text-align:left;}.foot-links{justify-content:flex-start;}
   }
-  @media(max-width:520px){ .grid4{grid-template-columns:1fr;} }
+  @media(max-width:520px){
+    .feat{grid-template-columns:1fr;}
+    .hero h1{font-size:clamp(56px,18vw,80px);}
+  }
 </style>
 </head>
 <body>
+<div class="glowbg"></div>
 
-<!-- SECTION 1 — HERO -->
-<header class="hero">
-  <div class="wrap">
-    <h1>MangoX</h1>
-    <p class="sub">Venue-Based Nightlife Platform</p>
-    <p class="triad">Discover. Watch. Play.</p>
-    <p class="tag">Nightlife ranking experiences designed for real venues.</p>
-    <div class="stores">
-      <a class="store primary" href="#" aria-label="Download on the App Store">App Store</a>
-      <span class="store soon">Google Play — Coming Soon</span>
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <div class="brand">MangoX <span class="by">by NetAI</span></div>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#timeline">The night</a>
+      <a href="#venues">Venues</a>
+      <a href="#safety">Safety</a>
     </div>
-    <span class="badge-only">Adults Only</span>
+    <a class="nav-cta" href="#get">Get the app</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <p class="sub">Venue-Based Nightlife Platform</p>
+      <h1>MangoX</h1>
+      <div class="triad"><span>Discover.</span><span>Watch.</span><span>Play.</span></div>
+      <p class="tag">Nightlife ranking experiences designed for real venues.</p>
+      <div class="stores" id="get">
+        <a class="store primary" href="#" aria-label="Download on the App Store">App Store</a>
+        <span class="store soon">Google Play — Coming Soon</span>
+      </div>
+      <span class="chip">Adults Only</span>
+    </div>
+    <div class="phone-stage reveal in">
+      <div class="phone"><div class="screen">
+        <div class="notch"></div>
+        <div class="scr-pad">
+          <div class="scr-top"><span class="v">Hollywood Pattaya</span><span class="live">LIVE</span></div>
+          <div class="scr-h">Live Ranking · Session A</div>
+          <div class="rrow"><span class="rk">1</span><span class="av"></span><span class="bar"><i style="width:94%"></i></span><span class="sc">980</span></div>
+          <div class="rrow"><span class="rk">2</span><span class="av b"></span><span class="bar"><i style="width:78%"></i></span><span class="sc">812</span></div>
+          <div class="rrow"><span class="rk">3</span><span class="av c"></span><span class="bar"><i style="width:61%"></i></span><span class="sc">640</span></div>
+          <div class="rrow"><span class="rk">4</span><span class="av"></span><span class="bar"><i style="width:47%"></i></span><span class="sc">498</span></div>
+          <div class="spot">
+            <div class="l">SESSION SPOTLIGHT</div>
+            <div class="d"><span class="av b"></span><span class="bar"><i style="width:100%"></i></span></div>
+          </div>
+        </div>
+      </div></div>
+    </div>
   </div>
 </header>
 
-<!-- SECTION 2 — HOW IT WORKS -->
-<section>
+<!-- HOW IT WORKS -->
+<section id="how">
   <div class="wrap">
-    <div class="eyebrow">How MangoX Works</div>
+    <div class="reveal"><div class="eyebrow">How MangoX works</div>
     <h2>Three steps inside the venue.</h2>
-    <div class="grid3">
-      <div class="card step">
-        <div class="glyph">📍</div>
-        <div class="num">STEP 01</div>
-        <h3>Check In</h3>
-        <p>Enter a participating venue and check in on location.</p>
-      </div>
-      <div class="card step">
-        <div class="glyph">⭐</div>
-        <div class="num">STEP 02</div>
-        <h3>Play</h3>
-        <p>Join the live ranking — Heart, Pick3, and Spotlight.</p>
-      </div>
-      <div class="card step">
-        <div class="glyph">🔗</div>
-        <div class="num">STEP 03</div>
-        <h3>Connect</h3>
-        <p>A connection becomes available only on mutual interest.</p>
-      </div>
+    <p class="lead">A simple loop built for a real night out — check in on location, join the live ranking, and connect only when interest is mutual.</p></div>
+    <div class="steps">
+      <div class="step reveal"><div class="k">STEP 01</div><div class="ic">📍</div><h3>Check In</h3><p>Arrive at a participating venue and check in on location to enter the night's session.</p></div>
+      <div class="step reveal"><div class="k">STEP 02</div><div class="ic">⭐</div><h3>Play</h3><p>Join the live ranking with Hearts, Pick3, and Spotlight as the room competes.</p></div>
+      <div class="step reveal"><div class="k">STEP 03</div><div class="ic">🔗</div><h3>Connect</h3><p>A connection becomes available only after mutual interest — never before.</p></div>
     </div>
-    <p class="note"><strong>No in-app chat. No direct negotiation.</strong><br>Connections are available only after mutual interest.</p>
+    <p class="note reveal"><strong>No in-app chat. No direct negotiation.</strong><br>Connections are available only after mutual interest.</p>
   </div>
 </section>
 
-<!-- SECTION 3 — RANKING EXPERIENCE -->
-<section>
+<!-- NIGHT TIMELINE -->
+<section id="timeline">
   <div class="wrap">
-    <div class="eyebrow">Nightlife Ranking Experience</div>
-    <h2>Live ranking, built for the room.</h2>
-    <div class="grid4">
-      <div class="xp">
-        <div class="label">RANKING</div>
-        <div class="rankrow"><span class="r">1</span><span class="dot"></span><span class="bar"><i style="width:92%"></i></span></div>
-        <div class="rankrow"><span class="r">2</span><span class="dot"></span><span class="bar"><i style="width:74%"></i></span></div>
-        <div class="rankrow"><span class="r">3</span><span class="dot"></span><span class="bar"><i style="width:58%"></i></span></div>
-        <div class="rankrow"><span class="r">4</span><span class="dot"></span><span class="bar"><i style="width:41%"></i></span></div>
-        <span class="pill">LIVE</span>
-      </div>
-      <div class="xp">
-        <div class="label">SESSION SPOTLIGHT</div>
-        <div class="rankrow"><span class="dot" style="width:34px;height:34px"></span></div>
-        <div class="bar" style="margin:6px 0"><i style="width:100%"></i></div>
-        <p style="color:var(--muted);font-size:12px;">Featured this session.</p>
-        <span class="pill">SPOTLIGHT</span>
-      </div>
-      <div class="xp">
-        <div class="label">HOT NOW</div>
-        <div class="rankrow"><span class="dot"></span><span class="bar"><i style="width:88%"></i></span></div>
-        <div class="rankrow"><span class="dot"></span><span class="bar"><i style="width:81%"></i></span></div>
-        <p style="color:var(--muted);font-size:12px;">Trending right now.</p>
-        <span class="pill hot">HOT</span>
-      </div>
-      <div class="xp">
-        <div class="label">RISING</div>
-        <div class="rankrow"><span class="dot"></span><span class="bar"><i style="width:46%"></i></span></div>
-        <div class="rankrow"><span class="dot"></span><span class="bar"><i style="width:63%"></i></span></div>
-        <p style="color:var(--muted);font-size:12px;">Climbing fast.</p>
-        <span class="pill rise">RISING</span>
-      </div>
+    <div class="reveal"><div class="eyebrow">The night, hour by hour</div>
+    <h2>One venue. One night. Five moments.</h2>
+    <p class="lead">MangoX runs on the venue's own clock — from doors open to final results before close.</p></div>
+    <div class="tl">
+      <div class="tl-row reveal"><div class="t">21:00</div><div class="e">Check In</div><div class="d">Doors open. Guests check in and the session begins.</div></div>
+      <div class="tl-row reveal"><div class="t">22:00</div><div class="e">Ranking Begins</div><div class="d">Live ranking goes active — Hearts, Pick3, and Spotlight in play.</div></div>
+      <div class="tl-row reveal"><div class="t">00:00</div><div class="e">Session B</div><div class="d">The room resets into the next session as the night peaks.</div></div>
+      <div class="tl-row reveal"><div class="t">02:00</div><div class="e">Session C</div><div class="d">Final session — standings tighten before last call.</div></div>
+      <div class="tl-row reveal"><div class="t">04:00</div><div class="e">Results</div><div class="d">The night closes and results are revealed.</div></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 4 — VIEWER MODE -->
-<section>
+<!-- FEATURES -->
+<section id="features">
   <div class="wrap">
-    <div class="viewer">
+    <div class="reveal"><div class="eyebrow">What's inside</div>
+    <h2>Built for the room.</h2></div>
+    <div class="feat">
+      <div class="fc reveal"><div class="e">🔥</div><h4>Live Ranking</h4><p>Real-time standings that move with the room all night.</p></div>
+      <div class="fc reveal"><div class="e">⭐</div><h4>Spotlight</h4><p>The session's featured highlight, front and center.</p></div>
+      <div class="fc reveal"><div class="e">👀</div><h4>Viewer Mode</h4><p>Watch the night unfold from anywhere — privately.</p></div>
+      <div class="fc reveal"><div class="e">🎯</div><h4>Pick3</h4><p>Choose your three and back them through the night.</p></div>
+      <div class="fc reveal"><div class="e">❤️</div><h4>Hearts</h4><p>Send interest quietly — revealed only on a mutual match.</p></div>
+      <div class="fc reveal"><div class="e">🏆</div><h4>Results</h4><p>End-of-night standings and session winners.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIEWER MODE -->
+<section id="viewer">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">Viewer Mode</div>
+    <h2>Watch, or play. Your choice.</h2>
+    <p class="lead">Anyone can follow the night. Only checked-in players are ranked and visible in the room.</p></div>
+    <div class="cmp reveal">
+      <div class="cmp-head">
+        <div>Capability</div><div class="col">Viewer</div><div class="col">VIP Viewer</div><div class="col">Player</div>
+      </div>
+      <div class="cmp-row"><div class="cap">View live rankings</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap">See Spotlight & Hot Now</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap">VIP highlights & priority view</div><div class="cell no">–</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap">Ranked in the venue</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap">Send Hearts & Pick3</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap">Anonymous to participants</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell no">–</div></div>
+    </div>
+    <p class="cmp-note reveal">Participants cannot see who is watching.</p>
+  </div>
+</section>
+
+<!-- MULTI VENUE -->
+<section id="venues">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">Multi-venue platform</div>
+    <h2>One platform. Multiple nightlife venues.</h2></div>
+    <div class="map reveal">
+      <div class="map-grid">
+        <div class="vcard"><div class="pin">📍</div><h4>Hollywood</h4><div class="s">Pattaya, Thailand</div><span class="badge live">LIVE</span></div>
+        <div class="vcard"><div class="pin">📍</div><h4>Panda</h4><div class="s">Nightlife venue</div><span class="badge live">LIVE</span></div>
+        <div class="vcard"><div class="pin">📍</div><h4>World House</h4><div class="s">Nightlife venue</div><span class="badge live">LIVE</span></div>
+        <div class="vcard"><div class="pin">📍</div><h4>MYST Club</h4><div class="s">Nightlife venue</div><span class="badge live">LIVE</span></div>
+      </div>
+      <div class="map-tag">More partner venues joining through 2026.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section id="safety">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">Safety & privacy</div>
+    <h2>Designed with boundaries in mind.</h2>
+    <p class="lead">MangoX keeps interaction structured and private by design.</p></div>
+    <div class="safe-grid">
+      <div class="sf reveal"><div class="ic">🚫</div><h4>No in-app chat</h4></div>
+      <div class="sf reveal"><div class="ic">⛔</div><h4>No direct negotiation</h4></div>
+      <div class="sf reveal"><div class="ic">🤝</div><h4>Mutual interest required</h4></div>
+      <div class="sf reveal"><div class="ic">🛡️</div><h4>Viewer privacy protected</h4></div>
+    </div>
+    <p class="safe-foot reveal">Adults only · Connections handled through external services after mutual interest.</p>
+  </div>
+</section>
+
+<!-- ABOUT NETAI -->
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="about-card reveal">
+      <div class="eyebrow" style="justify-content:center;">About the operator</div>
+      <div class="net">NetAI</div>
+      <div class="meta"><span>South Korea</span><span>Technology Company</span><span>Operator of MangoX</span></div>
+      <p>MangoX is a nightlife ranking and venue participation platform for adults.</p>
+      <p class="own">MangoX is a product and service owned and operated by NetAI.</p>
+      <p style="color:var(--muted);">Operated from South Korea.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
       <div>
-        <div class="eyebrow">Viewer Mode</div>
-        <h2>Watch the night unfold.</h2>
-        <ul>
-          <li>Watch venue activity.</li>
-          <li>View rankings.</li>
-          <li>Explore nightlife experiences.</li>
-          <li>Available from anywhere.</li>
-        </ul>
-        <p class="anon">Participants cannot see who is watching.</p>
+        <div class="name">MangoX</div>
+        <div class="op">Operated by NetAI</div>
+        <div class="op">South Korea</div>
       </div>
-      <div class="visual">👁️</div>
+      <div class="foot-right">
+        <a class="mail" href="mailto:support@mangox.app">support@mangox.app</a>
+        <div class="foot-links">
+          <a href="/legal/privacy">Privacy Policy</a>
+          <a href="/legal/terms">Terms of Service</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
-
-<!-- SECTION 5 — MULTI VENUE -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Multi-Venue Platform</div>
-    <h2>One platform. Multiple nightlife venues.</h2>
-    <div class="venues">
-      <div class="venue"><div class="ph">Hollywood Pattaya</div><div class="meta">Live venue · Thailand</div></div>
-      <div class="venue"><div class="ph">Panda Future</div><div class="meta">Live venue</div></div>
-      <div class="venue coming"><div class="ph">Partner Venues</div><div class="meta">Coming soon</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 6 — ABOUT -->
-<section class="about">
-  <div class="wrap">
-    <div class="eyebrow">About MangoX</div>
-    <p>MangoX is a nightlife ranking and venue participation platform for adults.</p>
-    <p class="own">MangoX is a product and service owned and operated by NetAI.</p>
-    <p class="loc">Operated from South Korea.</p>
-  </div>
-</section>
-
-<!-- SECTION 7 — FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="name">MangoX</div>
-    <div class="op">Operated by NetAI</div>
-    <div class="op"><a href="mailto:support@mangox.app">support@mangox.app</a></div>
-    <div class="links">
-      <a href="/legal/privacy">Privacy Policy</a>
-      <a href="/legal/terms">Terms of Service</a>
-    </div>
+    <div class="copy">© 2026 NetAI. MangoX is a product and service owned and operated by NetAI.</div>
   </div>
 </footer>
 
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
+    },{threshold:.12});
+    els.forEach(function(e){if(!e.classList.contains('in'))io.observe(e);});
+  })();
+</script>
 </body>
 </html>
