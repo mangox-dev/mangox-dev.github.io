@@ -3,24 +3,258 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MangoX</title>
+<title>MangoX — Venue-Based Nightlife Platform</title>
+<meta name="description" content="MangoX is a nightlife ranking and venue participation platform for adults, owned and operated by NetAI." />
 <style>
-  body{margin:0;background:#fffdf7;color:#1c1a17;font-family:ui-serif,Georgia,serif;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px;}
-  .card{max-width:420px;text-align:center;}
-  h1{font-size:32px;margin:0 0 8px;letter-spacing:-0.01em;}
-  p{color:#4a4640;margin:0 0 24px;}
-  .links{display:flex;gap:16px;justify-content:center;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;}
-  a{color:#d97706;text-decoration:underline;text-underline-offset:3px;}
+  :root{
+    --bg:#08080a; --panel:rgba(255,255,255,.045); --line:rgba(255,255,255,.09);
+    --txt:#f5f3ef; --muted:#9a958c; --gold:#f5a623; --gold2:#ffc46b; --neon:#7c3aed;
+    /* Optional photo slots — drop files into /assets and they auto-appear, else gradient shows */
+    --hero-img:url('/assets/hero.jpg');
+    --connect-img:url('/assets/connect.jpg');
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+  section{padding:96px 0;position:relative;}
+  .eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;}
+  h2{font-size:clamp(26px,5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:16px;}
+  .lead{color:var(--muted);font-size:clamp(15px,2.4vw,18px);max-width:560px;}
+
+  /* HERO */
+  .hero{min-height:92vh;display:flex;align-items:center;text-align:center;
+    background:
+      radial-gradient(900px 500px at 70% 10%,rgba(124,58,237,.22),transparent 60%),
+      radial-gradient(800px 500px at 20% 90%,rgba(245,166,35,.18),transparent 60%),
+      var(--hero-img,linear-gradient(180deg,#0b0b10,#08080a));
+    background-size:cover;background-position:center;}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.55),rgba(8,8,10,.92));z-index:0;}
+  .hero .wrap{position:relative;z-index:1;}
+  .hero h1{font-size:clamp(48px,11vw,92px);font-weight:800;letter-spacing:-.04em;
+    background:linear-gradient(180deg,#fff,#ffd9a0);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .sub{font-size:clamp(16px,3vw,22px);color:var(--gold2);font-weight:600;margin-top:8px;letter-spacing:.01em;}
+  .hero .triad{font-size:clamp(22px,4.5vw,34px);font-weight:700;margin:28px 0 10px;letter-spacing:-.01em;}
+  .hero .tag{color:var(--muted);font-size:clamp(15px,2.4vw,18px);}
+  .stores{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+  .store{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:14px;
+    font-size:15px;font-weight:600;text-decoration:none;border:1px solid var(--line);}
+  .store.primary{background:#fff;color:#08080a;border-color:#fff;}
+  .store.soon{background:transparent;color:var(--muted);}
+  .badge-only{display:inline-block;margin-top:20px;font-size:13px;letter-spacing:.12em;color:var(--gold);
+    border:1px solid var(--line);border-radius:999px;padding:5px 14px;}
+
+  /* STEP CARDS */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;backdrop-filter:blur(8px);}
+  .step .num{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.1em;}
+  .step h3{font-size:20px;margin:10px 0 6px;font-weight:700;}
+  .step p{color:var(--muted);font-size:14px;}
+  .glyph{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(245,166,35,.25),rgba(124,58,237,.25));margin-bottom:14px;font-size:22px;}
+  .note{margin-top:26px;text-align:center;color:var(--muted);font-size:15px;}
+  .note strong{color:var(--txt);}
+
+  /* EXPERIENCE CARDS (CSS app mockups) */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;}
+  .xp{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+    border:1px solid var(--line);border-radius:18px;padding:18px;min-height:230px;display:flex;flex-direction:column;}
+  .xp .label{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--gold2);margin-bottom:14px;}
+  .rankrow{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+  .rankrow .r{font-size:12px;font-weight:700;color:var(--gold);width:16px;}
+  .dot{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#f5a623);flex:none;}
+  .bar{flex:1;height:7px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden;}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,#f5a623,#ffc46b);}
+  .pill{align-self:flex-start;font-size:11px;font-weight:700;color:#08080a;background:var(--gold);border-radius:999px;padding:3px 10px;margin-top:auto;}
+  .pill.hot{background:#ff5a5f;color:#fff;}
+  .pill.rise{background:#34d399;color:#062e22;}
+
+  /* VIEWER MODE */
+  .viewer{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+  .viewer .visual{aspect-ratio:4/3;border-radius:22px;border:1px solid var(--line);
+    background:
+      radial-gradient(400px 240px at 30% 30%,rgba(124,58,237,.3),transparent 60%),
+      radial-gradient(360px 240px at 80% 80%,rgba(245,166,35,.22),transparent 60%),
+      linear-gradient(180deg,#0d0d14,#0a0a0e);
+    display:flex;align-items:center;justify-content:center;font-size:54px;}
+  .viewer ul{list-style:none;margin:18px 0 0;color:var(--txt);}
+  .viewer li{padding:8px 0;border-bottom:1px solid var(--line);font-size:16px;}
+  .anon{margin-top:18px;font-size:13px;color:var(--muted);font-style:italic;}
+
+  /* VENUES */
+  .venues{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
+  .venue{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel);}
+  .venue .ph{height:140px;background:linear-gradient(135deg,rgba(124,58,237,.4),rgba(245,166,35,.35));
+    display:flex;align-items:flex-end;padding:16px;font-weight:700;font-size:17px;}
+  .venue .meta{padding:14px 16px;color:var(--muted);font-size:13px;}
+  .venue.coming .ph{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));color:var(--muted);}
+
+  /* ABOUT */
+  .about{text-align:center;}
+  .about p{font-size:clamp(17px,2.6vw,20px);max-width:640px;margin:0 auto 12px;color:var(--txt);}
+  .about .own{color:var(--gold2);font-weight:600;}
+  .about .loc{color:var(--muted);font-size:15px;}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:48px 0 64px;text-align:center;}
+  footer .name{font-size:22px;font-weight:800;letter-spacing:-.02em;}
+  footer .op{color:var(--muted);font-size:14px;margin:8px 0 4px;}
+  footer a{color:var(--gold);text-decoration:none;}
+  footer .links{display:flex;gap:20px;justify-content:center;margin-top:18px;font-size:14px;}
+
+  @media(max-width:860px){
+    .grid3,.grid4,.venues{grid-template-columns:1fr;}
+    .grid4{grid-template-columns:repeat(2,1fr);}
+    .viewer{grid-template-columns:1fr;}
+    section{padding:72px 0;}
+  }
+  @media(max-width:520px){ .grid4{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
-<div class="card">
-  <h1>MangoX</h1>
-  <p>Venue-based social. Adults only.</p>
-  <div class="links">
-    <a href="/legal/privacy">Privacy</a>
-    <a href="/legal/terms">Terms</a>
+
+<!-- SECTION 1 — HERO -->
+<header class="hero">
+  <div class="wrap">
+    <h1>MangoX</h1>
+    <p class="sub">Venue-Based Nightlife Platform</p>
+    <p class="triad">Discover. Watch. Play.</p>
+    <p class="tag">Nightlife ranking experiences designed for real venues.</p>
+    <div class="stores">
+      <a class="store primary" href="#" aria-label="Download on the App Store">App Store</a>
+      <span class="store soon">Google Play — Coming Soon</span>
+    </div>
+    <span class="badge-only">Adults Only</span>
   </div>
-</div>
+</header>
+
+<!-- SECTION 2 — HOW IT WORKS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">How MangoX Works</div>
+    <h2>Three steps inside the venue.</h2>
+    <div class="grid3">
+      <div class="card step">
+        <div class="glyph">📍</div>
+        <div class="num">STEP 01</div>
+        <h3>Check In</h3>
+        <p>Enter a participating venue and check in on location.</p>
+      </div>
+      <div class="card step">
+        <div class="glyph">⭐</div>
+        <div class="num">STEP 02</div>
+        <h3>Play</h3>
+        <p>Join the live ranking — Heart, Pick3, and Spotlight.</p>
+      </div>
+      <div class="card step">
+        <div class="glyph">🔗</div>
+        <div class="num">STEP 03</div>
+        <h3>Connect</h3>
+        <p>A connection becomes available only on mutual interest.</p>
+      </div>
+    </div>
+    <p class="note"><strong>No in-app chat. No direct negotiation.</strong><br>Connections are available only after mutual interest.</p>
+  </div>
+</section>
+
+<!-- SECTION 3 — RANKING EXPERIENCE -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Nightlife Ranking Experience</div>
+    <h2>Live ranking, built for the room.</h2>
+    <div class="grid4">
+      <div class="xp">
+        <div class="label">RANKING</div>
+        <div class="rankrow"><span class="r">1</span><span class="dot"></span><span class="bar"><i style="width:92%"></i></span></div>
+        <div class="rankrow"><span class="r">2</span><span class="dot"></span><span class="bar"><i style="width:74%"></i></span></div>
+        <div class="rankrow"><span class="r">3</span><span class="dot"></span><span class="bar"><i style="width:58%"></i></span></div>
+        <div class="rankrow"><span class="r">4</span><span class="dot"></span><span class="bar"><i style="width:41%"></i></span></div>
+        <span class="pill">LIVE</span>
+      </div>
+      <div class="xp">
+        <div class="label">SESSION SPOTLIGHT</div>
+        <div class="rankrow"><span class="dot" style="width:34px;height:34px"></span></div>
+        <div class="bar" style="margin:6px 0"><i style="width:100%"></i></div>
+        <p style="color:var(--muted);font-size:12px;">Featured this session.</p>
+        <span class="pill">SPOTLIGHT</span>
+      </div>
+      <div class="xp">
+        <div class="label">HOT NOW</div>
+        <div class="rankrow"><span class="dot"></span><span class="bar"><i style="width:88%"></i></span></div>
+        <div class="rankrow"><span class="dot"></span><span class="bar"><i style="width:81%"></i></span></div>
+        <p style="color:var(--muted);font-size:12px;">Trending right now.</p>
+        <span class="pill hot">HOT</span>
+      </div>
+      <div class="xp">
+        <div class="label">RISING</div>
+        <div class="rankrow"><span class="dot"></span><span class="bar"><i style="width:46%"></i></span></div>
+        <div class="rankrow"><span class="dot"></span><span class="bar"><i style="width:63%"></i></span></div>
+        <p style="color:var(--muted);font-size:12px;">Climbing fast.</p>
+        <span class="pill rise">RISING</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 — VIEWER MODE -->
+<section>
+  <div class="wrap">
+    <div class="viewer">
+      <div>
+        <div class="eyebrow">Viewer Mode</div>
+        <h2>Watch the night unfold.</h2>
+        <ul>
+          <li>Watch venue activity.</li>
+          <li>View rankings.</li>
+          <li>Explore nightlife experiences.</li>
+          <li>Available from anywhere.</li>
+        </ul>
+        <p class="anon">Participants cannot see who is watching.</p>
+      </div>
+      <div class="visual">👁️</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 — MULTI VENUE -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Multi-Venue Platform</div>
+    <h2>One platform. Multiple nightlife venues.</h2>
+    <div class="venues">
+      <div class="venue"><div class="ph">Hollywood Pattaya</div><div class="meta">Live venue · Thailand</div></div>
+      <div class="venue"><div class="ph">Panda Future</div><div class="meta">Live venue</div></div>
+      <div class="venue coming"><div class="ph">Partner Venues</div><div class="meta">Coming soon</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 — ABOUT -->
+<section class="about">
+  <div class="wrap">
+    <div class="eyebrow">About MangoX</div>
+    <p>MangoX is a nightlife ranking and venue participation platform for adults.</p>
+    <p class="own">MangoX is a product and service owned and operated by NetAI.</p>
+    <p class="loc">Operated from South Korea.</p>
+  </div>
+</section>
+
+<!-- SECTION 7 — FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="name">MangoX</div>
+    <div class="op">Operated by NetAI</div>
+    <div class="op"><a href="mailto:support@mangox.app">support@mangox.app</a></div>
+    <div class="links">
+      <a href="/legal/privacy">Privacy Policy</a>
+      <a href="/legal/terms">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
