@@ -16,21 +16,19 @@
     --txt:#f6f2ea; --muted:#928f9b; --faint:#5f5c69;
     --gold:#f5a623; --gold2:#ffc46b; --magenta:#ff3d8b; --violet:#7c3aed;
     --r:20px;
-    /* optional photo slot — auto-shows if file added, else gradient */
     --hero-photo:url('/assets/hero.jpg');
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
     background:var(--ink); color:var(--txt);
-    font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans Thai","Noto Sans SC",Helvetica,Arial,sans-serif;
     line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
   ::selection{background:rgba(245,166,35,.32);}
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
 
-  /* ambient club glow background */
   .glowbg{position:fixed;inset:0;z-index:-1;pointer-events:none;
     background:
       radial-gradient(720px 480px at 78% -8%, rgba(124,58,237,.20), transparent 62%),
@@ -41,15 +39,22 @@
   /* NAV */
   nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
     background:rgba(7,6,11,.62);border-bottom:1px solid var(--line);}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px;}
-  .brand{display:flex;align-items:baseline;gap:9px;font-weight:800;letter-spacing:-.02em;font-size:19px;}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px;gap:14px;}
+  .brand{display:flex;align-items:baseline;gap:9px;font-weight:800;letter-spacing:-.02em;font-size:19px;white-space:nowrap;}
   .brand .by{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;}
   .nav-links{display:flex;gap:26px;font-size:14px;color:var(--muted);}
   .nav-links a:hover{color:var(--txt);}
-  .nav-cta{font-size:13px;font-weight:700;background:var(--txt);color:var(--ink);padding:8px 15px;border-radius:11px;}
+  .nav-right{display:flex;align-items:center;gap:8px;}
+  .lang{display:flex;align-items:center;}
+  .lang button{background:none;border:0;color:var(--muted);font:inherit;font-size:12px;font-weight:800;letter-spacing:.04em;
+    padding:6px 7px;cursor:pointer;border-radius:8px;line-height:1;}
+  .lang button.on{color:var(--ink);background:var(--gold2);}
+  .lang button:hover{color:var(--txt);}
+  .lang button.on:hover{color:var(--ink);}
+  .nav-cta{font-size:13px;font-weight:700;background:var(--txt);color:var(--ink);padding:8px 15px;border-radius:11px;white-space:nowrap;}
   @media(max-width:760px){.nav-links{display:none;}}
+  @media(max-width:430px){.lang button{padding:5px 5px;font-size:11px;}.nav-cta{padding:7px 11px;font-size:12px;}.brand .by{display:none;}}
 
-  /* shared section */
   section{padding:108px 0;position:relative;}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
     letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
@@ -76,7 +81,6 @@
   .chip{display:inline-block;margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.14em;
     color:var(--gold);border:1px solid var(--line2);border-radius:999px;padding:5px 14px;}
 
-  /* phone mockup */
   .phone-stage{display:flex;justify-content:center;position:relative;}
   .phone-stage::before{content:"";position:absolute;width:78%;height:78%;top:11%;
     background:radial-gradient(circle,rgba(245,166,35,.45),rgba(124,58,237,.25) 55%,transparent 72%);filter:blur(38px);z-index:0;}
@@ -93,8 +97,7 @@
   .scr-h{font-size:13px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;}
   .rrow{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
   .rrow .rk{width:15px;font-size:11px;font-weight:800;color:var(--gold);}
-  .av{width:26px;height:26px;border-radius:50%;flex:none;
-    background:linear-gradient(135deg,var(--violet),var(--magenta));}
+  .av{width:26px;height:26px;border-radius:50%;flex:none;background:linear-gradient(135deg,var(--violet),var(--magenta));}
   .av.b{background:linear-gradient(135deg,var(--gold),var(--magenta));}
   .av.c{background:linear-gradient(135deg,var(--violet),var(--gold));}
   .bar{flex:1;height:8px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;}
@@ -105,7 +108,6 @@
   .spot .l{font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--gold2);}
   .spot .d{display:flex;align-items:center;gap:8px;margin-top:7px;}
 
-  /* HOW IT WORKS */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px;}
   .step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px;}
   .step .k{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--gold);}
@@ -116,7 +118,6 @@
   .note{margin-top:30px;text-align:center;color:var(--muted);font-size:15px;}
   .note strong{color:var(--txt);}
 
-  /* NIGHT TIMELINE — signature */
   .tl{position:relative;margin-top:46px;padding-left:34px;}
   .tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;
     background:linear-gradient(180deg,var(--magenta),var(--gold) 55%,var(--violet));opacity:.7;box-shadow:0 0 18px rgba(245,166,35,.4);}
@@ -128,7 +129,6 @@
   .tl-row .e{font-size:clamp(18px,3vw,24px);font-weight:800;letter-spacing:-.01em;margin-top:2px;}
   .tl-row .d{color:var(--muted);font-size:14px;margin-top:3px;max-width:480px;}
 
-  /* FEATURES */
   .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px;}
   .fc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:border-color .2s,transform .2s;}
   .fc:hover{border-color:var(--line2);transform:translateY(-3px);}
@@ -136,7 +136,6 @@
   .fc h4{font-size:17px;font-weight:800;margin:12px 0 5px;letter-spacing:-.01em;}
   .fc p{color:var(--muted);font-size:13.5px;}
 
-  /* VIEWER MODE compare */
   .cmp{margin-top:42px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel);}
   .cmp-head{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;background:var(--panel2);border-bottom:1px solid var(--line);}
   .cmp-head div{padding:16px 14px;font-size:13px;font-weight:800;letter-spacing:.02em;}
@@ -149,7 +148,6 @@
   .no{color:var(--faint);}
   .cmp-note{margin-top:16px;color:var(--muted);font-size:14px;font-style:italic;}
 
-  /* MULTI VENUE */
   .map{margin-top:42px;border:1px solid var(--line);border-radius:24px;overflow:hidden;
     background:
       radial-gradient(380px 240px at 22% 30%, rgba(124,58,237,.22), transparent 60%),
@@ -166,14 +164,12 @@
   .badge.soon{color:var(--muted);border:1px solid var(--line2);}
   .map-tag{text-align:center;padding:20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;}
 
-  /* SAFETY */
   .safe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px;}
   .sf{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;}
   .sf .ic{font-size:20px;margin-bottom:12px;}
   .sf h4{font-size:15.5px;font-weight:800;letter-spacing:-.01em;}
   .safe-foot{margin-top:24px;text-align:center;color:var(--faint);font-size:13px;letter-spacing:.04em;}
 
-  /* ABOUT NETAI */
   .about{background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);}
   .about-card{border:1px solid var(--line);border-radius:24px;padding:clamp(30px,6vw,56px);text-align:center;
     background:radial-gradient(600px 300px at 50% -20%, rgba(245,166,35,.12), transparent 65%);}
@@ -185,7 +181,6 @@
   .about-card p{font-size:clamp(15px,2.5vw,18px);max-width:600px;margin:0 auto 10px;color:var(--txt);}
   .about-card .own{color:var(--gold2);font-weight:700;}
 
-  /* FOOTER / CONTACT */
   footer{border-top:1px solid var(--line);padding:72px 0 56px;}
   .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;}
   .foot-grid .name{font-size:26px;font-weight:900;letter-spacing:-.02em;}
@@ -196,12 +191,10 @@
   .foot-links a:hover{color:var(--txt);}
   .copy{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;}
 
-  /* reveal */
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.in{opacity:1;transform:none;}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
 
-  /* responsive */
   @media(max-width:880px){
     .hero-grid{grid-template-columns:1fr;gap:40px;}
     .phone-stage{order:-1;}
@@ -229,12 +222,20 @@
   <div class="wrap nav-in">
     <div class="brand">MangoX <span class="by">by NetAI</span></div>
     <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#timeline">The night</a>
-      <a href="#venues">Venues</a>
-      <a href="#safety">Safety</a>
+      <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#timeline" data-i18n="nav.night">The night</a>
+      <a href="#venues" data-i18n="nav.venues">Venues</a>
+      <a href="#safety" data-i18n="nav.safety">Safety</a>
     </div>
-    <a class="nav-cta" href="#get">Get the app</a>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ko">KO</button>
+        <button type="button" data-lang="th">TH</button>
+        <button type="button" data-lang="zh">ZH</button>
+      </div>
+      <a class="nav-cta" href="#get" data-i18n="nav.cta">Get the app</a>
+    </div>
   </div>
 </nav>
 
@@ -242,15 +243,15 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="reveal in">
-      <p class="sub">Venue-Based Nightlife Platform</p>
+      <p class="sub" data-i18n="hero.sub">Venue-Based Nightlife Platform</p>
       <h1>MangoX</h1>
-      <div class="triad"><span>Discover.</span><span>Watch.</span><span>Play.</span></div>
-      <p class="tag">Nightlife ranking experiences designed for real venues.</p>
+      <div class="triad"><span data-i18n="hero.t1">Discover.</span><span data-i18n="hero.t2">Watch.</span><span data-i18n="hero.t3">Play.</span></div>
+      <p class="tag" data-i18n="hero.tag">Nightlife ranking experiences designed for real venues.</p>
       <div class="stores" id="get">
         <a class="store primary" href="#" aria-label="Download on the App Store">App Store</a>
-        <span class="store soon">Google Play — Coming Soon</span>
+        <span class="store soon" data-i18n="hero.gplay">Google Play — Coming Soon</span>
       </div>
-      <span class="chip">Adults Only</span>
+      <span class="chip" data-i18n="hero.adults">Adults Only</span>
     </div>
     <div class="phone-stage reveal in">
       <div class="phone"><div class="screen">
@@ -275,30 +276,30 @@
 <!-- HOW IT WORKS -->
 <section id="how">
   <div class="wrap">
-    <div class="reveal"><div class="eyebrow">How MangoX works</div>
-    <h2>Three steps inside the venue.</h2>
-    <p class="lead">A simple loop built for a real night out — check in on location, join the live ranking, and connect only when interest is mutual.</p></div>
+    <div class="reveal"><div class="eyebrow" data-i18n="how.eb">How MangoX works</div>
+    <h2 data-i18n="how.h2">Three steps inside the venue.</h2>
+    <p class="lead" data-i18n="how.lead">A simple loop built for a real night out — check in on location, join the live ranking, and connect only when interest is mutual.</p></div>
     <div class="steps">
-      <div class="step reveal"><div class="k">STEP 01</div><div class="ic">📍</div><h3>Check In</h3><p>Arrive at a participating venue and check in on location to enter the night's session.</p></div>
-      <div class="step reveal"><div class="k">STEP 02</div><div class="ic">⭐</div><h3>Play</h3><p>Join the live ranking with Hearts, Pick3, and Spotlight as the room competes.</p></div>
-      <div class="step reveal"><div class="k">STEP 03</div><div class="ic">🔗</div><h3>Connect</h3><p>A connection becomes available only after mutual interest — never before.</p></div>
+      <div class="step reveal"><div class="k">STEP 01</div><div class="ic">📍</div><h3 data-i18n="how.s1h">Check In</h3><p data-i18n="how.s1p">Arrive at a participating venue and check in on location to enter the night's session.</p></div>
+      <div class="step reveal"><div class="k">STEP 02</div><div class="ic">⭐</div><h3 data-i18n="how.s2h">Play</h3><p data-i18n="how.s2p">Join the live ranking with Hearts, Pick3, and Spotlight as the room competes.</p></div>
+      <div class="step reveal"><div class="k">STEP 03</div><div class="ic">🔗</div><h3 data-i18n="how.s3h">Connect</h3><p data-i18n="how.s3p">A connection becomes available only after mutual interest — never before.</p></div>
     </div>
-    <p class="note reveal"><strong>No in-app chat. No direct negotiation.</strong><br>Connections are available only after mutual interest.</p>
+    <p class="note reveal" data-i18n-html="how.note"><strong>No in-app chat. No direct negotiation.</strong><br>Connections are available only after mutual interest.</p>
   </div>
 </section>
 
 <!-- NIGHT TIMELINE -->
 <section id="timeline">
   <div class="wrap">
-    <div class="reveal"><div class="eyebrow">The night, hour by hour</div>
-    <h2>One venue. One night. Five moments.</h2>
-    <p class="lead">MangoX runs on the venue's own clock — from doors open to final results before close.</p></div>
+    <div class="reveal"><div class="eyebrow" data-i18n="tl.eb">The night, hour by hour</div>
+    <h2 data-i18n="tl.h2">One venue. One night. Five moments.</h2>
+    <p class="lead" data-i18n="tl.lead">MangoX runs on the venue's own clock — from doors open to final results before close.</p></div>
     <div class="tl">
-      <div class="tl-row reveal"><div class="t">21:00</div><div class="e">Check In</div><div class="d">Doors open. Guests check in and the session begins.</div></div>
-      <div class="tl-row reveal"><div class="t">22:00</div><div class="e">Ranking Begins</div><div class="d">Live ranking goes active — Hearts, Pick3, and Spotlight in play.</div></div>
-      <div class="tl-row reveal"><div class="t">00:00</div><div class="e">Session B</div><div class="d">The room resets into the next session as the night peaks.</div></div>
-      <div class="tl-row reveal"><div class="t">02:00</div><div class="e">Session C</div><div class="d">Final session — standings tighten before last call.</div></div>
-      <div class="tl-row reveal"><div class="t">04:00</div><div class="e">Results</div><div class="d">The night closes and results are revealed.</div></div>
+      <div class="tl-row reveal"><div class="t">21:00</div><div class="e" data-i18n="tl.e1">Check In</div><div class="d" data-i18n="tl.d1">Doors open. Guests check in and the session begins.</div></div>
+      <div class="tl-row reveal"><div class="t">22:00</div><div class="e" data-i18n="tl.e2">Ranking Begins</div><div class="d" data-i18n="tl.d2">Live ranking goes active — Hearts, Pick3, and Spotlight in play.</div></div>
+      <div class="tl-row reveal"><div class="t">00:00</div><div class="e" data-i18n="tl.e3">Session B</div><div class="d" data-i18n="tl.d3">The room resets into the next session as the night peaks.</div></div>
+      <div class="tl-row reveal"><div class="t">02:00</div><div class="e" data-i18n="tl.e4">Session C</div><div class="d" data-i18n="tl.d4">Final session — standings tighten before last call.</div></div>
+      <div class="tl-row reveal"><div class="t">04:00</div><div class="e" data-i18n="tl.e5">Results</div><div class="d" data-i18n="tl.d5">The night closes and results are revealed.</div></div>
     </div>
   </div>
 </section>
@@ -306,15 +307,15 @@
 <!-- FEATURES -->
 <section id="features">
   <div class="wrap">
-    <div class="reveal"><div class="eyebrow">What's inside</div>
-    <h2>Built for the room.</h2></div>
+    <div class="reveal"><div class="eyebrow" data-i18n="fe.eb">What's inside</div>
+    <h2 data-i18n="fe.h2">Built for the room.</h2></div>
     <div class="feat">
-      <div class="fc reveal"><div class="e">🔥</div><h4>Live Ranking</h4><p>Real-time standings that move with the room all night.</p></div>
-      <div class="fc reveal"><div class="e">⭐</div><h4>Spotlight</h4><p>The session's featured highlight, front and center.</p></div>
-      <div class="fc reveal"><div class="e">👀</div><h4>Viewer Mode</h4><p>Watch the night unfold from anywhere — privately.</p></div>
-      <div class="fc reveal"><div class="e">🎯</div><h4>Pick3</h4><p>Choose your three and back them through the night.</p></div>
-      <div class="fc reveal"><div class="e">❤️</div><h4>Hearts</h4><p>Send interest quietly — revealed only on a mutual match.</p></div>
-      <div class="fc reveal"><div class="e">🏆</div><h4>Results</h4><p>End-of-night standings and session winners.</p></div>
+      <div class="fc reveal"><div class="e">🔥</div><h4 data-i18n="fe.f1h">Live Ranking</h4><p data-i18n="fe.f1p">Real-time standings that move with the room all night.</p></div>
+      <div class="fc reveal"><div class="e">⭐</div><h4 data-i18n="fe.f2h">Spotlight</h4><p data-i18n="fe.f2p">The session's featured highlight, front and center.</p></div>
+      <div class="fc reveal"><div class="e">👀</div><h4 data-i18n="fe.f3h">Viewer Mode</h4><p data-i18n="fe.f3p">Watch the night unfold from anywhere — privately.</p></div>
+      <div class="fc reveal"><div class="e">🎯</div><h4 data-i18n="fe.f4h">Pick3</h4><p data-i18n="fe.f4p">Choose your three and back them through the night.</p></div>
+      <div class="fc reveal"><div class="e">❤️</div><h4 data-i18n="fe.f5h">Hearts</h4><p data-i18n="fe.f5p">Send interest quietly — revealed only on a mutual match.</p></div>
+      <div class="fc reveal"><div class="e">🏆</div><h4 data-i18n="fe.f6h">Results</h4><p data-i18n="fe.f6p">End-of-night standings and session winners.</p></div>
     </div>
   </div>
 </section>
@@ -322,37 +323,37 @@
 <!-- VIEWER MODE -->
 <section id="viewer">
   <div class="wrap">
-    <div class="reveal"><div class="eyebrow">Viewer Mode</div>
-    <h2>Watch, or play. Your choice.</h2>
-    <p class="lead">Anyone can follow the night. Only checked-in players are ranked and visible in the room.</p></div>
+    <div class="reveal"><div class="eyebrow" data-i18n="vm.eb">Viewer Mode</div>
+    <h2 data-i18n="vm.h2">Watch, or play. Your choice.</h2>
+    <p class="lead" data-i18n="vm.lead">Anyone can follow the night. Only checked-in players are ranked and visible in the room.</p></div>
     <div class="cmp reveal">
       <div class="cmp-head">
-        <div>Capability</div><div class="col">Viewer</div><div class="col">VIP Viewer</div><div class="col">Player</div>
+        <div data-i18n="vm.cap">Capability</div><div class="col" data-i18n="vm.viewer">Viewer</div><div class="col" data-i18n="vm.vip">VIP Viewer</div><div class="col" data-i18n="vm.player">Player</div>
       </div>
-      <div class="cmp-row"><div class="cap">View live rankings</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap">See Spotlight & Hot Now</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap">VIP highlights & priority view</div><div class="cell no">–</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap">Ranked in the venue</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap">Send Hearts & Pick3</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap">Anonymous to participants</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell no">–</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r1">View live rankings</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r2">See Spotlight & Hot Now</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r3">VIP highlights & priority view</div><div class="cell no">–</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r4">Ranked in the venue</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r5">Send Hearts & Pick3</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r6">Anonymous to participants</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell no">–</div></div>
     </div>
-    <p class="cmp-note reveal">Participants cannot see who is watching.</p>
+    <p class="cmp-note reveal" data-i18n="vm.note">Participants cannot see who is watching.</p>
   </div>
 </section>
 
 <!-- MULTI VENUE -->
 <section id="venues">
   <div class="wrap">
-    <div class="reveal"><div class="eyebrow">Multi-venue platform</div>
-    <h2>One platform. Multiple nightlife venues.</h2></div>
+    <div class="reveal"><div class="eyebrow" data-i18n="vn.eb">Multi-venue platform</div>
+    <h2 data-i18n="vn.h2">One platform. Multiple nightlife venues.</h2></div>
     <div class="map reveal">
       <div class="map-grid">
-        <div class="vcard"><div class="pin">📍</div><h4>Hollywood</h4><div class="s">Pattaya, Thailand</div><span class="badge live">LIVE</span></div>
-        <div class="vcard"><div class="pin">📍</div><h4>Panda</h4><div class="s">Nightlife venue</div><span class="badge live">LIVE</span></div>
-        <div class="vcard"><div class="pin">📍</div><h4>World House</h4><div class="s">Nightlife venue</div><span class="badge live">LIVE</span></div>
-        <div class="vcard"><div class="pin">📍</div><h4>MYST Club</h4><div class="s">Nightlife venue</div><span class="badge live">LIVE</span></div>
+        <div class="vcard"><div class="pin">📍</div><h4>Hollywood</h4><div class="s" data-i18n="vn.v1s">Pattaya, Thailand</div><span class="badge live" data-i18n="vn.live">LIVE</span></div>
+        <div class="vcard"><div class="pin">📍</div><h4>Panda</h4><div class="s" data-i18n="vn.v2s">Nightlife venue</div><span class="badge live" data-i18n="vn.live">LIVE</span></div>
+        <div class="vcard"><div class="pin">📍</div><h4>World House</h4><div class="s" data-i18n="vn.v2s">Nightlife venue</div><span class="badge live" data-i18n="vn.live">LIVE</span></div>
+        <div class="vcard"><div class="pin">📍</div><h4>MYST Club</h4><div class="s" data-i18n="vn.v2s">Nightlife venue</div><span class="badge live" data-i18n="vn.live">LIVE</span></div>
       </div>
-      <div class="map-tag">More partner venues joining through 2026.</div>
+      <div class="map-tag" data-i18n="vn.tag">More partner venues joining through 2026.</div>
     </div>
   </div>
 </section>
@@ -360,16 +361,16 @@
 <!-- SAFETY -->
 <section id="safety">
   <div class="wrap">
-    <div class="reveal"><div class="eyebrow">Safety & privacy</div>
-    <h2>Designed with boundaries in mind.</h2>
-    <p class="lead">MangoX keeps interaction structured and private by design.</p></div>
+    <div class="reveal"><div class="eyebrow" data-i18n="sf.eb">Safety & privacy</div>
+    <h2 data-i18n="sf.h2">Designed with boundaries in mind.</h2>
+    <p class="lead" data-i18n="sf.lead">MangoX keeps interaction structured and private by design.</p></div>
     <div class="safe-grid">
-      <div class="sf reveal"><div class="ic">🚫</div><h4>No in-app chat</h4></div>
-      <div class="sf reveal"><div class="ic">⛔</div><h4>No direct negotiation</h4></div>
-      <div class="sf reveal"><div class="ic">🤝</div><h4>Mutual interest required</h4></div>
-      <div class="sf reveal"><div class="ic">🛡️</div><h4>Viewer privacy protected</h4></div>
+      <div class="sf reveal"><div class="ic">🚫</div><h4 data-i18n="sf.s1">No in-app chat</h4></div>
+      <div class="sf reveal"><div class="ic">⛔</div><h4 data-i18n="sf.s2">No direct negotiation</h4></div>
+      <div class="sf reveal"><div class="ic">🤝</div><h4 data-i18n="sf.s3">Mutual interest required</h4></div>
+      <div class="sf reveal"><div class="ic">🛡️</div><h4 data-i18n="sf.s4">Viewer privacy protected</h4></div>
     </div>
-    <p class="safe-foot reveal">Adults only · Connections handled through external services after mutual interest.</p>
+    <p class="safe-foot reveal" data-i18n="sf.foot">Adults only · Connections handled through external services after mutual interest.</p>
   </div>
 </section>
 
@@ -377,12 +378,12 @@
 <section id="about" class="about">
   <div class="wrap">
     <div class="about-card reveal">
-      <div class="eyebrow" style="justify-content:center;">About the operator</div>
+      <div class="eyebrow" style="justify-content:center;" data-i18n="ab.eb">About the operator</div>
       <div class="net">NetAI</div>
-      <div class="meta"><span>South Korea</span><span>Technology Company</span><span>Operator of MangoX</span></div>
-      <p>MangoX is a nightlife ranking and venue participation platform for adults.</p>
-      <p class="own">MangoX is a product and service owned and operated by NetAI.</p>
-      <p style="color:var(--muted);">Operated from South Korea.</p>
+      <div class="meta"><span data-i18n="ab.m1">South Korea</span><span data-i18n="ab.m2">Technology Company</span><span data-i18n="ab.m3">Operator of MangoX</span></div>
+      <p data-i18n="ab.p1">MangoX is a nightlife ranking and venue participation platform for adults.</p>
+      <p class="own" data-i18n="ab.own">MangoX is a product and service owned and operated by NetAI.</p>
+      <p style="color:var(--muted);" data-i18n="ab.p3">Operated from South Korea.</p>
     </div>
   </div>
 </section>
@@ -393,29 +394,192 @@
     <div class="foot-grid">
       <div>
         <div class="name">MangoX</div>
-        <div class="op">Operated by NetAI</div>
-        <div class="op">South Korea</div>
+        <div class="op" data-i18n="fo.op1">Operated by NetAI</div>
+        <div class="op" data-i18n="fo.op2">South Korea</div>
       </div>
       <div class="foot-right">
         <a class="mail" href="mailto:support@mangox.app">support@mangox.app</a>
         <div class="foot-links">
-          <a href="/legal/privacy">Privacy Policy</a>
-          <a href="/legal/terms">Terms of Service</a>
+          <a href="/legal/privacy" data-i18n="fo.privacy">Privacy Policy</a>
+          <a href="/legal/terms" data-i18n="fo.terms">Terms of Service</a>
         </div>
       </div>
     </div>
-    <div class="copy">© 2026 NetAI. MangoX is a product and service owned and operated by NetAI.</div>
+    <div class="copy" data-i18n="fo.copy">© 2026 NetAI. MangoX is a product and service owned and operated by NetAI.</div>
   </div>
 </footer>
 
 <script>
+  var I18N = {
+    en:{
+      "nav.how":"How it works","nav.night":"The night","nav.venues":"Venues","nav.safety":"Safety","nav.cta":"Get the app",
+      "hero.sub":"Venue-Based Nightlife Platform","hero.t1":"Discover.","hero.t2":"Watch.","hero.t3":"Play.",
+      "hero.tag":"Nightlife ranking experiences designed for real venues.","hero.gplay":"Google Play — Coming Soon","hero.adults":"Adults Only",
+      "how.eb":"How MangoX works","how.h2":"Three steps inside the venue.","how.lead":"A simple loop built for a real night out — check in on location, join the live ranking, and connect only when interest is mutual.",
+      "how.s1h":"Check In","how.s1p":"Arrive at a participating venue and check in on location to enter the night's session.",
+      "how.s2h":"Play","how.s2p":"Join the live ranking with Hearts, Pick3, and Spotlight as the room competes.",
+      "how.s3h":"Connect","how.s3p":"A connection becomes available only after mutual interest — never before.",
+      "how.note":"<strong>No in-app chat. No direct negotiation.</strong><br>Connections are available only after mutual interest.",
+      "tl.eb":"The night, hour by hour","tl.h2":"One venue. One night. Five moments.","tl.lead":"MangoX runs on the venue's own clock — from doors open to final results before close.",
+      "tl.e1":"Check In","tl.d1":"Doors open. Guests check in and the session begins.",
+      "tl.e2":"Ranking Begins","tl.d2":"Live ranking goes active — Hearts, Pick3, and Spotlight in play.",
+      "tl.e3":"Session B","tl.d3":"The room resets into the next session as the night peaks.",
+      "tl.e4":"Session C","tl.d4":"Final session — standings tighten before last call.",
+      "tl.e5":"Results","tl.d5":"The night closes and results are revealed.",
+      "fe.eb":"What's inside","fe.h2":"Built for the room.",
+      "fe.f1h":"Live Ranking","fe.f1p":"Real-time standings that move with the room all night.",
+      "fe.f2h":"Spotlight","fe.f2p":"The session's featured highlight, front and center.",
+      "fe.f3h":"Viewer Mode","fe.f3p":"Watch the night unfold from anywhere — privately.",
+      "fe.f4h":"Pick3","fe.f4p":"Choose your three and back them through the night.",
+      "fe.f5h":"Hearts","fe.f5p":"Send interest quietly — revealed only on a mutual match.",
+      "fe.f6h":"Results","fe.f6p":"End-of-night standings and session winners.",
+      "vm.eb":"Viewer Mode","vm.h2":"Watch, or play. Your choice.","vm.lead":"Anyone can follow the night. Only checked-in players are ranked and visible in the room.",
+      "vm.cap":"Capability","vm.viewer":"Viewer","vm.vip":"VIP Viewer","vm.player":"Player",
+      "vm.r1":"View live rankings","vm.r2":"See Spotlight & Hot Now","vm.r3":"VIP highlights & priority view","vm.r4":"Ranked in the venue","vm.r5":"Send Hearts & Pick3","vm.r6":"Anonymous to participants",
+      "vm.note":"Participants cannot see who is watching.",
+      "vn.eb":"Multi-venue platform","vn.h2":"One platform. Multiple nightlife venues.","vn.v1s":"Pattaya, Thailand","vn.v2s":"Nightlife venue","vn.live":"LIVE","vn.tag":"More partner venues joining through 2026.",
+      "sf.eb":"Safety & privacy","sf.h2":"Designed with boundaries in mind.","sf.lead":"MangoX keeps interaction structured and private by design.",
+      "sf.s1":"No in-app chat","sf.s2":"No direct negotiation","sf.s3":"Mutual interest required","sf.s4":"Viewer privacy protected",
+      "sf.foot":"Adults only · Connections handled through external services after mutual interest.",
+      "ab.eb":"About the operator","ab.m1":"South Korea","ab.m2":"Technology Company","ab.m3":"Operator of MangoX",
+      "ab.p1":"MangoX is a nightlife ranking and venue participation platform for adults.","ab.own":"MangoX is a product and service owned and operated by NetAI.","ab.p3":"Operated from South Korea.",
+      "fo.op1":"Operated by NetAI","fo.op2":"South Korea","fo.privacy":"Privacy Policy","fo.terms":"Terms of Service","fo.copy":"© 2026 NetAI. MangoX is a product and service owned and operated by NetAI."
+    },
+    ko:{
+      "nav.how":"이용 방법","nav.night":"그날 밤","nav.venues":"참여 클럽","nav.safety":"안전","nav.cta":"앱 받기",
+      "hero.sub":"베뉴 기반 나이트라이프 플랫폼","hero.t1":"발견.","hero.t2":"관전.","hero.t3":"플레이.",
+      "hero.tag":"실제 클럽을 위해 설계된 나이트라이프 랭킹 경험.","hero.gplay":"Google Play — 출시 예정","hero.adults":"성인 전용",
+      "how.eb":"이용 방법","how.h2":"클럽 안에서, 세 단계.","how.lead":"실제로 즐기는 밤을 위한 단순한 흐름 — 현장에서 체크인하고, 실시간 랭킹에 참여하고, 서로 관심이 있을 때만 연결됩니다.",
+      "how.s1h":"체크인","how.s1p":"참여 클럽에 도착해 현장에서 체크인하면 그날 밤 세션이 시작됩니다.",
+      "how.s2h":"플레이","how.s2p":"하트, Pick3, 스포트라이트로 실시간 랭킹에 참여하세요.",
+      "how.s3h":"연결","how.s3p":"서로 관심이 확인된 뒤에만 연결이 열립니다.",
+      "how.note":"<strong>앱 내 채팅 없음. 직접 협상 없음.</strong><br>연결은 상호 관심이 있을 때만 가능합니다.",
+      "tl.eb":"시간대별로 보는 하룻밤","tl.h2":"한 클럽, 하룻밤, 다섯 순간.","tl.lead":"MangoX는 클럽의 시계에 맞춰 흐릅니다 — 오픈부터 마감 전 결과 발표까지.",
+      "tl.e1":"체크인","tl.d1":"문이 열리고, 게스트가 체크인하며 세션이 시작됩니다.",
+      "tl.e2":"랭킹 시작","tl.d2":"실시간 랭킹이 활성화됩니다 — 하트, Pick3, 스포트라이트.",
+      "tl.e3":"세션 B","tl.d3":"밤이 무르익으며 다음 세션으로 전환됩니다.",
+      "tl.e4":"세션 C","tl.d4":"마지막 세션 — 마감 전 순위가 좁혀집니다.",
+      "tl.e5":"결과","tl.d5":"밤이 끝나고 결과가 공개됩니다.",
+      "fe.eb":"주요 기능","fe.h2":"현장을 위해 만들었습니다.",
+      "fe.f1h":"라이브 랭킹","fe.f1p":"밤새 현장과 함께 움직이는 실시간 순위.",
+      "fe.f2h":"스포트라이트","fe.f2p":"세션의 하이라이트를 가장 앞에.",
+      "fe.f3h":"관전 모드","fe.f3p":"어디서든, 조용히 그날 밤을 관전하세요.",
+      "fe.f4h":"Pick3","fe.f4p":"세 명을 골라 밤 내내 응원하세요.",
+      "fe.f5h":"하트","fe.f5p":"조용히 관심을 보내고, 매칭될 때만 공개됩니다.",
+      "fe.f6h":"결과","fe.f6p":"마감 순위와 세션 우승자.",
+      "vm.eb":"관전 모드","vm.h2":"관전하거나, 플레이하거나.","vm.lead":"누구나 그날 밤을 지켜볼 수 있습니다. 체크인한 플레이어만 랭킹에 오르고 현장에 노출됩니다.",
+      "vm.cap":"기능","vm.viewer":"관전자","vm.vip":"VIP 관전자","vm.player":"플레이어",
+      "vm.r1":"라이브 랭킹 보기","vm.r2":"스포트라이트 · Hot Now 보기","vm.r3":"VIP 하이라이트 · 우선 보기","vm.r4":"현장 랭킹 참여","vm.r5":"하트 · Pick3 보내기","vm.r6":"참가자에게 익명",
+      "vm.note":"참가자는 누가 보고 있는지 알 수 없습니다.",
+      "vn.eb":"멀티 베뉴 플랫폼","vn.h2":"하나의 플랫폼, 여러 나이트라이프 클럽.","vn.v1s":"파타야, 태국","vn.v2s":"나이트라이프 클럽","vn.live":"라이브","vn.tag":"2026년에 더 많은 파트너 클럽이 합류합니다.",
+      "sf.eb":"안전과 프라이버시","sf.h2":"경계를 염두에 두고 설계했습니다.","sf.lead":"MangoX는 상호작용을 구조적이고 사적으로 유지합니다.",
+      "sf.s1":"앱 내 채팅 없음","sf.s2":"직접 협상 없음","sf.s3":"상호 관심 필요","sf.s4":"관전자 프라이버시 보호",
+      "sf.foot":"성인 전용 · 연결은 상호 관심 후 외부 서비스를 통해 처리됩니다.",
+      "ab.eb":"운영사 소개","ab.m1":"대한민국","ab.m2":"기술 기업","ab.m3":"MangoX 운영사",
+      "ab.p1":"MangoX는 성인을 위한 나이트라이프 랭킹·클럽 참여 플랫폼입니다.","ab.own":"MangoX는 NetAI가 소유하고 운영하는 제품 및 서비스입니다.","ab.p3":"대한민국에서 운영됩니다.",
+      "fo.op1":"NetAI 운영","fo.op2":"대한민국","fo.privacy":"개인정보처리방침","fo.terms":"이용약관","fo.copy":"© 2026 NetAI. MangoX는 NetAI가 소유하고 운영하는 제품 및 서비스입니다."
+    },
+    th:{
+      "nav.how":"วิธีใช้งาน","nav.night":"ค่ำคืน","nav.venues":"สถานที่","nav.safety":"ความปลอดภัย","nav.cta":"ดาวน์โหลดแอป",
+      "hero.sub":"แพลตฟอร์มไนต์ไลฟ์ประจำสถานที่","hero.t1":"ค้นพบ.","hero.t2":"ชม.","hero.t3":"เล่น.",
+      "hero.tag":"ประสบการณ์จัดอันดับไนต์ไลฟ์ ออกแบบมาเพื่อสถานที่จริง","hero.gplay":"Google Play — เร็ว ๆ นี้","hero.adults":"สำหรับผู้ใหญ่เท่านั้น",
+      "how.eb":"วิธีการทำงานของ MangoX","how.h2":"สามขั้นตอนภายในสถานที่","how.lead":"ขั้นตอนเรียบง่ายสำหรับค่ำคืนจริง — เช็คอินที่สถานที่ ร่วมการจัดอันดับสด และเชื่อมต่อเมื่อทั้งสองฝ่ายสนใจกันเท่านั้น",
+      "how.s1h":"เช็คอิน","how.s1p":"มาถึงสถานที่ที่ร่วมรายการแล้วเช็คอินเพื่อเข้าสู่เซสชันของค่ำคืนนั้น",
+      "how.s2h":"เล่น","how.s2p":"ร่วมการจัดอันดับสดด้วย Hearts, Pick3 และ Spotlight",
+      "how.s3h":"เชื่อมต่อ","how.s3p":"การเชื่อมต่อจะเปิดเมื่อทั้งสองฝ่ายสนใจกันแล้วเท่านั้น",
+      "how.note":"<strong>ไม่มีแชทในแอป ไม่มีการต่อรองโดยตรง</strong><br>การเชื่อมต่อมีให้เมื่อทั้งสองฝ่ายสนใจกันเท่านั้น",
+      "tl.eb":"ค่ำคืน ทีละชั่วโมง","tl.h2":"หนึ่งสถานที่ หนึ่งค่ำคืน ห้าช่วงเวลา","tl.lead":"MangoX ดำเนินตามเวลาของสถานที่ — ตั้งแต่เปิดประตูจนถึงประกาศผลก่อนปิด",
+      "tl.e1":"เช็คอิน","tl.d1":"ประตูเปิด แขกเช็คอินและเซสชันเริ่มต้น",
+      "tl.e2":"เริ่มจัดอันดับ","tl.d2":"การจัดอันดับสดเริ่มทำงาน — Hearts, Pick3, Spotlight",
+      "tl.e3":"เซสชัน B","tl.d3":"ห้องรีเซ็ตสู่เซสชันถัดไปเมื่อค่ำคืนถึงจุดพีก",
+      "tl.e4":"เซสชัน C","tl.d4":"เซสชันสุดท้าย — อันดับสูสีก่อนปิด",
+      "tl.e5":"ผลลัพธ์","tl.d5":"ค่ำคืนจบลงและประกาศผล",
+      "fe.eb":"ฟีเจอร์","fe.h2":"สร้างมาเพื่อห้องนั้น",
+      "fe.f1h":"จัดอันดับสด","fe.f1p":"อันดับเรียลไทม์ที่ขยับไปกับห้องตลอดคืน",
+      "fe.f2h":"Spotlight","fe.f2p":"ไฮไลต์ของเซสชัน อยู่ตรงกลางสายตา",
+      "fe.f3h":"โหมดผู้ชม","fe.f3p":"ชมค่ำคืนได้จากทุกที่ อย่างเป็นส่วนตัว",
+      "fe.f4h":"Pick3","fe.f4p":"เลือกสามคนแล้วเชียร์ตลอดคืน",
+      "fe.f5h":"Hearts","fe.f5p":"ส่งความสนใจอย่างเงียบ ๆ เผยเมื่อตรงกันเท่านั้น",
+      "fe.f6h":"ผลลัพธ์","fe.f6p":"อันดับปิดท้ายและผู้ชนะของเซสชัน",
+      "vm.eb":"โหมดผู้ชม","vm.h2":"จะชมหรือเล่น คุณเลือกได้","vm.lead":"ใครก็ติดตามค่ำคืนได้ มีเพียงผู้เล่นที่เช็คอินเท่านั้นที่ถูกจัดอันดับและปรากฏในห้อง",
+      "vm.cap":"ความสามารถ","vm.viewer":"ผู้ชม","vm.vip":"ผู้ชม VIP","vm.player":"ผู้เล่น",
+      "vm.r1":"ดูการจัดอันดับสด","vm.r2":"ดู Spotlight และ Hot Now","vm.r3":"ไฮไลต์ VIP และการดูแบบลำดับแรก","vm.r4":"ถูกจัดอันดับในสถานที่","vm.r5":"ส่ง Hearts และ Pick3","vm.r6":"ไม่เปิดเผยตัวต่อผู้เข้าร่วม",
+      "vm.note":"ผู้เข้าร่วมไม่สามารถเห็นว่าใครกำลังชมอยู่",
+      "vn.eb":"แพลตฟอร์มหลายสถานที่","vn.h2":"หนึ่งแพลตฟอร์ม หลายสถานที่ไนต์ไลฟ์","vn.v1s":"พัทยา ประเทศไทย","vn.v2s":"สถานที่ไนต์ไลฟ์","vn.live":"ไลฟ์","vn.tag":"สถานที่พันธมิตรเพิ่มเติมจะเข้าร่วมตลอดปี 2026",
+      "sf.eb":"ความปลอดภัยและความเป็นส่วนตัว","sf.h2":"ออกแบบโดยคำนึงถึงขอบเขต","sf.lead":"MangoX ทำให้การมีปฏิสัมพันธ์เป็นระเบียบและเป็นส่วนตัวด้วยการออกแบบ",
+      "sf.s1":"ไม่มีแชทในแอป","sf.s2":"ไม่มีการต่อรองโดยตรง","sf.s3":"ต้องสนใจตรงกันทั้งสองฝ่าย","sf.s4":"ปกป้องความเป็นส่วนตัวของผู้ชม",
+      "sf.foot":"สำหรับผู้ใหญ่เท่านั้น · การเชื่อมต่อดำเนินผ่านบริการภายนอกหลังจากทั้งสองฝ่ายสนใจกัน",
+      "ab.eb":"เกี่ยวกับผู้ให้บริการ","ab.m1":"เกาหลีใต้","ab.m2":"บริษัทเทคโนโลยี","ab.m3":"ผู้ให้บริการ MangoX",
+      "ab.p1":"MangoX คือแพลตฟอร์มจัดอันดับไนต์ไลฟ์และการเข้าร่วมสถานที่สำหรับผู้ใหญ่","ab.own":"MangoX เป็นผลิตภัณฑ์และบริการที่เป็นเจ้าของและดำเนินการโดย NetAI","ab.p3":"ดำเนินการจากประเทศเกาหลีใต้",
+      "fo.op1":"ดำเนินการโดย NetAI","fo.op2":"เกาหลีใต้","fo.privacy":"นโยบายความเป็นส่วนตัว","fo.terms":"ข้อกำหนดการให้บริการ","fo.copy":"© 2026 NetAI. MangoX เป็นผลิตภัณฑ์และบริการที่เป็นเจ้าของและดำเนินการโดย NetAI"
+    },
+    zh:{
+      "nav.how":"使用方式","nav.night":"夜晚","nav.venues":"场馆","nav.safety":"安全","nav.cta":"获取应用",
+      "hero.sub":"场馆夜生活平台","hero.t1":"发现。","hero.t2":"观看。","hero.t3":"参与。",
+      "hero.tag":"为真实场馆打造的夜生活排名体验。","hero.gplay":"Google Play — 即将上线","hero.adults":"仅限成人",
+      "how.eb":"MangoX 如何运作","how.h2":"场馆内的三个步骤。","how.lead":"为真实夜晚设计的简单流程——到场签到、加入实时排名，并仅在双方互有兴趣时建立连接。",
+      "how.s1h":"签到","how.s1p":"抵达合作场馆并现场签到，即可进入当晚的场次。",
+      "how.s2h":"参与","how.s2p":"用 Hearts、Pick3 和 Spotlight 加入实时排名。",
+      "how.s3h":"连接","how.s3p":"只有在双方互有兴趣后，连接才会开启。",
+      "how.note":"<strong>无应用内聊天。无直接交涉。</strong><br>仅在双方互有兴趣时才可建立连接。",
+      "tl.eb":"逐小时的夜晚","tl.h2":"一个场馆。一个夜晚。五个时刻。","tl.lead":"MangoX 跟随场馆自己的时钟运行——从开门到打烊前的结果揭晓。",
+      "tl.e1":"签到","tl.d1":"开门。来宾签到，场次开始。",
+      "tl.e2":"排名开始","tl.d2":"实时排名启动——Hearts、Pick3、Spotlight。",
+      "tl.e3":"场次 B","tl.d3":"夜晚渐入高潮，进入下一场次。",
+      "tl.e4":"场次 C","tl.d4":"最后一场——打烊前排名愈发胶着。",
+      "tl.e5":"结果","tl.d5":"夜晚结束，结果揭晓。",
+      "fe.eb":"功能一览","fe.h2":"为现场而生。",
+      "fe.f1h":"实时排名","fe.f1p":"整夜随现场变化的实时榜单。",
+      "fe.f2h":"Spotlight","fe.f2p":"当场次的焦点，置于最前。",
+      "fe.f3h":"观看模式","fe.f3p":"随时随地，私密地观看整晚。",
+      "fe.f4h":"Pick3","fe.f4p":"选出你的三位，整夜为他们加油。",
+      "fe.f5h":"Hearts","fe.f5p":"悄悄表达兴趣，仅在互相匹配时公开。",
+      "fe.f6h":"结果","fe.f6p":"收尾榜单与场次优胜者。",
+      "vm.eb":"观看模式","vm.h2":"观看，或参与。由你选择。","vm.lead":"任何人都能关注这一晚。只有已签到的玩家才会进入排名并在现场显示。",
+      "vm.cap":"功能","vm.viewer":"观众","vm.vip":"VIP 观众","vm.player":"玩家",
+      "vm.r1":"查看实时排名","vm.r2":"查看 Spotlight 与 Hot Now","vm.r3":"VIP 亮点与优先视角","vm.r4":"在场馆中参与排名","vm.r5":"发送 Hearts 与 Pick3","vm.r6":"对参与者匿名",
+      "vm.note":"参与者无法看到谁在观看。",
+      "vn.eb":"多场馆平台","vn.h2":"一个平台，多个夜生活场馆。","vn.v1s":"泰国 芭提雅","vn.v2s":"夜生活场馆","vn.live":"已上线","vn.tag":"更多合作场馆将在 2026 年陆续加入。",
+      "sf.eb":"安全与隐私","sf.h2":"在设计中守住边界。","sf.lead":"MangoX 通过设计让互动保持有序而私密。",
+      "sf.s1":"无应用内聊天","sf.s2":"无直接交涉","sf.s3":"需双方互有兴趣","sf.s4":"保护观看者隐私",
+      "sf.foot":"仅限成人 · 连接在双方互有兴趣后通过外部服务处理。",
+      "ab.eb":"关于运营方","ab.m1":"韩国","ab.m2":"科技公司","ab.m3":"MangoX 运营方",
+      "ab.p1":"MangoX 是面向成人的夜生活排名与场馆参与平台。","ab.own":"MangoX 是由 NetAI 拥有并运营的产品与服务。","ab.p3":"在韩国运营。",
+      "fo.op1":"由 NetAI 运营","fo.op2":"韩国","fo.privacy":"隐私政策","fo.terms":"服务条款","fo.copy":"© 2026 NetAI。MangoX 是由 NetAI 拥有并运营的产品与服务。"
+    }
+  };
+  var LANG_HTML = {en:"en",ko:"ko",th:"th",zh:"zh-Hans"};
+  function applyLang(lang){
+    if(!I18N[lang]) lang="en";
+    var d=I18N[lang];
+    document.documentElement.setAttribute("lang", LANG_HTML[lang]||lang);
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k=el.getAttribute("data-i18n"); if(d[k]!=null) el.textContent=d[k];
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(function(el){
+      var k=el.getAttribute("data-i18n-html"); if(d[k]!=null) el.innerHTML=d[k];
+    });
+    document.querySelectorAll(".lang button").forEach(function(b){
+      b.classList.toggle("on", b.getAttribute("data-lang")===lang);
+    });
+    try{ localStorage.setItem("mangox_lang", lang); }catch(e){}
+  }
   (function(){
-    var els=document.querySelectorAll('.reveal');
-    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+    document.querySelectorAll(".lang button").forEach(function(b){
+      b.addEventListener("click", function(){ applyLang(b.getAttribute("data-lang")); });
+    });
+    var lang="en";
+    try{ var s=localStorage.getItem("mangox_lang"); if(s && I18N[s]) lang=s; }catch(e){}
+    applyLang(lang);
+  })();
+
+  (function(){
+    var els=document.querySelectorAll(".reveal");
+    if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in");});return;}
     var io=new IntersectionObserver(function(en){
-      en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
+      en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}});
     },{threshold:.12});
-    els.forEach(function(e){if(!e.classList.contains('in'))io.observe(e);});
+    els.forEach(function(e){if(!e.classList.contains("in"))io.observe(e);});
   })();
 </script>
 </body>
