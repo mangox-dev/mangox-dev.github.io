@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MangoX 환불 및 취소 정책</title>
+<meta name="description" content="MangoX 디지털 이용권의 결제 취소, 청약철회 및 환불 처리 기준을 안내합니다. 주식회사 넷아이가 제공하는 MangoX 서비스의 공식 환불 정책입니다." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://www.mangox.app/refund-policy/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy-900: #0c1424;
+    --navy-800: #121d33;
+    --navy-700: #1a2742;
+    --navy-600: #243352;
+    --line: #2c3a58;
+    --text: #e8ecf4;
+    --text-dim: #9aa6bf;
+    --text-faint: #6d7a96;
+    --mango: #ffa733;
+    --mango-soft: #ffc06b;
+    --mango-deep: #e8870f;
+    --card: #15203a;
+    --radius: 14px;
+    --maxw: 900px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans KR', system-ui, sans-serif;
+    background: var(--navy-900);
+    color: var(--text);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    word-break: keep-all;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- top bar ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(12,20,36,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px; gap: 16px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 19px; letter-spacing: -0.01em;
+  }
+  .brand .dot {
+    width: 26px; height: 26px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--mango), var(--mango-deep));
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; color: var(--navy-900);
+    font-family: 'Gowun Batang', serif;
+  }
+  .brand .tag { color: var(--mango); }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a:hover { color: var(--mango-soft); }
+
+  /* ---------- page head ---------- */
+  .page-head {
+    position: relative;
+    padding: 72px 0 56px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .page-head::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(620px 320px at 78% 18%, rgba(255,167,51,0.13), transparent 70%),
+      radial-gradient(520px 340px at 12% 88%, rgba(36,51,82,0.55), transparent 72%);
+    pointer-events: none;
+  }
+  .page-head .wrap { position: relative; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--mango); font-weight: 600;
+    border: 1px solid rgba(255,167,51,0.35);
+    padding: 6px 13px; border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .eyebrow::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--mango);
+  }
+  .page-head h1 {
+    font-family: 'Gowun Batang', serif;
+    font-size: clamp(30px, 5.4vw, 46px);
+    line-height: 1.2; font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .page-head h1 .accent {
+    background: linear-gradient(120deg, var(--mango-soft), var(--mango-deep));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-head p.lead {
+    max-width: 640px; font-size: 15.5px; color: var(--text-dim);
+  }
+  .meta-line {
+    margin-top: 22px; font-size: 13px; color: var(--text-faint);
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+  }
+
+  /* ---------- table of contents ---------- */
+  .toc {
+    margin: 36px 0 8px;
+    background: var(--navy-800);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+  .toc h2 {
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-faint); font-weight: 600; margin-bottom: 14px;
+  }
+  .toc ol {
+    list-style: none; counter-reset: toc;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px 22px;
+  }
+  .toc ol li { counter-increment: toc; }
+  .toc ol li a {
+    display: block; font-size: 14px; color: var(--text-dim);
+    padding: 3px 0;
+  }
+  .toc ol li a::before {
+    content: counter(toc) ". ";
+    color: var(--mango); font-weight: 600;
+  }
+  .toc ol li a:hover { color: var(--mango-soft); }
+
+  /* ---------- policy sections ---------- */
+  .policy { padding: 56px 0 24px; }
+  .clause {
+    padding: 34px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .clause:first-of-type { padding-top: 8px; }
+  .clause:last-of-type { border-bottom: none; }
+  .clause > h2 {
+    font-family: 'Gowun Batang', serif;
+    font-size: clamp(21px, 3vw, 26px);
+    font-weight: 700; letter-spacing: -0.01em; line-height: 1.35;
+    margin-bottom: 8px;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .clause > h2 .no {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-size: 13px; font-weight: 600; color: var(--mango);
+    letter-spacing: 0.06em; flex-shrink: 0;
+  }
+  .clause > p.intro {
+    color: var(--text-dim); font-size: 15px; margin-bottom: 18px;
+  }
+  .clause p { color: var(--text-dim); font-size: 15px; }
+  .clause p + p { margin-top: 12px; }
+  .clause p strong { color: var(--text); font-weight: 600; }
+
+  ul.rule { list-style: none; margin-top: 14px; }
+  ul.rule li {
+    position: relative; padding-left: 22px; margin-bottom: 11px;
+    font-size: 15px; color: var(--text-dim);
+  }
+  ul.rule li::before {
+    content: ""; position: absolute; left: 0; top: 10px;
+    width: 9px; height: 9px; border-radius: 2px;
+    background: var(--mango-deep);
+  }
+  ul.rule li strong { color: var(--text); font-weight: 600; }
+  ul.rule li:last-child { margin-bottom: 0; }
+
+  .note {
+    margin-top: 18px;
+    background: var(--card); border: 1px solid var(--line);
+    border-left: 3px solid var(--mango);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+  }
+  .note p { font-size: 14.5px; color: var(--text); }
+  .note p + p { margin-top: 10px; color: var(--text-dim); }
+
+  .callout {
+    margin-top: 20px;
+    background: linear-gradient(135deg, rgba(255,167,51,0.12), rgba(255,167,51,0.04));
+    border: 1px solid rgba(255,167,51,0.4);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .callout .mark {
+    flex-shrink: 0;
+    width: 34px; height: 34px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--mango), var(--mango-deep));
+    color: var(--navy-900);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 18px;
+    font-family: 'Gowun Batang', serif;
+  }
+  .callout p { font-size: 14.8px; color: var(--text); }
+  .callout p strong { color: var(--mango-soft); }
+  .callout p + p { margin-top: 8px; }
+
+  /* ---------- channel panels ---------- */
+  .channel-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px; margin-top: 18px;
+  }
+  .channel {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 24px 22px;
+    border-top: 3px solid var(--mango);
+    display: flex; flex-direction: column;
+  }
+  .channel h3 {
+    font-size: 16px; font-weight: 600; margin-bottom: 6px;
+  }
+  .channel .c-kind {
+    font-size: 12.5px; letter-spacing: 0.04em;
+    color: var(--mango); font-weight: 600; margin-bottom: 14px;
+  }
+  .channel p { font-size: 14px; color: var(--text-dim); }
+
+  /* ---------- contact box ---------- */
+  .contact-box {
+    margin-top: 18px;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 26px 24px;
+  }
+  .contact-box .c-label {
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-faint); font-weight: 600; margin-bottom: 8px;
+  }
+  .contact-box .c-mail {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 19px; font-weight: 600; color: var(--mango);
+    border-bottom: 1px solid rgba(255,167,51,0.4); padding-bottom: 2px;
+    font-family: 'Gowun Batang', serif;
+  }
+  .contact-box .c-mail:hover { color: var(--mango-soft); }
+
+  /* ---------- business info ---------- */
+  .biz-table {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); overflow: hidden;
+    margin-top: 16px;
+  }
+  .biz-row {
+    display: grid; grid-template-columns: 200px 1fr;
+    border-bottom: 1px solid var(--line);
+  }
+  .biz-row:last-child { border-bottom: none; }
+  .biz-row .k {
+    background: var(--navy-700); padding: 15px 22px;
+    font-size: 13.5px; color: var(--text-dim); font-weight: 500;
+    border-right: 1px solid var(--line);
+  }
+  .biz-row .v {
+    padding: 15px 22px; font-size: 14.5px; color: var(--text);
+  }
+
+  /* ---------- back link ---------- */
+  .back-row { padding: 8px 0 64px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px; border-radius: 10px;
+    font-size: 14.5px; font-weight: 600;
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn-ghost {
+    border: 1px solid var(--line); color: var(--text);
+    background: var(--navy-800);
+  }
+  .btn-ghost:hover { border-color: var(--mango); color: var(--mango-soft); }
+
+  /* ---------- footer ---------- */
+  footer {
+    padding: 52px 0 40px;
+    background: var(--navy-800);
+    border-top: 1px solid var(--line);
+  }
+  .foot-grid {
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 28px;
+  }
+  .foot-brand { max-width: 320px; }
+  .foot-brand .brand { margin-bottom: 12px; }
+  .foot-brand p { font-size: 13px; color: var(--text-faint); }
+  .foot-links { display: flex; gap: 60px; flex-wrap: wrap; }
+  .foot-col h4 {
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-faint); margin-bottom: 14px; font-weight: 600;
+  }
+  .foot-col a {
+    display: block; font-size: 14px; color: var(--text-dim);
+    margin-bottom: 9px;
+  }
+  .foot-col a:hover { color: var(--mango-soft); }
+  .foot-bottom {
+    margin-top: 40px; padding-top: 22px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    font-size: 12.5px; color: var(--text-faint);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .page-head { padding: 52px 0 44px; }
+    .policy { padding: 40px 0 16px; }
+    .toc ol { grid-template-columns: 1fr; }
+    .clause > h2 { flex-direction: column; gap: 4px; }
+    .biz-row { grid-template-columns: 110px 1fr; }
+    .biz-row .k { padding: 13px 14px; font-size: 12.5px; }
+    .biz-row .v { padding: 13px 14px; font-size: 13.5px; }
+    .foot-links { gap: 36px; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="https://www.mangox.app/mangox/">
+      <span class="dot">M</span>
+      Mango<span class="tag">X</span>
+    </a>
+    <nav class="nav-links">
+      <a href="https://www.mangox.app/mangox/">서비스 안내</a>
+      <a href="https://www.mangox.app/mangox/#product">이용권 안내</a>
+      <a href="https://www.mangox.app/legal/terms">이용약관</a>
+      <a href="#business">사업자 정보</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- PAGE HEAD -->
+<div class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Refund &amp; Cancellation</span>
+    <h1>Mango<span class="accent">X</span> 환불 및 취소 정책</h1>
+    <p class="lead">
+      본 정책은 주식회사 넷아이가 제공하는 MangoX 디지털 이용권의
+      결제 취소, 청약철회 및 환불 처리 기준을 안내합니다.
+      관계 법령에서 소비자에게 더 유리한 기준을 정한 경우 해당 법령이 우선 적용됩니다.
+    </p>
+    <div class="meta-line">
+      <span>서비스명 · MangoX</span>
+      <span>사업자 · 주식회사 넷아이</span>
+      <span>최종 개정일 · 2026년 8월 13일</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <nav class="toc" aria-label="목차">
+    <h2>목차</h2>
+    <ol>
+      <li><a href="#scope">적용 범위</a></li>
+      <li><a href="#digital">디지털 상품의 특성</a></li>
+      <li><a href="#withdrawal">결제 취소 및 청약철회</a></li>
+      <li><a href="#started">서비스 제공이 시작된 이용권</a></li>
+      <li><a href="#eligible">환불 또는 결제취소가 가능한 주요 경우</a></li>
+      <li><a href="#limited">환불이 제한될 수 있는 경우</a></li>
+      <li><a href="#request">환불 요청 방법</a></li>
+      <li><a href="#timeline">처리 기간</a></li>
+      <li><a href="#channels">결제수단별 안내</a></li>
+      <li><a href="#law">법령 우선</a></li>
+      <li><a href="#business">사업자 정보</a></li>
+    </ol>
+  </nav>
+</div>
+
+<main class="policy">
+  <div class="wrap">
+
+    <!-- 1 -->
+    <section class="clause" id="scope">
+      <h2><span class="no">01</span>적용 범위</h2>
+      <p class="intro">
+        본 정책은 주식회사 넷아이(이하 &ldquo;회사&rdquo;)가 운영하는 MangoX 서비스에서
+        이용자가 구매하는 디지털 이용권의 결제 취소, 청약철회 및 환불 처리에 적용됩니다.
+      </p>
+      <ul class="rule">
+        <li>본 정책은 MangoX 앱 또는 MangoX 웹을 통해 구매한 디지털 이용권에 적용됩니다.</li>
+        <li>본 정책에서 정하지 않은 사항은 MangoX 이용약관 및 관계 법령에 따릅니다.</li>
+        <li>회원 자격, 서비스 이용 조건 등 결제 이외의 사항은 MangoX 이용약관에서 정합니다.</li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="clause" id="digital">
+      <h2><span class="no">02</span>디지털 상품의 특성</h2>
+      <p class="intro">
+        MangoX 이용권은 앱 내에서 제공되는 디지털 서비스 이용 상품입니다.
+      </p>
+      <ul class="rule">
+        <li><strong>실물 배송 없음</strong> · 이용권은 물리적으로 배송되는 상품이 아닙니다.</li>
+        <li><strong>디지털 서비스</strong> · 구매한 이용권은 모바일 애플리케이션 내 온라인 서비스 기능으로 제공됩니다.</li>
+        <li><strong>1회성 구매</strong> · 별도로 명시하지 않는 한 안내된 이용권은 자동으로 갱신되는 구독 상품이 아니며, 이용자가 필요할 때 직접 구매하는 1회성 상품입니다.</li>
+        <li><strong>이용 기간 한정</strong> · 일부 이용권은 이용 가능 시간 또는 이용 가능 기간이 정해져 있습니다.</li>
+        <li><strong>이용 조건</strong> · 이용권의 실제 사용 가능 여부는 장소, 이용자 유형, 운영 모드, 이용 가능 시간대, 해당하는 경우 현장 확인 절차 등에 따라 달라질 수 있으며, 구매 전 화면에서 확인할 수 있습니다.</li>
+      </ul>
+    </section>
+
+    <!-- 3 -->
+    <section class="clause" id="withdrawal">
+      <h2><span class="no">03</span>결제 취소 및 청약철회</h2>
+      <p class="intro">
+        이용자는 관계 법령에서 정한 기간과 요건에 따라 결제 취소 또는 청약철회를 요청할 수 있습니다.
+      </p>
+      <ul class="rule">
+        <li>회사는 관계 법령이 소비자에게 보장하는 청약철회 및 계약해제 권리를 법령이 정한 수준보다 불리하게 제한하지 않습니다.</li>
+        <li>청약철회 요청은 아래 <a href="#request" style="color:var(--mango-soft)">7. 환불 요청 방법</a>에 안내된 절차에 따라 접수할 수 있습니다.</li>
+        <li>분할하여 제공되는 서비스의 미제공 부분 등에 대해서는 관련 법령 및 실제 이용내역을 기준으로 처리합니다.</li>
+      </ul>
+      <div class="note">
+        <p>
+          회사는 청약철회 요청을 접수하면 결제내역과 서비스 제공 내역을 확인한 후,
+          관계 법령이 정하는 바에 따라 환급 또는 결제취소 절차를 진행합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="clause" id="started">
+      <h2><span class="no">04</span>서비스 제공이 시작된 이용권</h2>
+      <p class="intro">
+        디지털 서비스 또는 디지털 콘텐츠의 서비스 제공이 개시된 경우,
+        관련 법령이 허용하는 범위에서 청약철회가 제한될 수 있습니다.
+      </p>
+      <ul class="rule">
+        <li>이러한 제한은 법령이 요구하는 사전 고지 및 이용자의 동의 등 필요한 절차가 충족된 경우에 한하여 적용됩니다.</li>
+        <li>서비스 제공이 개시되었더라도, 아래 <a href="#eligible" style="color:var(--mango-soft)">5. 환불 또는 결제취소가 가능한 주요 경우</a>에 해당하는 사유가 확인된 경우에는 해당 기준에 따라 처리합니다.</li>
+        <li>제공된 서비스가 광고 또는 계약 내용과 현저히 다른 경우, 이용자는 관계 법령에 따른 권리를 행사할 수 있습니다.</li>
+        <li>분할하여 제공되는 서비스의 미제공 부분 등에 대해서는 관련 법령 및 실제 이용내역을 기준으로 처리합니다.</li>
+      </ul>
+      <div class="callout">
+        <span class="mark">!</span>
+        <div>
+          <p>
+            <strong>회사는 서비스 제공 개시만을 이유로 이용자의 법정 권리를 일률적으로 배제하지 않습니다.</strong>
+          </p>
+          <p>
+            개별 요청은 결제내역, 실제 서비스 제공 내역 및 관계 법령을 기준으로 확인 후 처리합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="clause" id="eligible">
+      <h2><span class="no">05</span>환불 또는 결제취소가 가능한 주요 경우</h2>
+      <p class="intro">
+        다음과 같은 경우 회사는 확인 절차를 거쳐 환급 또는 결제취소 조치를 진행합니다.
+      </p>
+      <ul class="rule">
+        <li><strong>서비스 미제공</strong> · 결제는 정상적으로 완료되었으나 구매한 이용권 또는 서비스가 제공되지 않은 경우</li>
+        <li><strong>중복 결제</strong> · 동일한 상품에 대하여 중복 결제가 발생한 사실이 확인된 경우</li>
+        <li><strong>회사 귀책의 서비스 장애</strong> · 회사에 책임 있는 사유로 중대한 서비스 제공 장애가 발생하여 구매한 서비스가 제공되지 못한 경우</li>
+        <li><strong>계약 내용과의 현저한 차이</strong> · 제공된 서비스가 광고 또는 계약 내용과 현저히 다른 경우</li>
+        <li><strong>부정 또는 착오 결제</strong> · 이용자가 승인하지 않았거나 착오로 이루어진 결제임이 확인 절차를 통해 인정된 경우</li>
+        <li><strong>그 밖에 관계 법령에서 정한 경우</strong> · 관계 법령에서 환급 또는 계약해제를 인정하는 경우</li>
+      </ul>
+    </section>
+
+    <!-- 6 -->
+    <section class="clause" id="limited">
+      <h2><span class="no">06</span>환불이 제한될 수 있는 경우</h2>
+      <p class="intro">
+        아래의 경우에는 <strong>관련 법령이 허용하는 범위에서</strong> 환급 또는 결제취소가 제한되거나
+        실제 이용내역을 반영하여 조정될 수 있습니다.
+      </p>
+      <ul class="rule">
+        <li>구매한 이용권이 이미 상당 부분 이용된 경우</li>
+        <li>이용권이 정상적으로 제공되었음에도 이용자가 이를 이용하지 않아 이용 가능 기간이 경과한 경우</li>
+        <li>MangoX 서비스는 정상적으로 제공되었으나, 이용자 단말의 설정·네트워크 상태 등 이용자 측 환경에 기인한 사유인 경우</li>
+        <li>부정 이용, 위치 정보 조작, 그 밖에 서비스 운영을 방해하는 행위와 관련된 결제인 경우</li>
+      </ul>
+      <div class="note">
+        <p>
+          본 항의 각 사유는 이용자의 법정 권리를 배제하기 위한 것이 아니며,
+          관계 법령에서 소비자에게 더 유리한 기준을 정한 경우 해당 법령이 우선 적용됩니다.
+        </p>
+        <p>
+          개별 사안은 결제내역과 실제 서비스 제공·이용 내역을 확인한 후 판단합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="clause" id="request">
+      <h2><span class="no">07</span>환불 요청 방법</h2>
+      <p class="intro">
+        환불 또는 결제취소 요청은 MangoX 고객지원 이메일로 접수해 주시기 바랍니다.
+      </p>
+      <div class="contact-box">
+        <div class="c-label">고객지원 이메일</div>
+        <a class="c-mail" href="mailto:netai@netai.co.kr">netai@netai.co.kr</a>
+        <div class="c-label" style="margin-top:20px">고객지원 전화</div>
+        <a class="c-mail" href="tel:032-264-4984">032-264-4984</a>
+      </div>
+      <p style="margin-top:18px">요청 시 다음 정보를 함께 알려주시면 결제내역 확인이 신속하게 진행됩니다.</p>
+      <ul class="rule">
+        <li>구매자 성명 또는 계정 확인이 가능한 정보</li>
+        <li>구매일자</li>
+        <li>구매한 상품명</li>
+        <li>주문번호 또는 결제 참조번호</li>
+        <li>환불 요청 사유</li>
+      </ul>
+      <div class="note">
+        <p>
+          <strong>회사는 결제 확인을 위해 비밀번호, 카드 비밀번호, 카드번호 전체,
+          메신저 계정 인증정보 등을 요청하지 않습니다.</strong>
+        </p>
+        <p>
+          해당 정보를 요구하는 연락을 받은 경우 응하지 마시고 위 고객지원 이메일로 알려주시기 바랍니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="clause" id="timeline">
+      <h2><span class="no">08</span>처리 기간</h2>
+      <p class="intro">
+        환불 사유와 결제내역 확인이 완료된 후 관련 법령에서 정한 기간 내
+        환급 또는 결제취소 조치를 진행합니다.
+      </p>
+      <ul class="rule">
+        <li>회사는 접수된 요청에 대해 확인 절차를 거쳐 지체 없이 처리 결과를 안내합니다.</li>
+        <li>회사가 환급 또는 결제취소를 진행한 이후에도, 실제 카드 승인취소 또는 계좌 입금 반영 시점은 카드사·결제대행사·금융기관의 처리 일정에 따라 추가 기간이 소요될 수 있습니다.</li>
+        <li>결제 확인에 필요한 정보가 충분하지 않은 경우 추가 확인을 요청드릴 수 있으며, 이 경우 확인이 완료된 시점을 기준으로 처리합니다.</li>
+      </ul>
+    </section>
+
+    <!-- 9 -->
+    <section class="clause" id="channels">
+      <h2><span class="no">09</span>결제수단별 안내</h2>
+      <p class="intro">
+        결제가 이루어진 경로에 따라 환불 요청 및 처리 절차가 달라질 수 있습니다.
+      </p>
+      <div class="channel-grid">
+        <div class="channel">
+          <h3>MangoX 웹 결제</h3>
+          <div class="c-kind">토스페이먼츠 · 준비 중</div>
+          <p>
+            MangoX 웹 결제(토스페이먼츠)를 통해 이루어진 구매의 환불 요청은
+            MangoX·넷아이 고객지원에서 접수하여 처리하며,
+            기술적으로 가능한 범위에서 원 결제수단으로 환급 또는 결제취소를 진행합니다.
+            거래 확인을 위해 주문번호 등 결제 정보를 요청드릴 수 있습니다.
+          </p>
+        </div>
+        <div class="channel">
+          <h3>App Store</h3>
+          <div class="c-kind">Apple 결제</div>
+          <p>
+            App Store를 통해 결제한 상품은 해당 스토어의 결제 및 환불 절차가 적용될 수 있으며,
+            필요한 경우 MangoX 고객지원에서 확인 절차를 안내합니다.
+          </p>
+        </div>
+        <div class="channel">
+          <h3>Google Play</h3>
+          <div class="c-kind">Google 결제</div>
+          <p>
+            Google Play를 통해 결제한 상품은 해당 스토어의 결제 및 환불 절차가 적용될 수 있으며,
+            필요한 경우 MangoX 고객지원에서 확인 절차를 안내합니다.
+          </p>
+        </div>
+      </div>
+      <div class="note">
+        <p>
+          스토어의 결제·환불 절차가 적용되는 경우에도, 소비자에게 적용되는 관계 법령상의 권리는 그대로 유지됩니다.
+        </p>
+        <p>
+          현재 MangoX 웹 페이지에서는 결제가 진행되지 않습니다. 웹 결제 도입 시 본 정책에 따라 안내드립니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="clause" id="law">
+      <h2><span class="no">10</span>법령 우선</h2>
+      <p class="intro">
+        본 정책보다 관계 법령에서 소비자에게 더 유리한 기준을 정한 경우에는 해당 법령이 우선 적용됩니다.
+      </p>
+      <ul class="rule">
+        <li>본 정책의 어떠한 조항도 관계 법령이 소비자에게 보장하는 권리를 제한하는 것으로 해석되지 않습니다.</li>
+        <li>본 정책이 변경되는 경우 회사는 변경 내용과 적용 시점을 본 페이지를 통해 안내합니다.</li>
+      </ul>
+    </section>
+
+    <!-- 11 -->
+    <section class="clause" id="business">
+      <h2><span class="no">11</span>사업자 정보</h2>
+      <p class="intro">MangoX 서비스를 제공하는 사업자 정보 및 문의처입니다.</p>
+      <div class="biz-table">
+        <div class="biz-row"><div class="k">상호</div><div class="v">주식회사 넷아이</div></div>
+        <div class="biz-row"><div class="k">대표자</div><div class="v">이상민</div></div>
+        <div class="biz-row"><div class="k">사업자등록번호</div><div class="v">467-86-03112</div></div>
+        <div class="biz-row"><div class="k">사업장 주소</div><div class="v">인천광역시 서구 중봉대로 490, 8층 878호</div></div>
+        <div class="biz-row"><div class="k">전화번호</div><div class="v"><a href="tel:032-264-4984" style="color:var(--mango-soft)">032-264-4984</a></div></div>
+        <div class="biz-row"><div class="k">이메일</div><div class="v"><a href="mailto:netai@netai.co.kr" style="color:var(--mango-soft)">netai@netai.co.kr</a></div></div>
+        <div class="biz-row"><div class="k">서비스명</div><div class="v">MangoX</div></div>
+      </div>
+    </section>
+
+    <div class="back-row">
+      <a class="btn btn-ghost" href="https://www.mangox.app/mangox/">← MangoX 서비스 안내로 돌아가기</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="https://www.mangox.app/mangox/">
+          <span class="dot">M</span>
+          Mango<span class="tag">X</span>
+        </a>
+        <p>위치기반 모바일 플랫폼. 제휴 장소 기반 이벤트·랭킹·참여 기능을 제공하는 실물 배송 없는 온라인 서비스입니다.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>약관 및 정책</h4>
+          <a href="https://www.mangox.app/legal/privacy">Privacy Policy</a>
+          <a href="https://www.mangox.app/legal/terms">Terms of Use</a>
+          <a href="https://www.mangox.app/refund-policy/">환불 및 취소 정책</a>
+          <a href="https://www.mangox.app/account-deletion">Account Deletion</a>
+          <a href="https://www.mangox.app/child-safety">Child Safety Standards</a>
+        </div>
+        <div class="foot-col">
+          <h4>문의</h4>
+          <a href="mailto:netai@netai.co.kr">Contact</a>
+          <a href="mailto:netai@netai.co.kr">netai@netai.co.kr</a>
+          <a href="tel:032-264-4984">전화 032-264-4984</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>주식회사 넷아이 · 대표 이상민 · 사업자등록번호 467-86-03112 · 전화 032-264-4984</span>
+      <span>© 2026 NetAI Co., Ltd. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
