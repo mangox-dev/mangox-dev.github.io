@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>결제가 완료되지 않았습니다 — MangoX</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy-900: #0c1424;
+    --navy-800: #121d33;
+    --navy-700: #1a2742;
+    --line: #2c3a58;
+    --text: #e8ecf4;
+    --text-dim: #9aa6bf;
+    --text-faint: #6d7a96;
+    --mango: #ffa733;
+    --mango-soft: #ffc06b;
+    --mango-deep: #e8870f;
+    --card: #15203a;
+    --danger: #ff6b6b;
+    --radius: 14px;
+    --maxw: 720px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans KR', system-ui, sans-serif;
+    background: var(--navy-900);
+    color: var(--text);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  header {
+    border-bottom: 1px solid var(--line);
+    background: rgba(12,20,36,0.92);
+  }
+  .nav { display: flex; align-items: center; height: 64px; }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 19px; letter-spacing: -0.01em;
+  }
+  .brand .dot {
+    width: 26px; height: 26px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--mango), var(--mango-deep));
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; color: var(--navy-900);
+    font-family: 'Gowun Batang', serif;
+  }
+  .brand .tag { color: var(--mango); }
+
+  main { padding: 56px 0 72px; }
+
+  .result-mark {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 27px; font-weight: 700; font-family: 'Gowun Batang', serif;
+    margin-bottom: 22px;
+    background: var(--navy-700); border: 1px solid var(--line);
+    color: var(--text-dim);
+  }
+
+  h1 {
+    font-family: 'Gowun Batang', serif;
+    font-size: clamp(26px, 4.6vw, 36px);
+    line-height: 1.25; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  p.lead { font-size: 16px; color: var(--text-dim); }
+
+  .reason {
+    margin-top: 26px;
+    background: var(--card); border: 1px solid var(--line);
+    border-left: 3px solid var(--mango);
+    border-radius: var(--radius); padding: 22px 24px;
+  }
+  .reason h2 {
+    font-size: 15px; font-weight: 600; color: var(--mango-soft);
+    margin-bottom: 8px;
+  }
+  .reason p { font-size: 14.8px; color: var(--text); }
+  .reason p.sub { margin-top: 8px; font-size: 13.8px; color: var(--text-dim); }
+
+  .detail {
+    margin-top: 22px;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .detail .d-head {
+    padding: 15px 22px; border-bottom: 1px solid var(--line);
+    background: var(--navy-700);
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-faint); font-weight: 600;
+  }
+  .d-row {
+    display: grid; grid-template-columns: 150px 1fr;
+    border-bottom: 1px solid var(--line);
+  }
+  .d-row:last-child { border-bottom: none; }
+  .d-row .k {
+    padding: 14px 22px; font-size: 13.5px; color: var(--text-dim);
+    font-weight: 500; border-right: 1px solid var(--line);
+    background: rgba(26,39,66,0.4);
+  }
+  .d-row .v {
+    padding: 14px 22px; font-size: 14px; color: var(--text);
+    word-break: break-all;
+  }
+  .d-row .v.mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+  }
+
+  .note {
+    margin-top: 22px;
+    background: var(--navy-800); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 20px 22px;
+  }
+  .note p { font-size: 14px; color: var(--text-dim); }
+  .note p + p { margin-top: 8px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 22px; border-radius: 11px;
+    font-size: 14.5px; font-weight: 600;
+    transition: transform .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--mango), var(--mango-deep));
+    color: var(--navy-900);
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); background: var(--navy-800); }
+  .btn-ghost:hover { border-color: var(--mango); color: var(--mango-soft); }
+
+  footer {
+    padding: 40px 0 40px; background: var(--navy-800);
+    border-top: 1px solid var(--line);
+  }
+  .foot-links {
+    display: flex; flex-wrap: wrap; gap: 10px 24px;
+    font-size: 13.5px; color: var(--text-dim); margin-bottom: 18px;
+  }
+  .foot-links a:hover { color: var(--mango-soft); }
+  .foot-bottom {
+    padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: 12.5px; color: var(--text-faint);
+  }
+
+  @media (max-width: 640px) {
+    main { padding: 40px 0 56px; }
+    .d-row { grid-template-columns: 1fr; }
+    .d-row .k { border-right: none; border-bottom: 1px solid var(--line); padding: 11px 18px; }
+    .d-row .v { padding: 11px 18px; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/mangox/">
+      <span class="dot">M</span>
+      Mango<span class="tag">X</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="result-mark" id="resultMark">!</div>
+
+    <h1>결제가 완료되지 않았습니다</h1>
+    <p class="lead" id="resultLead">
+      결제가 정상적으로 처리되지 않았습니다. 결제 금액은 청구되지 않습니다.
+    </p>
+
+    <div class="reason">
+      <h2 id="reasonTitle">결제 진행 상태</h2>
+      <p id="reasonBody">결제가 완료되지 않았습니다.</p>
+      <p class="sub" id="reasonHint">다시 시도하시려면 아래 다시 결제하기를 눌러 주세요.</p>
+    </div>
+
+    <div class="detail">
+      <div class="d-head">참고 정보</div>
+      <div class="d-row">
+        <div class="k">상품명</div>
+        <div class="v">MangoX Night View Basic</div>
+      </div>
+      <div class="d-row" id="rowOrderId" hidden>
+        <div class="k">주문번호</div>
+        <div class="v mono" id="fieldOrderId">—</div>
+      </div>
+      <div class="d-row">
+        <div class="k">처리 코드</div>
+        <div class="v mono" id="fieldCode">—</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <p>같은 문제가 반복되는 경우 다른 카드로 시도하시거나 카드사에 승인 가능 여부를 확인해 주세요.</p>
+      <p>
+        문의 · <a href="mailto:netai@netai.co.kr" style="color:var(--mango-soft)">netai@netai.co.kr</a>
+        · <a href="tel:032-264-4984" style="color:var(--mango-soft)">032-264-4984</a>
+      </p>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="/checkout/night-view-basic/">다시 결제하기</a>
+      <a class="btn btn-ghost" href="/mangox/#product">MangoX 이용권 안내로 돌아가기</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="/mangox/">서비스 안내</a>
+      <a href="/mangox/#product">이용권 안내</a>
+      <a href="/refund-policy/">환불 및 취소 정책</a>
+      <a href="https://www.mangox.app/legal/terms">이용약관</a>
+      <a href="https://www.mangox.app/legal/privacy">개인정보처리방침</a>
+    </div>
+    <div class="foot-bottom">
+      주식회사 넷아이 · 대표 이상민 · 사업자등록번호 467-86-03112 · © 2026 NetAI Co., Ltd.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---------------------------------------------------------------------------
+  // MANGOX-TOSS-NIGHT-VIEW-BASIC-WEB-CHECKOUT-SHELL-1A — failUrl 정적 결과 화면.
+  //
+  // 쿼리로 전달되는 code / message / orderId 를 사용자 친화적으로만 표시한다.
+  //   - 스택 트레이스, 내부 진단 문자열, 원본 오류 덤프를 노출하지 않는다.
+  //   - 사용자가 직접 취소한 경우는 오류가 아니라 정상 상태로 안내한다.
+  //   - 모든 쿼리 문자열은 textContent 로만 출력한다 (HTML 로 해석하지 않는다).
+  // ---------------------------------------------------------------------------
+
+  var params = new URLSearchParams(window.location.search);
+  var code = (params.get('code') || '').trim();
+  var message = (params.get('message') || '').trim();
+  var orderId = (params.get('orderId') || '').trim();
+
+  // 토스 오류 코드 → 사용자 안내 문구. 미등록 코드는 일반 안내로 처리한다.
+  var FRIENDLY = {
+    PAY_PROCESS_CANCELED: {
+      title: '결제를 취소하셨습니다',
+      body: '결제 창에서 결제를 취소하셨습니다. 결제 금액은 청구되지 않습니다.',
+      hint: '계속 구매하시려면 다시 결제하기를 눌러 주세요.',
+      canceled: true
+    },
+    USER_CANCEL: {
+      title: '결제를 취소하셨습니다',
+      body: '결제 창에서 결제를 취소하셨습니다. 결제 금액은 청구되지 않습니다.',
+      hint: '계속 구매하시려면 다시 결제하기를 눌러 주세요.',
+      canceled: true
+    },
+    PAY_PROCESS_ABORTED: {
+      title: '결제가 중단되었습니다',
+      body: '결제 진행 중 처리가 중단되어 결제가 완료되지 않았습니다.',
+      hint: '잠시 후 다시 시도해 주세요.'
+    },
+    REJECT_CARD_COMPANY: {
+      title: '카드사에서 결제가 거절되었습니다',
+      body: '카드사 승인이 이루어지지 않아 결제가 완료되지 않았습니다.',
+      hint: '카드 한도·사용 가능 여부를 확인하시거나 다른 카드로 시도해 주세요.'
+    },
+    INVALID_CARD_EXPIRATION: {
+      title: '카드 정보를 다시 확인해 주세요',
+      body: '입력하신 카드 유효기간 정보가 올바르지 않아 결제가 완료되지 않았습니다.',
+      hint: '카드 정보를 확인한 뒤 다시 시도해 주세요.'
+    },
+    EXCEED_MAX_CARD_INSTALLMENT_PLAN: {
+      title: '선택하신 할부 개월 수를 사용할 수 없습니다',
+      body: '해당 카드에서 지원하지 않는 할부 조건이라 결제가 완료되지 않았습니다.',
+      hint: '일시불 또는 다른 할부 개월 수로 다시 시도해 주세요.'
+    }
+  };
+
+  var known = Object.prototype.hasOwnProperty.call(FRIENDLY, code)
+    ? FRIENDLY[code]
+    : null;
+
+  var titleEl = document.getElementById('reasonTitle');
+  var bodyEl = document.getElementById('reasonBody');
+  var hintEl = document.getElementById('reasonHint');
+
+  if (known) {
+    titleEl.textContent = known.title;
+    bodyEl.textContent = known.body;
+    hintEl.textContent = known.hint;
+    if (known.canceled) {
+      // 사용자 취소는 장애가 아니다. 오류 톤으로 표시하지 않는다.
+      document.getElementById('resultMark').textContent = '↺';
+      document.getElementById('resultLead').textContent =
+        '결제가 취소되어 완료되지 않았습니다. 결제 금액은 청구되지 않습니다.';
+    }
+  } else {
+    titleEl.textContent = '결제를 완료하지 못했습니다';
+    // 토스가 내려주는 안내 메시지는 사용자용 문구이므로 그대로 노출하되,
+    // 길이를 제한하고 문자열로만 출력한다.
+    bodyEl.textContent = message
+      ? message.slice(0, 200)
+      : '결제 처리 중 문제가 발생하여 결제가 완료되지 않았습니다.';
+    hintEl.textContent = '잠시 후 다시 시도해 주시고, 같은 문제가 반복되면 고객지원으로 문의해 주세요.';
+  }
+
+  document.getElementById('fieldCode').textContent = code || '확인되지 않음';
+
+  if (orderId) {
+    document.getElementById('rowOrderId').hidden = false;
+    document.getElementById('fieldOrderId').textContent = orderId;
+  }
+})();
+</script>
+
+</body>
+</html>
