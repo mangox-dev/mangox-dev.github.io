@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--
+  /invite/ - the friend-invite landing with NO token in the path.
+  /invite/<token> has no file of its own: GitHub Pages serves /404.html for it
+  at the original URL, and /404.html loads the same script. See invite.js for
+  the URL contract and for what this page never does with the token.
+-->
+<title>MangoX — Friend invite</title>
+<meta name="description" content="A MangoX friend invite link. Keep the link; the invite is confirmed in the MangoX app." />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="referrer" content="no-referrer" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'" />
+<meta name="theme-color" content="#07060b" />
+<meta property="og:site_name" content="MangoX" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MangoX — Friend invite" />
+<meta property="og:description" content="A MangoX friend invite link. Keep the link; the invite is confirmed in the MangoX app." />
+<link rel="canonical" href="https://www.mangox.app/invite/" />
+<link rel="stylesheet" href="/invite/invite.css" />
+</head>
+<body>
+<div class="glowbg"></div>
+<div id="mx-app"></div>
+<noscript>
+  <p>MangoX — this page needs JavaScript to show a friend invite. You can still get the app on
+  <a href="https://play.google.com/store/apps/details?id=app.mangox.android" rel="noopener noreferrer">Google Play</a>.
+  Please keep your invite link; the invite is confirmed in the MangoX app. <a href="/">MangoX home</a></p>
+</noscript>
+<script src="/invite/invite.js"></script>
+</body>
+</html>

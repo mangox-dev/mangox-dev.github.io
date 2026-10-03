@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--
+  GitHub Pages serves this file, at the ORIGINAL URL, for every path that has
+  no file. It has two jobs, decided by the path alone in /invite/invite.js:
+
+    /invite/<token>   the friend-invite landing (the token stays in the path;
+                      there is no redirect, so refresh / copy / paste keep it)
+    anything else     a plain "page not found" with a link home
+
+  The referrer policy and the Content-Security-Policy below are deliberate: the
+  invite token is in the URL, so this page sends no Referer when a store link
+  is followed and can make no network request at all.
+-->
+<title>MangoX</title>
+<meta name="description" content="MangoX — Venue-Based Nightlife Platform. Operated by NetAI." />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="referrer" content="no-referrer" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'" />
+<meta name="theme-color" content="#07060b" />
+<meta property="og:site_name" content="MangoX" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MangoX" />
+<meta property="og:description" content="MangoX — Venue-Based Nightlife Platform. Operated by NetAI." />
+<link rel="stylesheet" href="/invite/invite.css" />
+</head>
+<body>
+<div class="glowbg"></div>
+<div id="mx-app"></div>
+<noscript>
+  <p>MangoX — this page needs JavaScript to show a friend invite. You can still get the app on
+  <a href="https://play.google.com/store/apps/details?id=app.mangox.android" rel="noopener noreferrer">Google Play</a>.
+  Please keep your invite link; the invite is confirmed in the MangoX app. <a href="/">MangoX home</a></p>
+</noscript>
+<script src="/invite/invite.js"></script>
+</body>
+</html>
