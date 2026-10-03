@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.mangox.android",
+      "sha256_cert_fingerprints": [
+        "C1:36:A5:D6:1F:09:57:63:CD:4B:67:61:9E:92:79:FD:2B:DC:5A:0A:DA:6E:F5:E1:1D:C2:82:1B:91:A5:D8:F8"
+      ]
+    }
+  }
+]
