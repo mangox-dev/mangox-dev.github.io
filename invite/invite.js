@@ -13,9 +13,10 @@
  *   <token> = referral_links.public_token = 24 characters of [A-Za-z0-9_-]
  *
  * WHAT THIS PAGE DOES WITH THE TOKEN
- *   Reads it from the path, checks its SHAPE, shows it back and lets the
- *   visitor copy it. Nothing else. The token is opaque: it is not decoded, and
- *   who the inviter is cannot be derived from it here.
+ *   Reads it from the path, checks its SHAPE, shows it back, lets the visitor
+ *   copy it, and hands it to Google Play as the install referrer of the store
+ *   link (see playStoreUrl). Nothing else. The token is opaque: it is not
+ *   decoded, and who the inviter is cannot be derived from it here.
  *
  * WHAT THIS PAGE NEVER DOES
  *   No network request of any kind (the page's Content-Security-Policy forbids
@@ -42,6 +43,29 @@
     "https://play.google.com/store/apps/details?id=app.mangox.android";
   // The iOS app has no public App Store page yet. Set this when it does.
   var APP_STORE_URL = null;
+
+  // Play Install Referrer parameter the Android app reads (same name as
+  // ReferralInviteContract.INSTALL_REFERRER_PARAM in the app).
+  var INSTALL_REFERRER_PARAM = "mx_invite";
+
+  /**
+   * The Google Play link for this page.
+   *
+   * With a well-formed token the link carries referrer=mx_invite=<token>
+   * (serialised as referrer=mx_invite%3D<token>), so an install that starts
+   * here keeps the invite: Play hands that string to the app's Install
+   * Referrer reader on first launch. Anything else - no token, a malformed
+   * one - gets the plain store link. The destination and the package are
+   * fixed; only the token ever varies.
+   */
+  function playStoreUrl(token) {
+    if (typeof token !== "string" || !TOKEN_PATTERN.test(token)) {
+      return GOOGLE_PLAY_URL;
+    }
+    var url = new URL(GOOGLE_PLAY_URL);
+    url.searchParams.set("referrer", INSTALL_REFERRER_PARAM + "=" + token);
+    return url.toString();
+  }
 
   /**
    * kind: "not_invite"  the path is not under /invite (plain 404)
@@ -223,6 +247,7 @@
     root.MangoXInvite = {
       classify: classify,
       pickLang: pickLang,
+      playStoreUrl: playStoreUrl,
       TOKEN_PATTERN: TOKEN_PATTERN,
       CANONICAL_INVITE_URL_PREFIX: CANONICAL_INVITE_URL_PREFIX,
       GOOGLE_PLAY_URL: GOOGLE_PLAY_URL,
@@ -289,10 +314,10 @@
     return field;
   }
 
-  function storeButtons(t) {
+  function storeButtons(t, token) {
     var box = el("div", "stores");
     var play = el("a", "store primary", t.play);
-    play.href = GOOGLE_PLAY_URL;
+    play.href = playStoreUrl(token);
     play.rel = "noopener noreferrer";
     var apple;
     if (APP_STORE_URL) {
@@ -379,7 +404,7 @@
       }
 
       var get = card(t.getApp);
-      get.appendChild(storeButtons(t));
+      get.appendChild(storeButtons(t, state.token));
       wrap.appendChild(get);
 
       if (state.kind === "well_formed") {
