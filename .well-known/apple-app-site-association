@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "7KH2CXG5U4.app.mangox.ios"
+        ],
+        "components": [
+          {
+            "/": "/invite/????????????????????????",
+            "comment": "MangoX referral invite token"
+          },
+          {
+            "/": "/invite/????????????????????????/",
+            "comment": "MangoX referral invite token with trailing slash"
+          }
+        ]
+      }
+    ]
+  }
+}
