@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/invite/:token([A-Za-z0-9_-]{24})",
+      "destination": "/invite/index.html"
+    },
+    {
+      "source": "/invite/:token([A-Za-z0-9_-]{24})/",
+      "destination": "/invite/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [{ "key": "Content-Type", "value": "application/json" }]
+    }
+  ]
+}
