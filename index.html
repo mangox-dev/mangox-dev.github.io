@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MangoX — Venue-Based Nightlife Platform</title>
-<meta name="description" content="MangoX is a nightlife ranking and venue participation platform for adults, owned and operated by NetAI." />
+<meta name="description" content="MangoX is a venue-based social app for adults at supported nightlife clubs, owned and operated by NetAI." />
 <meta property="og:title" content="MangoX — Venue-Based Nightlife Platform" />
-<meta property="og:description" content="Nightlife ranking experiences designed for real venues. Operated by NetAI." />
+<meta property="og:description" content="Nights out in Pattaya — check in at supported clubs, show interest, and connect on LINE when it’s mutual. Operated by NetAI." />
 <meta property="og:type" content="website" />
 <style>
   :root{
@@ -103,6 +103,9 @@
   .bar{flex:1;height:8px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;}
   .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));}
   .sc{font-size:11px;font-weight:700;color:var(--muted);width:30px;text-align:right;}
+  .scr-sub{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--muted);margin:-4px 0 14px;}
+  .roster{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;justify-items:center;padding:6px 0;}
+  .roster .av{width:52px;height:52px;}
   .spot{margin-top:13px;padding:11px;border-radius:14px;border:1px solid var(--line);
     background:linear-gradient(135deg,rgba(245,166,35,.16),rgba(124,58,237,.16));}
   .spot .l{font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--gold2);}
@@ -245,8 +248,8 @@
     <div class="reveal in">
       <p class="sub" data-i18n="hero.sub">Venue-Based Nightlife Platform</p>
       <h1>MangoX</h1>
-      <div class="triad"><span data-i18n="hero.t1">Discover.</span><span data-i18n="hero.t2">Watch.</span><span data-i18n="hero.t3">Play.</span></div>
-      <p class="tag" data-i18n="hero.tag">Nightlife ranking experiences designed for real venues.</p>
+      <div class="triad"><span data-i18n="hero.t1">Discover.</span><span data-i18n="hero.t2">Watch.</span><span data-i18n="hero.t3">Connect.</span></div>
+      <p class="tag" data-i18n="hero.tag">Nights out in Pattaya — check in at supported clubs, show interest, and connect on LINE when it’s mutual.</p>
       <div class="stores" id="get">
         <a class="store primary" href="#" aria-label="Download on the App Store">App Store</a>
         <span class="store soon" data-i18n="hero.gplay">Google Play — Coming Soon</span>
@@ -258,15 +261,9 @@
         <div class="notch"></div>
         <div class="scr-pad">
           <div class="scr-top"><span class="v">Hollywood Pattaya</span><span class="live">LIVE</span></div>
-          <div class="scr-h">Live Ranking · Session A</div>
-          <div class="rrow"><span class="rk">1</span><span class="av"></span><span class="bar"><i style="width:94%"></i></span><span class="sc">980</span></div>
-          <div class="rrow"><span class="rk">2</span><span class="av b"></span><span class="bar"><i style="width:78%"></i></span><span class="sc">812</span></div>
-          <div class="rrow"><span class="rk">3</span><span class="av c"></span><span class="bar"><i style="width:61%"></i></span><span class="sc">640</span></div>
-          <div class="rrow"><span class="rk">4</span><span class="av"></span><span class="bar"><i style="width:47%"></i></span><span class="sc">498</span></div>
-          <div class="spot">
-            <div class="l">SESSION SPOTLIGHT</div>
-            <div class="d"><span class="av b"></span><span class="bar"><i style="width:100%"></i></span></div>
-          </div>
+          <div class="scr-h">Tonight · Session A</div>
+          <div class="scr-sub">LIVE NOW · 4 in venue</div>
+          <div class="roster"><span class="av"></span><span class="av b"></span><span class="av c"></span><span class="av"></span></div>
         </div>
       </div></div>
     </div>
@@ -278,10 +275,10 @@
   <div class="wrap">
     <div class="reveal"><div class="eyebrow" data-i18n="how.eb">How MangoX works</div>
     <h2 data-i18n="how.h2">Three steps inside the venue.</h2>
-    <p class="lead" data-i18n="how.lead">A simple loop built for a real night out — check in on location, join the live ranking, and connect only when interest is mutual.</p></div>
+    <p class="lead" data-i18n="how.lead">A simple loop built for a real night out — check in on location, show interest in people you like, and connect only when interest is mutual.</p></div>
     <div class="steps">
       <div class="step reveal"><div class="k">STEP 01</div><div class="ic">📍</div><h3 data-i18n="how.s1h">Check In</h3><p data-i18n="how.s1p">Arrive at a participating venue and check in on location to enter the night's session.</p></div>
-      <div class="step reveal"><div class="k">STEP 02</div><div class="ic">⭐</div><h3 data-i18n="how.s2h">Play</h3><p data-i18n="how.s2p">Join the live ranking with Hearts, Pick3, and Spotlight as the room competes.</p></div>
+      <div class="step reveal"><div class="k">STEP 02</div><div class="ic">⭐</div><h3 data-i18n="how.s2h">Connect</h3><p data-i18n="how.s2p">Send Hearts, Star and Pick3 to people you're interested in. They are private signals between the two of you.</p></div>
       <div class="step reveal"><div class="k">STEP 03</div><div class="ic">🔗</div><h3 data-i18n="how.s3h">Connect</h3><p data-i18n="how.s3p">A connection becomes available only after mutual interest — never before.</p></div>
     </div>
     <p class="note reveal" data-i18n-html="how.note"><strong>No in-app chat.</strong><br>Connections are available only after mutual interest.</p>
@@ -293,13 +290,13 @@
   <div class="wrap">
     <div class="reveal"><div class="eyebrow" data-i18n="tl.eb">The night, hour by hour</div>
     <h2 data-i18n="tl.h2">One venue. One night. Five moments.</h2>
-    <p class="lead" data-i18n="tl.lead">MangoX runs on the venue's own clock — from doors open to final results before close.</p></div>
+    <p class="lead" data-i18n="tl.lead">MangoX runs on the venue's own clock — from the start of the Night session to its end.</p></div>
     <div class="tl">
       <div class="tl-row reveal"><div class="t">21:00</div><div class="e" data-i18n="tl.e1">Check In</div><div class="d" data-i18n="tl.d1">Doors open. Guests check in and the session begins.</div></div>
-      <div class="tl-row reveal"><div class="t">22:00</div><div class="e" data-i18n="tl.e2">Ranking Begins</div><div class="d" data-i18n="tl.d2">Live ranking goes active — Hearts, Pick3, and Spotlight in play.</div></div>
+      <div class="tl-row reveal"><div class="t">22:00</div><div class="e" data-i18n="tl.e2">Session live</div><div class="d" data-i18n="tl.d2">Hearts, Star and Pick3 open inside the club.</div></div>
       <div class="tl-row reveal"><div class="t">00:00</div><div class="e" data-i18n="tl.e3">Session B</div><div class="d" data-i18n="tl.d3">The room resets into the next session as the night peaks.</div></div>
-      <div class="tl-row reveal"><div class="t">02:00</div><div class="e" data-i18n="tl.e4">Session C</div><div class="d" data-i18n="tl.d4">Final session — standings tighten before last call.</div></div>
-      <div class="tl-row reveal"><div class="t">04:00</div><div class="e" data-i18n="tl.e5">Results</div><div class="d" data-i18n="tl.d5">The night closes and results are revealed.</div></div>
+      <div class="tl-row reveal"><div class="t">02:00</div><div class="e" data-i18n="tl.e4">Session C</div><div class="d" data-i18n="tl.d4">Final session — last chance to connect before close.</div></div>
+      <div class="tl-row reveal"><div class="t">04:00</div><div class="e" data-i18n="tl.e5">Night session ends</div><div class="d" data-i18n="tl.d5">The night session ends.</div></div>
     </div>
   </div>
 </section>
@@ -310,12 +307,12 @@
     <div class="reveal"><div class="eyebrow" data-i18n="fe.eb">What's inside</div>
     <h2 data-i18n="fe.h2">Built for the room.</h2></div>
     <div class="feat">
-      <div class="fc reveal"><div class="e">🔥</div><h4 data-i18n="fe.f1h">Live Ranking</h4><p data-i18n="fe.f1p">Real-time standings that move with the room all night.</p></div>
-      <div class="fc reveal"><div class="e">⭐</div><h4 data-i18n="fe.f2h">Spotlight</h4><p data-i18n="fe.f2p">The session's featured highlight, front and center.</p></div>
+      <div class="fc reveal"><div class="e">👥</div><h4 data-i18n="fe.f1h">Live roster</h4><p data-i18n="fe.f1p">See who is taking part tonight, in no particular order.</p></div>
+      <div class="fc reveal"><div class="e">⭐</div><h4 data-i18n="fe.f2h">Seat map</h4><p data-i18n="fe.f2p">Pick your zone so others in the club know where you are.</p></div>
       <div class="fc reveal"><div class="e">👀</div><h4 data-i18n="fe.f3h">Viewer Mode</h4><p data-i18n="fe.f3p">Watch the night unfold from anywhere — privately.</p></div>
-      <div class="fc reveal"><div class="e">🎯</div><h4 data-i18n="fe.f4h">Pick3</h4><p data-i18n="fe.f4p">Choose your three and back them through the night.</p></div>
+      <div class="fc reveal"><div class="e">🎯</div><h4 data-i18n="fe.f4h">Pick3</h4><p data-i18n="fe.f4p">Choose up to three people you're most interested in tonight — a private signal to each of them.</p></div>
       <div class="fc reveal"><div class="e">❤️</div><h4 data-i18n="fe.f5h">Hearts</h4><p data-i18n="fe.f5p">Send interest quietly — revealed only on a mutual match.</p></div>
-      <div class="fc reveal"><div class="e">🏆</div><h4 data-i18n="fe.f6h">Results</h4><p data-i18n="fe.f6p">End-of-night standings and session winners.</p></div>
+      <div class="fc reveal"><div class="e">🌅</div><h4 data-i18n="fe.f6h">Day View</h4><p data-i18n="fe.f6p">During the day, see some of last night's members at a club you choose (view only).</p></div>
     </div>
   </div>
 </section>
@@ -324,20 +321,19 @@
 <section id="viewer">
   <div class="wrap">
     <div class="reveal"><div class="eyebrow" data-i18n="vm.eb">Viewer Mode</div>
-    <h2 data-i18n="vm.h2">Watch, or play. Your choice.</h2>
-    <p class="lead" data-i18n="vm.lead">Anyone can follow the night. Only checked-in players are ranked and visible in the room.</p></div>
+    <h2 data-i18n="vm.h2">Watch, or take part. Your choice.</h2>
+    <p class="lead" data-i18n="vm.lead">Anyone can follow the night with View Mode. Only checked-in members can take part in the room.</p></div>
     <div class="cmp reveal">
       <div class="cmp-head">
-        <div data-i18n="vm.cap">Capability</div><div class="col" data-i18n="vm.viewer">Viewer</div><div class="col" data-i18n="vm.vip">VIP Viewer</div><div class="col" data-i18n="vm.player">Player</div>
+        <div data-i18n="vm.cap">Capability</div><div class="col" data-i18n="vm.viewer">View Mode Basic</div><div class="col" data-i18n="vm.vip">View Mode Plus</div><div class="col" data-i18n="vm.player">Play Pass</div>
       </div>
-      <div class="cmp-row"><div class="cap" data-i18n="vm.r1">View live rankings</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap" data-i18n="vm.r2">See Spotlight & Hot Now</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap" data-i18n="vm.r3">VIP highlights & priority view</div><div class="cell no">–</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap" data-i18n="vm.r4">Ranked in the venue</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap" data-i18n="vm.r5">Send Hearts & Pick3</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
-      <div class="cmp-row"><div class="cap" data-i18n="vm.r6">Anonymous to participants</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell no">–</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r1">See tonight's members</div><div class="cell yes">✓</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r2">Larger profile photos</div><div class="cell no">–</div><div class="cell yes">✓</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r3">Seat map</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r4">Take part inside the club</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
+      <div class="cmp-row"><div class="cap" data-i18n="vm.r5">Send Hearts, Star &amp; Pick3</div><div class="cell no">–</div><div class="cell no">–</div><div class="cell yes">✓</div></div>
     </div>
-    <p class="cmp-note reveal" data-i18n="vm.note">Participants cannot see who is watching.</p>
+    <p class="cmp-note reveal" data-i18n="vm.note">Participants don't see a list of who is viewing.</p>
   </div>
 </section>
 
@@ -381,8 +377,8 @@
       <div class="eyebrow" style="justify-content:center;" data-i18n="ab.eb">About the operator</div>
       <div class="net">NetAI</div>
       <div class="meta"><span data-i18n="ab.m1">South Korea</span><span data-i18n="ab.m2">Technology Company</span><span data-i18n="ab.m3">Operator of MangoX</span></div>
-      <p data-i18n="ab.net">NetAI is a South Korea-based technology company building digital platforms for venue-based entertainment, ranking experiences, and real-world social participation.</p>
-      <p data-i18n="ab.p1">MangoX is a nightlife ranking and venue participation platform for adults.</p>
+      <p data-i18n="ab.net">NetAI is a South Korea-based technology company building digital platforms for venue-based entertainment and real-world social participation.</p>
+      <p data-i18n="ab.p1">MangoX is a venue-based social app for adults at supported nightlife clubs.</p>
       <p class="own" data-i18n="ab.own">MangoX is a product and service owned and operated by NetAI.</p>
       <p style="color:var(--muted);" data-i18n="ab.p3">Operated from South Korea.</p>
     </div>
@@ -414,138 +410,138 @@
   var I18N = {
     en:{
       "nav.how":"How it works","nav.night":"The night","nav.venues":"Venues","nav.safety":"Safety","nav.cta":"Get the app",
-      "hero.sub":"Venue-Based Nightlife Platform","hero.t1":"Discover.","hero.t2":"Watch.","hero.t3":"Play.",
-      "hero.tag":"Nightlife ranking experiences designed for real venues.","hero.gplay":"Google Play — Coming Soon","hero.adults":"Adults Only",
-      "how.eb":"How MangoX works","how.h2":"Three steps inside the venue.","how.lead":"A simple loop built for a real night out — check in on location, join the live ranking, and connect only when interest is mutual.",
+      "hero.sub":"Venue-Based Nightlife Platform","hero.t1":"Discover.","hero.t2":"Watch.","hero.t3":"Connect.",
+      "hero.tag":"Nights out in Pattaya — check in at supported clubs, show interest, and connect on LINE when it’s mutual.","hero.gplay":"Google Play — Coming Soon","hero.adults":"Adults Only",
+      "how.eb":"How MangoX works","how.h2":"Three steps inside the venue.","how.lead":"A simple loop built for a real night out — check in on location, show interest in people you like, and connect only when interest is mutual.",
       "how.s1h":"Check In","how.s1p":"Arrive at a participating venue and check in on location to enter the night's session.",
-      "how.s2h":"Play","how.s2p":"Join the live ranking with Hearts, Pick3, and Spotlight as the room competes.",
+      "how.s2h":"Connect","how.s2p":"Send Hearts, Star and Pick3 to people you're interested in. They are private signals between the two of you.",
       "how.s3h":"Connect","how.s3p":"A connection becomes available only after mutual interest — never before.",
       "how.note":"<strong>No in-app chat.</strong><br>Connections are available only after mutual interest.",
-      "tl.eb":"The night, hour by hour","tl.h2":"One venue. One night. Five moments.","tl.lead":"MangoX runs on the venue's own clock — from doors open to final results before close.",
+      "tl.eb":"The night, hour by hour","tl.h2":"One venue. One night. Five moments.","tl.lead":"MangoX runs on the venue's own clock — from the start of the Night session to its end.",
       "tl.e1":"Check In","tl.d1":"Doors open. Guests check in and the session begins.",
-      "tl.e2":"Ranking Begins","tl.d2":"Live ranking goes active — Hearts, Pick3, and Spotlight in play.",
+      "tl.e2":"Session live","tl.d2":"Hearts, Star and Pick3 open inside the club.",
       "tl.e3":"Session B","tl.d3":"The room resets into the next session as the night peaks.",
-      "tl.e4":"Session C","tl.d4":"Final session — standings tighten before last call.",
-      "tl.e5":"Results","tl.d5":"The night closes and results are revealed.",
+      "tl.e4":"Session C","tl.d4":"Final session — last chance to connect before close.",
+      "tl.e5":"Night session ends","tl.d5":"The night session ends.",
       "fe.eb":"What's inside","fe.h2":"Built for the room.",
-      "fe.f1h":"Live Ranking","fe.f1p":"Real-time standings that move with the room all night.",
-      "fe.f2h":"Spotlight","fe.f2p":"The session's featured highlight, front and center.",
+      "fe.f1h":"Live roster","fe.f1p":"See who is taking part tonight, in no particular order.",
+      "fe.f2h":"Seat map","fe.f2p":"Pick your zone so others in the club know where you are.",
       "fe.f3h":"Viewer Mode","fe.f3p":"Watch the night unfold from anywhere — privately.",
-      "fe.f4h":"Pick3","fe.f4p":"Choose your three and back them through the night.",
+      "fe.f4h":"Pick3","fe.f4p":"Choose up to three people you're most interested in tonight — a private signal to each of them.",
       "fe.f5h":"Hearts","fe.f5p":"Send interest quietly — revealed only on a mutual match.",
-      "fe.f6h":"Results","fe.f6p":"End-of-night standings and session winners.",
-      "vm.eb":"Viewer Mode","vm.h2":"Watch, or play. Your choice.","vm.lead":"Anyone can follow the night. Only checked-in players are ranked and visible in the room.",
-      "vm.cap":"Capability","vm.viewer":"Viewer","vm.vip":"VIP Viewer","vm.player":"Player",
-      "vm.r1":"View live rankings","vm.r2":"See Spotlight & Hot Now","vm.r3":"VIP highlights & priority view","vm.r4":"Ranked in the venue","vm.r5":"Send Hearts & Pick3","vm.r6":"Anonymous to participants",
-      "vm.note":"Participants cannot see who is watching.",
+      "fe.f6h":"Day View","fe.f6p":"During the day, see some of last night's members at a club you choose (view only).",
+      "vm.eb":"Viewer Mode","vm.h2":"Watch, or take part. Your choice.","vm.lead":"Anyone can follow the night with View Mode. Only checked-in members can take part in the room.",
+      "vm.cap":"Capability","vm.viewer":"View Mode Basic","vm.vip":"View Mode Plus","vm.player":"Play Pass",
+      "vm.r1":"See tonight's members","vm.r2":"Larger profile photos","vm.r3":"Seat map","vm.r4":"Take part inside the club","vm.r5":"Send Hearts, Star & Pick3",
+      "vm.note":"Participants don't see a list of who is viewing.",
       "vn.eb":"Multi-venue platform","vn.h2":"One platform. Multiple nightlife venues.","vn.v1s":"Pattaya, Thailand","vn.v2s":"Nightlife venue","vn.live":"LIVE","vn.tag":"More partner venues joining through 2026.",
       "sf.eb":"Safety & privacy","sf.h2":"Designed with boundaries in mind.","sf.lead":"MangoX keeps interaction structured and private by design.",
       "sf.s1":"No in-app chat","sf.s3":"Mutual interest required","sf.s4":"Viewer privacy protected","sf.s5":"Real Venue Experience",
       "sf.foot":"Adults only · Connections handled through external services after mutual interest.",
       "ab.eb":"About the operator","ab.m1":"South Korea","ab.m2":"Technology Company","ab.m3":"Operator of MangoX",
-      "ab.net":"NetAI is a South Korea-based technology company building digital platforms for venue-based entertainment, ranking experiences, and real-world social participation.","ab.p1":"MangoX is a nightlife ranking and venue participation platform for adults.","ab.own":"MangoX is a product and service owned and operated by NetAI.","ab.p3":"Operated from South Korea.",
+      "ab.net":"NetAI is a South Korea-based technology company building digital platforms for venue-based entertainment and real-world social participation.","ab.p1":"MangoX is a venue-based social app for adults at supported nightlife clubs.","ab.own":"MangoX is a product and service owned and operated by NetAI.","ab.p3":"Operated from South Korea.",
       "fo.op1":"Operated by NetAI","fo.op2":"South Korea","fo.privacy":"Privacy Policy","fo.terms":"Terms of Service","fo.copy":"© 2026 NetAI. MangoX is a product and service owned and operated by NetAI."
     },
     ko:{
       "nav.how":"이용 방법","nav.night":"그날 밤","nav.venues":"참여 클럽","nav.safety":"안전","nav.cta":"앱 받기",
-      "hero.sub":"베뉴 기반 나이트라이프 플랫폼","hero.t1":"발견.","hero.t2":"관전.","hero.t3":"플레이.",
-      "hero.tag":"실제 클럽을 위해 설계된 나이트라이프 랭킹 경험.","hero.gplay":"Google Play — 출시 예정","hero.adults":"성인 전용",
-      "how.eb":"이용 방법","how.h2":"클럽 안에서, 세 단계.","how.lead":"실제로 즐기는 밤을 위한 단순한 흐름 — 현장에서 체크인하고, 실시간 랭킹에 참여하고, 서로 관심이 있을 때만 연결됩니다.",
+      "hero.sub":"베뉴 기반 나이트라이프 플랫폼","hero.t1":"발견.","hero.t2":"관전.","hero.t3":"연결.",
+      "hero.tag":"파타야의 밤 — 지원 클럽에서 체크인하고, 관심을 보내고, 서로 관심이 있으면 LINE으로 연결하세요.","hero.gplay":"Google Play — 출시 예정","hero.adults":"성인 전용",
+      "how.eb":"이용 방법","how.h2":"클럽 안에서, 세 단계.","how.lead":"실제로 즐기는 밤을 위한 단순한 흐름 — 현장에서 체크인하고, 마음에 드는 사람에게 관심을 보내고, 서로 관심이 있을 때만 연결됩니다.",
       "how.s1h":"체크인","how.s1p":"참여 클럽에 도착해 현장에서 체크인하면 그날 밤 세션이 시작됩니다.",
-      "how.s2h":"플레이","how.s2p":"하트, Pick3, 스포트라이트로 실시간 랭킹에 참여하세요.",
+      "how.s2h":"관심 보내기","how.s2p":"관심 있는 사람에게 하트, Star, Pick3를 보내세요. 두 사람 사이의 비공개 신호입니다.",
       "how.s3h":"연결","how.s3p":"서로 관심이 확인된 뒤에만 연결이 열립니다.",
       "how.note":"<strong>앱 내 채팅 없음.</strong><br>연결은 상호 관심이 있을 때만 가능합니다.",
-      "tl.eb":"시간대별로 보는 하룻밤","tl.h2":"한 클럽, 하룻밤, 다섯 순간.","tl.lead":"MangoX는 클럽의 시계에 맞춰 흐릅니다 — 오픈부터 마감 전 결과 발표까지.",
+      "tl.eb":"시간대별로 보는 하룻밤","tl.h2":"한 클럽, 하룻밤, 다섯 순간.","tl.lead":"MangoX는 클럽의 시계에 맞춰 흐릅니다 — 나이트 세션 시작부터 종료까지.",
       "tl.e1":"체크인","tl.d1":"문이 열리고, 게스트가 체크인하며 세션이 시작됩니다.",
-      "tl.e2":"랭킹 시작","tl.d2":"실시간 랭킹이 활성화됩니다 — 하트, Pick3, 스포트라이트.",
+      "tl.e2":"세션 시작","tl.d2":"클럽 안에서 하트, Star, Pick3를 사용할 수 있습니다.",
       "tl.e3":"세션 B","tl.d3":"밤이 무르익으며 다음 세션으로 전환됩니다.",
-      "tl.e4":"세션 C","tl.d4":"마지막 세션 — 마감 전 순위가 좁혀집니다.",
-      "tl.e5":"결과","tl.d5":"밤이 끝나고 결과가 공개됩니다.",
+      "tl.e4":"세션 C","tl.d4":"마지막 세션 — 마감 전 마지막 연결 기회.",
+      "tl.e5":"나이트 세션 종료","tl.d5":"그날 밤의 세션이 끝납니다.",
       "fe.eb":"주요 기능","fe.h2":"현장을 위해 만들었습니다.",
-      "fe.f1h":"라이브 랭킹","fe.f1p":"밤새 현장과 함께 움직이는 실시간 순위.",
-      "fe.f2h":"스포트라이트","fe.f2p":"세션의 하이라이트를 가장 앞에.",
+      "fe.f1h":"라이브 참가자","fe.f1p":"오늘 밤 참여 중인 사람을 순서 구분 없이 확인하세요.",
+      "fe.f2h":"좌석 지도","fe.f2p":"구역을 선택하면 클럽 안의 다른 참가자가 내 위치를 알 수 있습니다.",
       "fe.f3h":"관전 모드","fe.f3p":"어디서든, 조용히 그날 밤을 관전하세요.",
-      "fe.f4h":"Pick3","fe.f4p":"세 명을 골라 밤 내내 응원하세요.",
+      "fe.f4h":"Pick3","fe.f4p":"오늘 밤 가장 관심 있는 사람을 최대 3명까지 고르세요 — 각자에게만 전해지는 비공개 신호입니다.",
       "fe.f5h":"하트","fe.f5p":"조용히 관심을 보내고, 매칭될 때만 공개됩니다.",
-      "fe.f6h":"결과","fe.f6p":"마감 순위와 세션 우승자.",
-      "vm.eb":"관전 모드","vm.h2":"관전하거나, 플레이하거나.","vm.lead":"누구나 그날 밤을 지켜볼 수 있습니다. 체크인한 플레이어만 랭킹에 오르고 현장에 노출됩니다.",
-      "vm.cap":"기능","vm.viewer":"관전자","vm.vip":"VIP 관전자","vm.player":"플레이어",
-      "vm.r1":"라이브 랭킹 보기","vm.r2":"스포트라이트 · Hot Now 보기","vm.r3":"VIP 하이라이트 · 우선 보기","vm.r4":"현장 랭킹 참여","vm.r5":"하트 · Pick3 보내기","vm.r6":"참가자에게 익명",
-      "vm.note":"참가자는 누가 보고 있는지 알 수 없습니다.",
+      "fe.f6h":"Day View","fe.f6p":"낮 시간에 선택한 클럽의 어젯밤 멤버 일부를 볼 수 있습니다(보기 전용).",
+      "vm.eb":"관전 모드","vm.h2":"지켜보거나, 참여하거나.","vm.lead":"누구나 View Mode로 그날 밤을 지켜볼 수 있습니다. 현장에서 체크인한 멤버만 참여할 수 있습니다.",
+      "vm.cap":"기능","vm.viewer":"View Mode Basic","vm.vip":"View Mode Plus","vm.player":"Play Pass",
+      "vm.r1":"오늘 밤 멤버 보기","vm.r2":"프로필 사진 크게 보기","vm.r3":"좌석 지도","vm.r4":"클럽 안에서 참여","vm.r5":"하트 · Star · Pick3 보내기",
+      "vm.note":"참가자에게는 관전자 목록이 표시되지 않습니다.",
       "vn.eb":"멀티 베뉴 플랫폼","vn.h2":"하나의 플랫폼, 여러 나이트라이프 클럽.","vn.v1s":"파타야, 태국","vn.v2s":"나이트라이프 클럽","vn.live":"라이브","vn.tag":"2026년에 더 많은 파트너 클럽이 합류합니다.",
       "sf.eb":"안전과 프라이버시","sf.h2":"경계를 염두에 두고 설계했습니다.","sf.lead":"MangoX는 상호작용을 구조적이고 사적으로 유지합니다.",
       "sf.s1":"앱 내 채팅 없음","sf.s3":"상호 관심 필요","sf.s4":"관전자 프라이버시 보호","sf.s5":"실제 클럽 현장 경험",
       "sf.foot":"성인 전용 · 연결은 상호 관심 후 외부 서비스를 통해 처리됩니다.",
       "ab.eb":"운영사 소개","ab.m1":"대한민국","ab.m2":"기술 기업","ab.m3":"MangoX 운영사",
-      "ab.net":"NetAI는 한국에 기반을 둔 기술 회사로, 오프라인 장소 기반 엔터테인먼트, 랭킹 경험, 그리고 실제 현장 참여형 소셜 플랫폼을 개발합니다.","ab.p1":"MangoX는 성인을 위한 나이트라이프 랭킹·클럽 참여 플랫폼입니다.","ab.own":"MangoX는 NetAI가 소유하고 운영하는 제품 및 서비스입니다.","ab.p3":"대한민국에서 운영됩니다.",
+      "ab.net":"NetAI는 한국에 기반을 둔 기술 회사로, 오프라인 장소 기반 엔터테인먼트와 실제 현장 참여형 소셜 플랫폼을 개발합니다.","ab.p1":"MangoX는 지원 나이트라이프 클럽에서 이용하는 성인 대상 장소 기반 소셜 앱입니다.","ab.own":"MangoX는 NetAI가 소유하고 운영하는 제품 및 서비스입니다.","ab.p3":"대한민국에서 운영됩니다.",
       "fo.op1":"NetAI 운영","fo.op2":"대한민국","fo.privacy":"개인정보처리방침","fo.terms":"이용약관","fo.copy":"© 2026 NetAI. MangoX는 NetAI가 소유하고 운영하는 제품 및 서비스입니다."
     },
     th:{
       "nav.how":"วิธีใช้งาน","nav.night":"ค่ำคืน","nav.venues":"สถานที่","nav.safety":"ความปลอดภัย","nav.cta":"ดาวน์โหลดแอป",
-      "hero.sub":"แพลตฟอร์มไนต์ไลฟ์ประจำสถานที่","hero.t1":"ค้นพบ.","hero.t2":"ชม.","hero.t3":"เล่น.",
-      "hero.tag":"ประสบการณ์จัดอันดับไนต์ไลฟ์ ออกแบบมาเพื่อสถานที่จริง","hero.gplay":"Google Play — เร็ว ๆ นี้","hero.adults":"สำหรับผู้ใหญ่เท่านั้น",
-      "how.eb":"วิธีการทำงานของ MangoX","how.h2":"สามขั้นตอนภายในสถานที่","how.lead":"ขั้นตอนเรียบง่ายสำหรับค่ำคืนจริง — เช็คอินที่สถานที่ ร่วมการจัดอันดับสด และเชื่อมต่อเมื่อทั้งสองฝ่ายสนใจกันเท่านั้น",
+      "hero.sub":"แพลตฟอร์มไนต์ไลฟ์ประจำสถานที่","hero.t1":"ค้นพบ.","hero.t2":"ชม.","hero.t3":"เชื่อมต่อ.",
+      "hero.tag":"ค่ำคืนในพัทยา — เช็คอินที่คลับที่รองรับ ส่งความสนใจ และเชื่อมต่อทาง LINE เมื่อสนใจกันทั้งสองฝ่าย","hero.gplay":"Google Play — เร็ว ๆ นี้","hero.adults":"สำหรับผู้ใหญ่เท่านั้น",
+      "how.eb":"วิธีการทำงานของ MangoX","how.h2":"สามขั้นตอนภายในสถานที่","how.lead":"ขั้นตอนง่าย ๆ สำหรับค่ำคืนจริง — เช็คอินที่สถานที่ ส่งความสนใจให้คนที่คุณชอบ และเชื่อมต่อเมื่อสนใจกันทั้งสองฝ่ายเท่านั้น",
       "how.s1h":"เช็คอิน","how.s1p":"มาถึงสถานที่ที่ร่วมรายการแล้วเช็คอินเพื่อเข้าสู่เซสชันของค่ำคืนนั้น",
-      "how.s2h":"เล่น","how.s2p":"ร่วมการจัดอันดับสดด้วย Hearts, Pick3 และ Spotlight",
+      "how.s2h":"ส่งความสนใจ","how.s2p":"ส่ง Heart, Star และ Pick3 ให้คนที่คุณสนใจ เป็นสัญญาณส่วนตัวระหว่างคุณสองคน",
       "how.s3h":"เชื่อมต่อ","how.s3p":"การเชื่อมต่อจะเปิดเมื่อทั้งสองฝ่ายสนใจกันแล้วเท่านั้น",
       "how.note":"<strong>ไม่มีแชทในแอป</strong><br>การเชื่อมต่อมีให้เมื่อทั้งสองฝ่ายสนใจกันเท่านั้น",
-      "tl.eb":"ค่ำคืน ทีละชั่วโมง","tl.h2":"หนึ่งสถานที่ หนึ่งค่ำคืน ห้าช่วงเวลา","tl.lead":"MangoX ดำเนินตามเวลาของสถานที่ — ตั้งแต่เปิดประตูจนถึงประกาศผลก่อนปิด",
+      "tl.eb":"ค่ำคืน ทีละชั่วโมง","tl.h2":"หนึ่งสถานที่ หนึ่งค่ำคืน ห้าช่วงเวลา","tl.lead":"MangoX ดำเนินตามเวลาของสถานที่ — ตั้งแต่เซสชันกลางคืนเริ่มจนสิ้นสุด",
       "tl.e1":"เช็คอิน","tl.d1":"ประตูเปิด แขกเช็คอินและเซสชันเริ่มต้น",
-      "tl.e2":"เริ่มจัดอันดับ","tl.d2":"การจัดอันดับสดเริ่มทำงาน — Hearts, Pick3, Spotlight",
+      "tl.e2":"เซสชันเริ่ม","tl.d2":"ใช้ Heart, Star และ Pick3 ได้ภายในคลับ",
       "tl.e3":"เซสชัน B","tl.d3":"ห้องรีเซ็ตสู่เซสชันถัดไปเมื่อค่ำคืนถึงจุดพีก",
-      "tl.e4":"เซสชัน C","tl.d4":"เซสชันสุดท้าย — อันดับสูสีก่อนปิด",
-      "tl.e5":"ผลลัพธ์","tl.d5":"ค่ำคืนจบลงและประกาศผล",
+      "tl.e4":"เซสชัน C","tl.d4":"เซสชันสุดท้าย — โอกาสสุดท้ายในการเชื่อมต่อก่อนปิด",
+      "tl.e5":"เซสชันกลางคืนสิ้นสุด","tl.d5":"เซสชันของคืนนี้สิ้นสุดลง",
       "fe.eb":"ฟีเจอร์","fe.h2":"สร้างมาเพื่อห้องนั้น",
-      "fe.f1h":"จัดอันดับสด","fe.f1p":"อันดับเรียลไทม์ที่ขยับไปกับห้องตลอดคืน",
-      "fe.f2h":"Spotlight","fe.f2p":"ไฮไลต์ของเซสชัน อยู่ตรงกลางสายตา",
+      "fe.f1h":"ผู้เข้าร่วมสด","fe.f1p":"ดูว่าใครเข้าร่วมคืนนี้ โดยไม่มีการเรียงลำดับ",
+      "fe.f2h":"ผังที่นั่ง","fe.f2p":"เลือกโซนของคุณเพื่อให้คนในคลับรู้ว่าคุณอยู่ตรงไหน",
       "fe.f3h":"โหมดผู้ชม","fe.f3p":"ชมค่ำคืนได้จากทุกที่ อย่างเป็นส่วนตัว",
-      "fe.f4h":"Pick3","fe.f4p":"เลือกสามคนแล้วเชียร์ตลอดคืน",
+      "fe.f4h":"Pick3","fe.f4p":"เลือกคนที่คุณสนใจที่สุดคืนนี้ได้สูงสุด 3 คน — เป็นสัญญาณส่วนตัวถึงแต่ละคน",
       "fe.f5h":"Hearts","fe.f5p":"ส่งความสนใจอย่างเงียบ ๆ เผยเมื่อตรงกันเท่านั้น",
-      "fe.f6h":"ผลลัพธ์","fe.f6p":"อันดับปิดท้ายและผู้ชนะของเซสชัน",
-      "vm.eb":"โหมดผู้ชม","vm.h2":"จะชมหรือเล่น คุณเลือกได้","vm.lead":"ใครก็ติดตามค่ำคืนได้ มีเพียงผู้เล่นที่เช็คอินเท่านั้นที่ถูกจัดอันดับและปรากฏในห้อง",
-      "vm.cap":"ความสามารถ","vm.viewer":"ผู้ชม","vm.vip":"ผู้ชม VIP","vm.player":"ผู้เล่น",
-      "vm.r1":"ดูการจัดอันดับสด","vm.r2":"ดู Spotlight และ Hot Now","vm.r3":"ไฮไลต์ VIP และการดูแบบลำดับแรก","vm.r4":"ถูกจัดอันดับในสถานที่","vm.r5":"ส่ง Hearts และ Pick3","vm.r6":"ไม่เปิดเผยตัวต่อผู้เข้าร่วม",
-      "vm.note":"ผู้เข้าร่วมไม่สามารถเห็นว่าใครกำลังชมอยู่",
+      "fe.f6h":"Day View","fe.f6p":"ในช่วงกลางวัน ดูสมาชิกบางส่วนของเมื่อคืนในคลับที่คุณเลือก (ดูอย่างเดียว)",
+      "vm.eb":"โหมดผู้ชม","vm.h2":"จะดูหรือเข้าร่วม คุณเลือกได้","vm.lead":"ทุกคนติดตามค่ำคืนได้ด้วย View Mode เฉพาะสมาชิกที่เช็คอินแล้วเท่านั้นที่เข้าร่วมในคลับได้",
+      "vm.cap":"ความสามารถ","vm.viewer":"View Mode Basic","vm.vip":"View Mode Plus","vm.player":"Play Pass",
+      "vm.r1":"ดูสมาชิกคืนนี้","vm.r2":"ดูรูปโปรไฟล์ขนาดใหญ่","vm.r3":"ผังที่นั่ง","vm.r4":"เข้าร่วมภายในคลับ","vm.r5":"ส่ง Heart, Star และ Pick3",
+      "vm.note":"ผู้เข้าร่วมจะไม่เห็นรายชื่อผู้ที่กำลังดูอยู่",
       "vn.eb":"แพลตฟอร์มหลายสถานที่","vn.h2":"หนึ่งแพลตฟอร์ม หลายสถานที่ไนต์ไลฟ์","vn.v1s":"พัทยา ประเทศไทย","vn.v2s":"สถานที่ไนต์ไลฟ์","vn.live":"ไลฟ์","vn.tag":"สถานที่พันธมิตรเพิ่มเติมจะเข้าร่วมตลอดปี 2026",
       "sf.eb":"ความปลอดภัยและความเป็นส่วนตัว","sf.h2":"ออกแบบโดยคำนึงถึงขอบเขต","sf.lead":"MangoX ทำให้การมีปฏิสัมพันธ์เป็นระเบียบและเป็นส่วนตัวด้วยการออกแบบ",
       "sf.s1":"ไม่มีแชทในแอป","sf.s3":"ต้องสนใจตรงกันทั้งสองฝ่าย","sf.s4":"ปกป้องความเป็นส่วนตัวของผู้ชม","sf.s5":"ประสบการณ์ ณ สถานที่จริง",
       "sf.foot":"สำหรับผู้ใหญ่เท่านั้น · การเชื่อมต่อดำเนินผ่านบริการภายนอกหลังจากทั้งสองฝ่ายสนใจกัน",
       "ab.eb":"เกี่ยวกับผู้ให้บริการ","ab.m1":"เกาหลีใต้","ab.m2":"บริษัทเทคโนโลยี","ab.m3":"ผู้ให้บริการ MangoX",
-      "ab.net":"NetAI เป็นบริษัทเทคโนโลยีในประเทศเกาหลีใต้ ที่พัฒนาแพลตฟอร์มดิจิทัลสำหรับความบันเทิงประจำสถานที่ ประสบการณ์การจัดอันดับ และการมีส่วนร่วมทางสังคมในโลกจริง","ab.p1":"MangoX คือแพลตฟอร์มจัดอันดับไนต์ไลฟ์และการเข้าร่วมสถานที่สำหรับผู้ใหญ่","ab.own":"MangoX เป็นผลิตภัณฑ์และบริการที่เป็นเจ้าของและดำเนินการโดย NetAI","ab.p3":"ดำเนินการจากประเทศเกาหลีใต้",
+      "ab.net":"NetAI เป็นบริษัทเทคโนโลยีจากเกาหลีใต้ ที่พัฒนาแพลตฟอร์มดิจิทัลสำหรับความบันเทิงตามสถานที่และการมีส่วนร่วมทางสังคมในโลกจริง","ab.p1":"MangoX เป็นแอปโซเชียลตามสถานที่สำหรับผู้ใหญ่ ที่คลับไนท์ไลฟ์ที่รองรับ","ab.own":"MangoX เป็นผลิตภัณฑ์และบริการที่เป็นเจ้าของและดำเนินการโดย NetAI","ab.p3":"ดำเนินการจากประเทศเกาหลีใต้",
       "fo.op1":"ดำเนินการโดย NetAI","fo.op2":"เกาหลีใต้","fo.privacy":"นโยบายความเป็นส่วนตัว","fo.terms":"ข้อกำหนดการให้บริการ","fo.copy":"© 2026 NetAI. MangoX เป็นผลิตภัณฑ์และบริการที่เป็นเจ้าของและดำเนินการโดย NetAI"
     },
     zh:{
       "nav.how":"使用方式","nav.night":"夜晚","nav.venues":"场馆","nav.safety":"安全","nav.cta":"获取应用",
-      "hero.sub":"场馆夜生活平台","hero.t1":"发现。","hero.t2":"观看。","hero.t3":"参与。",
-      "hero.tag":"为真实场馆打造的夜生活排名体验。","hero.gplay":"Google Play — 即将上线","hero.adults":"仅限成人",
-      "how.eb":"MangoX 如何运作","how.h2":"场馆内的三个步骤。","how.lead":"为真实夜晚设计的简单流程——到场签到、加入实时排名，并仅在双方互有兴趣时建立连接。",
+      "hero.sub":"场馆夜生活平台","hero.t1":"发现。","hero.t2":"观看。","hero.t3":"连接。",
+      "hero.tag":"芭提雅之夜 — 在支持的俱乐部签到、表达好感，双方互有好感时通过 LINE 联系。","hero.gplay":"Google Play — 即将上线","hero.adults":"仅限成人",
+      "how.eb":"MangoX 如何运作","how.h2":"场馆内的三个步骤。","how.lead":"为真实夜晚设计的简单流程 — 到场签到，向喜欢的人表达好感，只有双方互相感兴趣时才会连接。",
       "how.s1h":"签到","how.s1p":"抵达合作场馆并现场签到，即可进入当晚的场次。",
-      "how.s2h":"参与","how.s2p":"用 Hearts、Pick3 和 Spotlight 加入实时排名。",
+      "how.s2h":"表达好感","how.s2p":"向感兴趣的人发送 Heart、Star 和 Pick3。这些是你们两人之间的私密信号。",
       "how.s3h":"连接","how.s3p":"只有在双方互有兴趣后，连接才会开启。",
       "how.note":"<strong>无应用内聊天。</strong><br>仅在双方互有兴趣时才可建立连接。",
-      "tl.eb":"逐小时的夜晚","tl.h2":"一个场馆。一个夜晚。五个时刻。","tl.lead":"MangoX 跟随场馆自己的时钟运行——从开门到打烊前的结果揭晓。",
+      "tl.eb":"逐小时的夜晚","tl.h2":"一个场馆。一个夜晚。五个时刻。","tl.lead":"MangoX 跟随场馆自己的时钟运行——从夜间场次开始到结束。",
       "tl.e1":"签到","tl.d1":"开门。来宾签到，场次开始。",
-      "tl.e2":"排名开始","tl.d2":"实时排名启动——Hearts、Pick3、Spotlight。",
+      "tl.e2":"场次开始","tl.d2":"俱乐部内可使用 Heart、Star 和 Pick3。",
       "tl.e3":"场次 B","tl.d3":"夜晚渐入高潮，进入下一场次。",
-      "tl.e4":"场次 C","tl.d4":"最后一场——打烊前排名愈发胶着。",
-      "tl.e5":"结果","tl.d5":"夜晚结束，结果揭晓。",
+      "tl.e4":"场次 C","tl.d4":"最后一场 — 闭场前最后的连接机会。",
+      "tl.e5":"夜间场次结束","tl.d5":"当晚的场次结束。",
       "fe.eb":"功能一览","fe.h2":"为现场而生。",
-      "fe.f1h":"实时排名","fe.f1p":"整夜随现场变化的实时榜单。",
-      "fe.f2h":"Spotlight","fe.f2p":"当场次的焦点，置于最前。",
+      "fe.f1h":"现场成员","fe.f1p":"查看今晚参与的成员，不分先后。",
+      "fe.f2h":"座位图","fe.f2p":"选择你的区域，让俱乐部里的其他人知道你在哪里。",
       "fe.f3h":"观看模式","fe.f3p":"随时随地，私密地观看整晚。",
-      "fe.f4h":"Pick3","fe.f4p":"选出你的三位，整夜为他们加油。",
+      "fe.f4h":"Pick3","fe.f4p":"选出今晚最感兴趣的最多三位 — 只传达给对方的私密信号。",
       "fe.f5h":"Hearts","fe.f5p":"悄悄表达兴趣，仅在互相匹配时公开。",
-      "fe.f6h":"结果","fe.f6p":"收尾榜单与场次优胜者。",
-      "vm.eb":"观看模式","vm.h2":"观看，或参与。由你选择。","vm.lead":"任何人都能关注这一晚。只有已签到的玩家才会进入排名并在现场显示。",
-      "vm.cap":"功能","vm.viewer":"观众","vm.vip":"VIP 观众","vm.player":"玩家",
-      "vm.r1":"查看实时排名","vm.r2":"查看 Spotlight 与 Hot Now","vm.r3":"VIP 亮点与优先视角","vm.r4":"在场馆中参与排名","vm.r5":"发送 Hearts 与 Pick3","vm.r6":"对参与者匿名",
-      "vm.note":"参与者无法看到谁在观看。",
+      "fe.f6h":"Day View","fe.f6p":"白天可查看所选俱乐部昨晚的部分成员（仅浏览）。",
+      "vm.eb":"观看模式","vm.h2":"浏览，或参与。由你选择。","vm.lead":"任何人都可以通过 View Mode 关注当晚。只有已签到的成员才能在现场参与。",
+      "vm.cap":"功能","vm.viewer":"View Mode Basic","vm.vip":"View Mode Plus","vm.player":"Play Pass",
+      "vm.r1":"查看今晚成员","vm.r2":"查看大图头像","vm.r3":"座位图","vm.r4":"在俱乐部内参与","vm.r5":"发送 Heart、Star 与 Pick3",
+      "vm.note":"参与者看不到浏览者名单。",
       "vn.eb":"多场馆平台","vn.h2":"一个平台，多个夜生活场馆。","vn.v1s":"泰国 芭提雅","vn.v2s":"夜生活场馆","vn.live":"已上线","vn.tag":"更多合作场馆将在 2026 年陆续加入。",
       "sf.eb":"安全与隐私","sf.h2":"在设计中守住边界。","sf.lead":"MangoX 通过设计让互动保持有序而私密。",
       "sf.s1":"无应用内聊天","sf.s3":"需双方互有兴趣","sf.s4":"保护观看者隐私","sf.s5":"真实场馆体验",
       "sf.foot":"仅限成人 · 连接在双方互有兴趣后通过外部服务处理。",
       "ab.eb":"关于运营方","ab.m1":"韩国","ab.m2":"科技公司","ab.m3":"MangoX 运营方",
-      "ab.net":"NetAI 是一家位于韩国的科技公司，专注于打造面向场馆娱乐、排名体验与现实社交参与的数字平台。","ab.p1":"MangoX 是面向成人的夜生活排名与场馆参与平台。","ab.own":"MangoX 是由 NetAI 拥有并运营的产品与服务。","ab.p3":"在韩国运营。",
+      "ab.net":"NetAI 是一家总部位于韩国的科技公司，致力于开发场所型娱乐与线下社交参与的数字平台。","ab.p1":"MangoX 是面向成年人的场所型社交应用，用于支持的夜店。","ab.own":"MangoX 是由 NetAI 拥有并运营的产品与服务。","ab.p3":"在韩国运营。",
       "fo.op1":"由 NetAI 运营","fo.op2":"韩国","fo.privacy":"隐私政策","fo.terms":"服务条款","fo.copy":"© 2026 NetAI。MangoX 是由 NetAI 拥有并运营的产品与服务。"
     }
   };
